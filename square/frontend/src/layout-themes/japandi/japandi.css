@@ -1,0 +1,55 @@
+/* Japandi Atelier home page (W10-R3). Scoped to .lt-jp; reads only the --t-* and --lt-sw* values of the theme. */
+.lt-jp-band { padding: 84px 0; background: var(--t-bg); }
+.lt-jp-band.lt-jp-card { background: var(--t-surface); }
+.lt-jp-hero { padding: 72px 0; }
+.lt-jp-two { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.lt-jp-copy { display: flex; flex-direction: column; gap: 26px; align-items: flex-start; justify-content: center; }
+.lt-jp-eb { font: 600 11px var(--t-font-body); letter-spacing: .34em; text-transform: uppercase; color: var(--t-text-muted); }
+.lt-jp .lt-jp-copy .lt-h1 { font-size: clamp(48px, 7vw, 96px); font-weight: 400; line-height: 1.02; letter-spacing: -0.01em; margin: 0; }
+.lt-jp .lt-jp-copy .lt-h1 em { font-style: normal; color: inherit; }
+.lt-jp-ledger { display: flex; flex-direction: column; box-shadow: 0 28px 50px -28px rgba(0, 0, 0, .45); }
+.lt-jp-lrow { display: grid; grid-template-columns: 44px 1fr; gap: 12px; align-items: baseline; padding: 20px 26px; text-decoration: none; color: inherit; }
+.lt-jp-lno { font: 400 13px var(--t-font-body); letter-spacing: .14em; }
+.lt-jp-lrow strong { display: block; font: 400 21px var(--t-font-display); letter-spacing: .04em; }
+.lt-jp-lrow small { display: block; margin-top: 5px; font: 400 11.5px var(--t-font-body); letter-spacing: .18em; text-transform: uppercase; }
+.lt-jp-stats { display: flex; gap: 72px; flex-wrap: wrap; padding: 28px 0; border-top: 1px solid var(--t-border); }
+.lt-jp-stats b { display: block; font: 400 44px/1 var(--t-font-display); color: var(--t-text-strong); }
+.lt-jp-stats span { display: block; margin-top: 6px; font: 600 10.5px var(--t-font-body); letter-spacing: .16em; text-transform: uppercase; color: var(--t-text-muted); }
+.lt-jp-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 20px; padding-bottom: 18px; border-bottom: 1px solid var(--t-border); margin-bottom: 44px; }
+.lt-jp-head h2 { margin: 0; font: 400 46px/1.05 var(--t-font-display); letter-spacing: -.01em; color: var(--t-text-strong); }
+.lt-jp-head a { font: 600 15px var(--t-font-body); color: var(--t-link); text-decoration: underline; text-underline-offset: 4px; white-space: nowrap; }
+.lt-jp-pills { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
+.lt-jp-pills button { padding: 8px 18px; border-radius: 999px; border: 1px solid var(--t-border); background: var(--t-surface); color: var(--t-text-strong); font: 500 14px var(--t-font-body); cursor: pointer; }
+.lt-jp-pills button[aria-pressed="true"] { background: var(--t-accent); border-color: var(--t-accent); color: var(--t-on-primary); }
+.lt-jp-quote { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 16px; max-width: 760px; margin: 56px auto 0; }
+.lt-jp-quote blockquote { margin: 0; }
+.lt-jp-quote p { margin: 0; font: italic 400 38px/1.25 var(--t-font-display); color: var(--t-text-strong); }
+.lt-jp-quote footer { margin-top: 12px; color: var(--t-text-muted); }
+.lt-jp-collage { display: grid; grid-template-columns: 2fr 1fr; gap: 16px; }
+.lt-jp-side { display: grid; grid-template-columns: 1fr; gap: 16px; }
+.lt-jp-narrow { max-width: 760px; margin: 0 auto; border-top: 1px solid var(--t-border); }
+.lt-jp-narrow.lt-jp-wide { max-width: 820px; }
+@media (max-width: 860px) {
+  .lt-jp-band { padding: 56px 0; }
+  .lt-jp-hero { padding: 32px 0; }
+  .lt-jp-two { grid-template-columns: 1fr; gap: 40px; }
+  .lt-jp-stats { gap: 28px; }
+  .lt-jp-stats b { font-size: 32px; }
+  .lt-jp-head h2 { font-size: 32px; }
+  .lt-jp-quote p { font-size: 26px; }
+  .lt-jp-collage { grid-template-columns: 1fr; }
+  .lt-jp-side { grid-template-columns: 1fr 1fr; }
+}
+
+/* Masthead (mast shell): small capitals navigation and a compact join button in the top strip. */
+html[data-square-theme="japandi-atelier"] .lt-es-mast .lt-es-pills a { font: 600 12px var(--t-font-body); letter-spacing: .16em; text-transform: uppercase; }
+.lt-jp-arch, .lt-jp-side a { display: block; }
+
+/* Components of the default home page that the design does not show (W10-R4): script line, emphasised name, photo strip, type chips, captions, testimonial navigation. */
+.lt-jp .lt-lead-name { display: block; margin-top: 10px; font: italic 400 30px/1.2 var(--t-font-display); color: var(--t-accent-text); }
+.lt-jp-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; padding-bottom: 8px; }
+.lt-jp-cap { display: block; margin-top: 8px; font: 400 15px var(--t-font-display); color: var(--t-text-strong); }
+.lt-jp-qnav { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; justify-content: center; }
+.lt-jp-lead { margin: 0; font: 400 20px/1.6 var(--t-font-body); color: var(--t-text); }
+.lt-jp-assoc { margin-top: 40px; padding-top: 40px; border-top: 1px solid var(--t-border); }
+@media (max-width: 860px) { .lt-jp-strip { grid-template-columns: 1fr 1fr 1fr; gap: 8px; } .lt-jp .lt-lead-name { font-size: 24px; } }

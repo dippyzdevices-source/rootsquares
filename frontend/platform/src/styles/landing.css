@@ -1,0 +1,172 @@
+/* Landing page layout (/). Reuses Brass classes from screens.css (.bs-hero, .bs-d, .bs-h2, .bs-lede, .bs-kpis, .bs-kpi, .bs-li, .bs-sec, .bs-r, .bs-shot, .bs-opt).
+   Additions below are not in the design (logged in MISSING.md); they use tokens only. Wide = container "app" >= 760px, matching the header switch. */
+.bs-land{--bs-pad:18px;display:flex;flex-direction:column}
+.bs-sx{padding:28px var(--bs-pad)}
+.bs-band{border-bottom:1px solid var(--color-border)}
+.bs-head{display:grid;gap:10px;margin-bottom:20px;max-width:60ch}
+.bs-fine{margin:0;font-size:var(--text-xs);color:var(--color-text-muted)}
+
+/* Hero: design .bs-hero is the desktop layout; stack it on narrow containers (design .bs-hero--m) */
+.bs-land .bs-hero{grid-template-columns:1fr;gap:24px;padding:28px var(--bs-pad) 24px;align-items:start}
+.bs-hero__copy{display:grid;gap:14px;justify-items:start}
+.rs .bs-d{font-size:40px}
+
+/* Launch preview */
+.bs-launch{display:grid;gap:12px;min-width:0}
+.bs-launch__form{display:grid;gap:12px}
+.bs-chips{display:flex;flex-wrap:wrap;gap:6px}
+.bs-chipbtn{display:inline-flex;align-items:center;gap:7px;min-height:30px;padding:0 10px;border:1px solid var(--color-border-strong);border-radius:var(--shape-control);background:var(--color-surface);color:var(--color-text);font:400 var(--text-sm)/1 var(--font-sans);cursor:pointer}
+.bs-chipbtn i{width:10px;height:10px;border-radius:2px;border:1px solid rgba(0,0,0,.25)}
+.bs-chipbtn[aria-checked=true]{border-color:var(--color-brass);background:var(--color-brass-subtle);font-weight:500}
+.bs-mock{border:1px solid var(--color-border-strong);border-radius:var(--shape-surface);overflow:hidden;font-size:11px;line-height:1.4;min-height:210px}
+.bs-mock__bar{display:flex;justify-content:space-between;gap:8px;padding:8px 12px}.bs-mock__bar b{font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.bs-mock__bar span{opacity:.85;white-space:nowrap}
+.bs-mock__hero{display:grid;gap:8px;justify-items:start;padding:14px 12px 10px}
+.bs-mock__logo{width:26px;height:26px;border-radius:4px;display:grid;place-items:center;font-weight:600;font-size:10px}
+.bs-mock__h{font-size:19px;line-height:1.15;font-weight:600;max-width:20ch}
+.bs-mock__btn{padding:4px 10px;border-radius:var(--shape-control);font-weight:600}
+.bs-mock__rows{padding:0 12px 12px}
+.bs-mock__row{display:grid;grid-template-columns:52px 1fr auto;gap:8px;padding:6px 0;border-top:1px solid;align-items:baseline}
+.bs-mock__row b{font-weight:600}.bs-mock__row i{font-style:normal;opacity:.7}
+
+/* Module index */
+.bs-mods{display:grid;gap:0}
+.bs-mods__list{list-style:none;margin:0;padding:0}
+.bs-mods__panel{display:none}
+.bs-li--btn{width:100%;border:0;border-bottom:1px solid var(--color-border);background:none;text-align:start;cursor:pointer;color:var(--color-text);grid-template-columns:34px 1fr auto 14px;font-family:var(--font-sans)}
+.bs-li__hint{font-size:var(--text-sm);color:var(--color-text-muted);display:none}
+.bs-li__chev{color:var(--color-text-muted);justify-self:end}
+.bs-li--btn:hover b,.bs-li--btn.is-active b{color:var(--color-brass-text)}
+.bs-mods__list>li:last-child .bs-li--btn{border-bottom:1px solid var(--color-border)}
+.bs-mods__inline{padding:4px 0 14px}
+
+/* Who / proof / steps */
+.bs-kpis--4,.bs-kpis--3{grid-template-columns:1fr 1fr;list-style:none;margin:0;padding:0}
+.bs-kpis--3{grid-template-columns:1fr}
+.bs-kpis--4 .bs-kpi:nth-child(odd){border-inline-start:0}.bs-kpis--4 .bs-kpi:nth-child(n+3){border-top:1px solid var(--color-border)}
+.bs-kpis--3 .bs-kpi{border-inline-start:0;border-top:1px solid var(--color-border)}.bs-kpis--3 .bs-kpi:first-child{border-top:0}
+.rs .bs-kpi .bs-v--text{font-size:var(--text-xl);line-height:1.2}
+.bs-kpi .d{line-height:1.45}
+.bs-conn .bs-kpi{position:relative;padding:14px 16px 14px 56px;align-content:start}
+.bs-conn__n{position:absolute;left:16px;top:14px;width:24px;height:24px;border-radius:50%;border:1px solid var(--color-brass);background:var(--color-brass-subtle);color:var(--color-brass-text);display:grid;place-items:center;font:500 .75rem var(--font-sans)}
+.bs-conn__t{font:500 .72rem/1 var(--font-sans);letter-spacing:.1em;text-transform:uppercase;color:var(--color-brass-text);margin-top:4px}
+.bs-conn .bs-kpi:not(:last-child)::after{content:"";position:absolute;left:27.5px;top:42px;bottom:-14px;width:1px;background:var(--color-brass)}
+
+/* Trust line and final CTA */
+.bs-trust{display:flex;flex-wrap:wrap;gap:8px 24px;padding-block:14px;font-size:var(--text-sm);color:var(--color-text-muted)}
+.bs-trust__i{display:inline-flex;align-items:center;gap:6px}.bs-trust__i .rs-icon{color:var(--color-brass)}
+.bs-cta{display:grid;gap:16px;align-items:center;border-bottom:1px solid var(--color-border);background:var(--color-surface-sunken)}
+
+/* Wide */
+@container app (min-width:760px){
+  .bs-land{--bs-pad:max(56px,calc((100cqw - 1120px) / 2))}
+  .bs-sx{padding-block:40px}
+  .bs-land .bs-hero{grid-template-columns:1.1fr 1fr;gap:48px;padding:48px var(--bs-pad) 40px;align-items:center}
+  .rs .bs-d{font-size:62px}
+  .bs-hero__copy{gap:20px}
+  .bs-mods{grid-template-columns:1.05fr 1fr;gap:40px;align-items:start}
+  .bs-mods__panel{display:block;position:sticky;top:76px}
+  .bs-mods__inline{display:none}
+  .bs-li--btn{grid-template-columns:34px 1fr auto}.bs-li__hint{display:inline}.bs-li__chev{display:none}
+  .bs-kpis--4{grid-template-columns:repeat(4,1fr)}.bs-kpis--3{grid-template-columns:repeat(3,1fr)}
+  .bs-kpis--4 .bs-kpi:nth-child(n){border-inline-start:1px solid var(--color-border);border-top:0}.bs-kpis--4 .bs-kpi:first-child{border-inline-start:0}
+  .bs-kpis--3 .bs-kpi{border-top:0;border-inline-start:1px solid var(--color-border)}.bs-kpis--3 .bs-kpi:first-child{border-inline-start:0}
+  .bs-conn .bs-kpi:not(:last-child)::after{left:auto;right:-1px;top:26px;bottom:auto;width:0;height:0;background:none}
+  .bs-cta{grid-template-columns:1fr auto;gap:40px}
+}
+/* Preview panels in the narrow layout are inline: small gallery grid helper */
+.bs-gal{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;padding:12px;border-bottom:1px solid var(--color-border)}
+
+/* Landing redesign (W11-R47, from "Landing Redesign.html"): the `lr-*` sections. Tokens only, except the always-light band and the brass call to action,
+   which keep the design's own colours in both themes. Wide = container "app" >= 760px. */
+.lr-sec{border-bottom:1px solid var(--color-border)}
+.lr-h2{max-width:20ch;text-wrap:balance}
+.lr-raise{background:var(--color-surface-sunken)}
+.lr-n{color:var(--color-text-muted);font-size:var(--text-sm)}
+
+/* What you get: numbered rows and the domain card */
+.lr-get{display:grid;gap:28px;margin-top:8px}
+.lr-rows{list-style:none;margin:0;padding:0}
+.lr-row{display:grid;grid-template-columns:34px 1fr;gap:2px 8px;padding:12px 0;border-bottom:1px solid var(--color-border);font-size:var(--text-sm)}
+.lr-row b{font-weight:600}.lr-row i{grid-column:2;font-style:normal;color:var(--color-text-muted)}
+.lr-row.is-hl b{color:var(--color-brass-text)}
+.lr-dom{border:1px solid var(--color-border);border-radius:var(--shape-surface);padding:16px;background:var(--color-surface);font-size:var(--text-sm);display:grid;gap:8px;align-content:start}
+.lr-dom__l{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--color-text-muted)}.lr-dom__l--s{letter-spacing:0;text-transform:none;font-size:var(--text-xs)}
+.lr-dom__t,.lr-dom__p{margin:0}.lr-dom__s{color:var(--color-brass-text)}
+.lr-dom code{display:block;border:1px solid var(--color-border);border-radius:5px;padding:8px;background:var(--color-bg);font-size:var(--text-xs);overflow-wrap:anywhere}
+
+/* Who it is for: a light band in both themes */
+.lr-light{--lt:#1c1a16;--lm:#5e584c;--ll:#d3cbba;--lb:#735510;background:var(--color-surface-sunken);color:var(--lt);border-bottom:0}
+[data-brand="brass"][data-theme="dark"] .lr-light{background:#f4efe4}
+.lr-light .rs-eyebrow{color:var(--lb)}
+.lr-who{display:grid;margin-top:24px;border-top:1px solid var(--ll)}
+.lr-who>div{padding:22px 0 24px;border-bottom:1px solid var(--ll)}
+.lr-who small{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--lb);font-weight:600}
+.lr-who h3{font:500 30px/1.1 var(--font-display);margin:8px 0 10px;color:var(--lt)}
+.lr-who p{margin:0;color:var(--lm);max-width:34ch}
+
+/* In use */
+.lr-use{display:grid;gap:32px;align-items:end}
+.lr-big{font:500 112px/.9 var(--font-display);color:var(--color-brass);letter-spacing:-.02em;margin-top:14px}
+.lr-big span{font-size:40px;font-style:italic;color:var(--color-text);margin-left:8px}
+.lr-quote{font:500 26px/1.2 var(--font-display);margin:12px 0 16px}
+.lr-stats{display:flex;flex-direction:column}
+.lr-stats>div{display:flex;align-items:baseline;gap:16px;padding:12px 0;border-bottom:1px solid var(--color-border)}
+.lr-stats b{font:500 38px/1 var(--font-display);min-width:56px}.lr-stats span{color:var(--color-text-muted)}
+
+/* How it works: connected steps */
+.lr-steps{list-style:none;margin:28px 0 0;padding:0;display:grid;gap:28px}
+.lr-steps__n{display:grid;place-items:center;width:52px;height:52px;border-radius:50%;border:1px solid var(--color-brass);background:var(--color-bg);color:var(--color-brass-text);font:500 24px var(--font-display);position:relative}
+.lr-steps h3{margin:16px 0 6px;font-size:var(--text-lg);font-weight:600}.lr-steps p{margin:0;color:var(--color-text-muted)}
+.lr-steps small{display:inline-block;margin-top:10px;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--color-brass-text);font-weight:600}
+
+/* Call to action: the brass band, same colours in both themes */
+.lr-cta{background:#c9a45c;color:#12100d;text-align:center;padding-block:64px 48px;border:0;display:grid;gap:14px;justify-items:center}
+.lr-cta h2{font:500 44px/1.05 var(--font-display);margin:0;text-wrap:balance}
+.lr-cta p{margin:0 0 10px;font-size:var(--text-base)}
+/* The buttons on the brass band look the same in both themes (the dark theme's own button colours must not leak in). */
+[data-brand="brass"] .rs .lr-cta .rs-btn{border-color:#12100d;color:#12100d}
+[data-brand="brass"] .rs .lr-cta .rs-btn:not(.rs-btn--secondary){background:#12100d;color:#f4efe4}
+[data-brand="brass"] .rs .lr-cta .rs-btn:not(.rs-btn--secondary):hover{background:#f4efe4;color:#12100d}
+[data-brand="brass"] .rs .lr-cta .rs-btn--secondary{background:transparent;color:#12100d}
+[data-brand="brass"] .rs .lr-cta .rs-btn--secondary:hover{background:rgba(18,16,13,.08);border-color:#12100d;color:#12100d}
+/* The hero's See pricing button keeps its light-theme look in the dark theme too (cream fill, dark text). */
+[data-brand="brass"][data-theme="dark"] .rs .bs-hero__copy .rs-btn--secondary{background:#fbf8f0;color:#1c1a16;border-color:#8a8272}
+[data-brand="brass"][data-theme="dark"] .rs .bs-hero__copy .rs-btn--secondary:hover{background:#fbf8f0;color:#735510;border-color:#9a7a2e}
+.lr-ticks{display:flex;gap:12px 28px;justify-content:center;margin-top:20px;font-size:var(--text-sm);font-weight:500;flex-wrap:wrap}
+.lr-ticks span{display:inline-flex;align-items:center;gap:6px}
+
+@container app (min-width:760px){
+  .lr-get{grid-template-columns:1fr 340px;gap:56px;margin-top:20px;align-items:start}
+  .lr-row{grid-template-columns:36px 1fr auto;gap:8px}.lr-row i{grid-column:auto}
+  .lr-who{grid-template-columns:1fr 1fr;margin-top:36px}
+  .lr-who>div{padding:28px 32px 32px 0}.lr-who>div:nth-child(even){padding-left:32px;padding-right:0;border-left:1px solid var(--ll)}
+  .lr-who h3{font-size:38px}
+  .lr-use{grid-template-columns:1.3fr 1fr;gap:64px}
+  .lr-big{font-size:168px}.lr-big span{font-size:56px}.lr-quote{font-size:30px}
+  .lr-stats b{font-size:44px;min-width:64px}
+  .lr-steps{grid-template-columns:repeat(3,1fr);gap:40px;margin-top:48px;position:relative}
+  .lr-steps::before{content:"";position:absolute;left:0;right:0;top:26px;border-top:1px dashed var(--color-brass);opacity:.5}
+  .lr-cta{padding-block:88px 64px}.lr-cta h2{font-size:64px}
+}
+
+/* Site footer (W11-R49): always dark chocolate, in light and dark theme (user): brand left, link columns right, ornament, copyright line. */
+.lr-foot{--fc-bg:#2b1a12;--fc-text:#efe3d0;--fc-mute:#cdbfa8;--fc-line:#4d3628;--fc-brass:#d2b06a;background:var(--fc-bg);background-image:linear-gradient(180deg,#140b07,#1b100a,#22150e);color:var(--fc-text);padding:36px var(--page-x) 20px;display:grid;gap:24px;font-size:var(--text-sm)}
+[data-brand="brass"] .rs .lr-foot a{color:var(--fc-text);text-decoration:none}[data-brand="brass"] .rs .lr-foot a:hover{color:var(--fc-brass)}
+.lr-foot .rs-wordmark,.lr-foot .rs-wordmark svg{color:var(--fc-text)}.lr-foot .rs-wordmark svg rect{stroke:var(--fc-text)}.lr-foot .rs-wordmark svg path{stroke:#c9a55a}
+.lr-foot__top{display:grid;gap:28px}
+.lr-foot__brand{display:grid;gap:12px;align-content:start;justify-items:start}
+.lr-foot__brand p{margin:0;max-width:34ch;color:var(--fc-mute);line-height:1.5}
+.lr-foot__logo{display:inline-flex}
+.lr-foot__cols{display:flex;gap:40px;flex-wrap:wrap}
+.lr-foot__cols nav{display:grid;gap:8px;align-content:start}
+.lr-foot__h{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--fc-brass);font-weight:600;margin-bottom:2px}
+.lr-foot__orn{display:flex;align-items:center;gap:12px}
+.lr-foot__orn::before,.lr-foot__orn::after{content:"";flex:1;height:1px;background:var(--fc-line)}
+.lr-foot__orn i{width:7px;height:7px;background:var(--fc-brass);transform:rotate(45deg)}
+.lr-foot__bot{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:var(--text-xs);color:var(--fc-mute)}
+@container app (min-width:760px){
+  .lr-foot{padding-block:48px 22px}
+  .lr-foot__top{grid-template-columns:1fr auto;gap:56px}
+  .lr-foot__cols{gap:56px;justify-content:flex-end}
+  .lr-foot__cols nav{text-align:right}
+}

@@ -1,0 +1,768 @@
+{
+  "site": {
+    "home": "Hjem",
+    "events": "Arrangementer",
+    "event": "Arrangement",
+    "membership": "Medlemskap",
+    "committee": "Styret",
+    "gallery": "Galleri",
+    "contact": "Kontakt",
+    "joinCta": "Bli medlem",
+    "viewEvents": "Se arrangementer",
+    "details": "Detaljer",
+    "eventsTitle": "Arrangementer",
+    "eventsText": "Det som kommer.",
+    "seasonEyebrow": "Sesongen 2026-27",
+    "homeTitle": "Et hjem for alle som hører til her",
+    "homeLead": "Fester, kurs og månedlige middager, alt drevet av frivillige.",
+    "stats": {
+      "members": "Medlemmer",
+      "events": "Arrangementer",
+      "committee": "Styret"
+    },
+    "plansTitle": "Medlemskap",
+    "plansText": "Medlemskapet gjelder kalenderåret og dekker alle i husstanden.",
+    "perYear": "NOK per år",
+    "join": "Meld deg inn",
+    "popular": "Mest valgt",
+    "plans": {
+      "student": [
+        "Student",
+        "Gratis for studenter og de med lav inntekt",
+        [
+          "Rabatt på arrangementer",
+          "Nyhetsbrev"
+        ]
+      ],
+      "full": [
+        "Fullt medlem",
+        "Én voksen",
+        [
+          "Stemmerett på årsmøtet",
+          "Medlemspris på billetter",
+          "Nyhetsbrev"
+        ]
+      ],
+      "family": [
+        "Familie",
+        "Alle i husstanden",
+        [
+          "Alt i Fullt medlem",
+          "Barnearrangementer gratis"
+        ]
+      ]
+    },
+    "joinTitle": "Bli medlem i BCA Oslo",
+    "joinName": "Fullt navn",
+    "joinEmail": "E-post",
+    "joinPlan": "Plan",
+    "joinSend": "Send søknad",
+    "joined": "Søknaden er sendt",
+    "joinedBody": "Vi sender deg en Vipps-forespørsel for kontingenten. (Demo: ingenting ble sendt.)",
+    "joinNameError": "Skriv inn navnet ditt",
+    "joinEmailError": "Skriv inn en e-postadresse som navn{'@'}eksempel.no",
+    "committeeTitle": "Styret",
+    "committeeText": "Frivillige valgt på årsmøtet.",
+    "galleryTitle": "Galleri",
+    "galleryText": "Bilder fra arrangementene våre.",
+    "close": "Lukk",
+    "photo": "Bilde {n}",
+    "contactTitle": "Ta kontakt",
+    "contactText": "Skriv til oss, så svarer styret.",
+    "contactName": "Navnet ditt",
+    "contactEmail": "E-post",
+    "contactMessage": "Melding",
+    "contactSend": "Send melding",
+    "contactSent": "Meldingen er sendt",
+    "contactSentBody": "Takk. (Demo: ingenting ble sendt.)",
+    "contactMessageError": "Skriv noen ord (minst 10 tegn)",
+    "address": "Finn oss",
+    "free": "Gratis",
+    "each": "per stk.",
+    "yourOrder": "Din bestilling",
+    "subtotal": "Delsum",
+    "fee": "Serviceavgift",
+    "total": "Sum",
+    "reserve": "Reserver plasser",
+    "reserving": "Reserverer",
+    "orderNote": "Du betaler med Vipps. Styret bekrefter betalingen og sender billettene på e-post.",
+    "chooseTickets": "Velg minst én billett",
+    "ordered": "Bestilling lagt inn",
+    "orderedBody": "Bestilling #{id}: {total} NOK. Betal med Vipps til {vipps} (demo).",
+    "back": "Alle arrangementer",
+    "notFound": "Fant ikke siden",
+    "orderDone": "Takk. Bestillingen venter på betaling.",
+    "sold": "{sold} av {capacity} solgt",
+    "switcher": {
+      "label": "Visningsvalg",
+      "theme": "Tema",
+      "mode": "Modus",
+      "light": "Lys",
+      "dark": "Mørk",
+      "title": "Forhåndsvisning"
+    },
+    "offline": "Nettstedet er offline",
+    "offlineText": "Styret har avpublisert det for nå.",
+    "publishAgain": "Publiser igjen",
+    "footerNote": "En frivillig drevet forening.",
+    "articles": "Nyheter",
+    "pay": {
+      "title": "Betal for billettene",
+      "lead": "Send summen med Vipps og bruk referansen under. Plassene dine holdes av i 48 timer.",
+      "to": "Betal til {name}",
+      "ref": "Betalingsreferanse",
+      "iPaid": "Jeg har betalt",
+      "pendingTitle": "Venter på bekreftelse",
+      "pendingText": "Kassereren sjekker betalinger for hånd, vanligvis innen en dag. Vi sender deg e-post når det er bekreftet.",
+      "viewOrder": "Se bestillingen",
+      "summary": "Oppsummering",
+      "noOrder": "Det er ingen bestilling å betale.",
+      "copyRef": "Kopier referansen",
+      "qr": "QR-kode",
+      "demo": "Demo: Vipps-nummeret og QR-koden er plassholdere."
+    },
+    "order": {
+      "confirmed": "Bestillingen din er bekreftet",
+      "waiting": "Vi har bestillingen din. Betalingen er ikke bekreftet ennå.",
+      "orderNo": "Bestillingsnummer",
+      "line": "{qty} × {label}",
+      "confirmedText": "Vis dette bestillingsnummeret i døra. En kopi er på vei på e-post.",
+      "waitingText": "Plassene dine holdes av til kassereren har bekreftet Vipps-betalingen din.",
+      "addCal": "Legg i kalender",
+      "calAdded": "Kalenderfil laget (demo, ingenting lastes ned)",
+      "back": "Tilbake til nettstedet",
+      "none": "Vi fant ikke denne bestillingen."
+    },
+    "news": {
+      "title": "Nyheter",
+      "lead": "Notater fra styret.",
+      "read": "Les mer",
+      "back": "Nyheter",
+      "cover": "omslag"
+    },
+    "nf": {
+      "title": "Vi fant ikke siden",
+      "text": "Siden kan ha flyttet. Start fra forsiden.",
+      "home": "Forsiden"
+    },
+    "maint": {
+      "title": "Vi gjør endringer",
+      "text": "Nettstedet er nede for en stund. Kom snart tilbake.",
+      "back": "Tilbake snart"
+    },
+    "cookie": {
+      "title": "Informasjonskapsler",
+      "text": "Vi bruker én informasjonskapsel for å huske språket ditt. Ingen sporing.",
+      "decline": "Avslå",
+      "accept": "Godta"
+    },
+    "lightbox": {
+      "prev": "Forrige bilde",
+      "next": "Neste bilde",
+      "close": "Lukk"
+    },
+    "member": {
+      "status": "Medlemskap",
+      "plan": "Årlig",
+      "until": "Gyldig til 31. des 2026",
+      "active": "Aktiv"
+    }
+  },
+  "color": {
+    "label": "Aksentfarge",
+    "textOnColour": "Tekst på farge",
+    "colourOnPage": "Farge på siden",
+    "custom": "Egen farge",
+    "hex": "Hex-verdi",
+    "pass": "Består AA",
+    "fail": "For lys, prøv en mørkere"
+  },
+  "domain": {
+    "pending": {
+      "label": "Venter på DNS",
+      "text": "Legg inn disse oppføringene hos domeneleverandøren. Det er det eneste som gjenstår."
+    },
+    "verifying": {
+      "label": "Verifiserer",
+      "text": "Vi fant oppføringene og utsteder sikkerhetssertifikatet. Vanligvis noen minutter, høyst 24 timer."
+    },
+    "live": {
+      "label": "Aktiv",
+      "text": "Nettstedet ditt er live med sikker tilkobling."
+    },
+    "error": {
+      "label": "Trenger oppmerksomhet",
+      "text": "Vi fant ikke oppføringene. Se etter skrivefeil, eller at de gamle er fjernet."
+    }
+  },
+  "wizard": {
+    "steps": {
+      "name": "Navn",
+      "logo": "Logo",
+      "theme": "Tema",
+      "modules": "Moduler",
+      "domain": "Domene",
+      "review": "Oppsummering"
+    },
+    "stepWord": "Steg",
+    "ofWord": "av",
+    "nameTitle": "Hva heter foreningen?",
+    "nameText": "Navnet vises øverst på nettstedet. Du kan endre det senere.",
+    "nameLabel": "Foreningens navn",
+    "nameError": "Skriv inn et navn så vi kan sette opp nettstedet",
+    "typeLabel": "Hva slags gruppe er dere?",
+    "countryLabel": "Land",
+    "countryHint": "Styrer valuta og betalingsmåter",
+    "types": {
+      "cultural": "Kulturforening",
+      "religious": "Trossamfunn",
+      "language": "Språkskole",
+      "diaspora": "Diasporaklubb"
+    },
+    "countries": {
+      "no": "Norge",
+      "se": "Sverige",
+      "dk": "Danmark",
+      "fi": "Finland",
+      "de": "Tyskland"
+    },
+    "logoTitle": "Legg til logo",
+    "logoText": "Ingen logo ennå? Hopp over. Vi viser navnet som tekst.",
+    "logoLabel": "Logo",
+    "logoOnly": "Bare tekst",
+    "themeTitle": "Velg et utseende",
+    "themeText": "Velg et utgangspunkt. Du kan endre farger når som helst.",
+    "modulesTitle": "Hva trenger dere?",
+    "modulesText": "Slå på det dere skal bruke. Alt kan slås på senere.",
+    "modules": {
+      "events": [
+        "Arrangementer",
+        "Lag arrangementer og vis dem i en kalender"
+      ],
+      "tickets": [
+        "Billetter",
+        "Selg billetter, betal med Vipps eller kort"
+      ],
+      "membership": [
+        "Medlemskap",
+        "Medlemsliste, kontingent og påminnelser"
+      ],
+      "committee": [
+        "Styret",
+        "Vis hvem som gjør hva i år"
+      ],
+      "gallery": [
+        "Galleri",
+        "Bilder fra arrangementene"
+      ],
+      "articles": [
+        "Artikler",
+        "Nyheter og historier"
+      ],
+      "accounting": [
+        "Regnskap",
+        "Inntekter, utgifter og rapporter"
+      ]
+    },
+    "domainTitle": "Velg nettadresse",
+    "domainText": "Start gratis med vår adresse, eller koble til din egen.",
+    "subLabel": "Gratis adresse",
+    "subHint": "Klar med en gang",
+    "ownLabel": "Bruk mitt eget domene",
+    "ownHint": "For eksempel bca-oslo.no",
+    "domainField": "Domenet ditt",
+    "domainError": "Skriv et domene som bca-oslo.no",
+    "dnsText": "Du kan publisere nå. Vi bytter til domenet ditt så snart disse oppføringene er på plass.",
+    "reviewTitle": "Klar til å publisere?",
+    "reviewText": "Sjekk detaljene. Alt her kan endres senere.",
+    "rName": "Navn",
+    "rLogo": "Logo",
+    "rTheme": "Tema",
+    "rModules": "Moduler",
+    "rAddress": "Adresse",
+    "rPlan": "Plan",
+    "pendingDns": "venter på DNS",
+    "trial": "Din 30 dagers gratis prøve starter nå. Ikke noe kort nødvendig.",
+    "launch": "Publiser nettstedet",
+    "launching": "Publiserer",
+    "liveTitle": "Nettstedet ditt er live",
+    "liveText": "Del det med medlemmene. Legg så til det første arrangementet.",
+    "openSite": "Se nettstedet",
+    "openConsole": "Åpne konsollen",
+    "launched": "Nettstedet er publisert",
+    "rail": "Sett opp nettstedet"
+  },
+  "adminx": {
+    "welcome": "God morgen, Sreya",
+    "createEvent": "Opprett arrangement",
+    "revenue": "Billettinntekter",
+    "unpaid": "Venter på betaling",
+    "active": "Aktive medlemmer",
+    "vsLast": "mot september",
+    "nextEvent": "Neste arrangement",
+    "ticketsLeft": "{n} billetter igjen",
+    "setup": "Fullfør oppsettet",
+    "setupName": "Navn og logo",
+    "setupTheme": "Velg et tema",
+    "setupDomain": "Koble til domenet",
+    "setupDomainHint": "Venter på DNS",
+    "setupCommittee": "Legg til styret",
+    "events": {
+      "tickets": "Billetter",
+      "sold": "Solgte billetter",
+      "noneTitle": "Ingen arrangementer her",
+      "noneText": "Opprett ett, så vises det på det offentlige nettstedet.",
+      "quickEdit": "Hurtigredigering: neste arrangement",
+      "titleField": "Tittel",
+      "starts": "Starter",
+      "sell": "Selg billetter på nett",
+      "newTitle": "Opprett arrangement",
+      "placeField": "Sted",
+      "capacity": "Kapasitet",
+      "created": "Arrangement opprettet",
+      "createdBody": "{title} er lagret som utkast.",
+      "titleError": "Gi arrangementet en tittel",
+      "dateError": "Velg en startdato",
+      "publishNow": "Publiser med en gang"
+    },
+    "orders": {
+      "markPaid": "Marker som betalt",
+      "markQ": "Marker som betalt?",
+      "event": "Arrangement",
+      "total": "Sum",
+      "date": "Dato",
+      "name": "Navn",
+      "status": "Status",
+      "allEvents": "Alle arrangementer",
+      "noneTitle": "Ingen bestillinger passer",
+      "noneText": "Prøv et annet navn eller fjern filtrene.",
+      "reference": "Vipps-referanse",
+      "refPlaceholder": "f.eks. 4821",
+      "confirmText": "Sjekk at {total} kr fra {name} er kommet inn på Vipps-kontoen. Billettene sendes på e-post med en gang.",
+      "paidToast": "#{id} markert som betalt",
+      "paidBody": "{name} har fått billettene på e-post.",
+      "csv": "CSV",
+      "open": "Venter på betaling"
+    },
+    "members": {
+      "type": "Type",
+      "since": "Siden",
+      "fee": "Kontingent 2026",
+      "add": "Legg til medlem",
+      "typeAll": "Type: alle",
+      "emailOverdue": "Send påminnelse",
+      "emailed": "Påminnelse sendt",
+      "emailedBody": "{n} medlemmer med åpen kontingent fikk e-post.",
+      "nameField": "Fullt navn",
+      "emailField": "E-post",
+      "added": "Medlem lagt til",
+      "addedBody": "{name} er på listen.",
+      "nameError": "Skriv inn medlemmets navn",
+      "emailError": "Skriv inn en e-postadresse som navn{'@'}eksempel.no",
+      "kinds": {
+        "Full member": "Fullt medlem",
+        "Family": "Familie",
+        "Student": "Student",
+        "Honorary": "Æresmedlem"
+      }
+    },
+    "committee": {
+      "intro": "Personene som vises på den offentlige styresiden.",
+      "add": "Legg til styremedlem",
+      "roleField": "Rolle",
+      "added": "Styremedlem lagt til",
+      "removed": "Fjernet fra styret",
+      "remove": "Fjern",
+      "edit": "Rediger",
+      "roleError": "Skriv inn en rolle"
+    },
+    "accounting": {
+      "export": "Eksporter",
+      "exported": "Eksport klar",
+      "exportedBody": "Regnskapet er lagret som CSV (demo: ingenting ble lastet ned).",
+      "income": "Inntekter 2026",
+      "expenses": "Utgifter 2026",
+      "balance": "Saldo",
+      "vs": "mot 2025",
+      "chart": "Inntekter og utgifter",
+      "chartLabel": "Inntekter og utgifter per måned, 2026",
+      "ledger": "Regnskap",
+      "description": "Beskrivelse",
+      "amount": "Beløp (kr)",
+      "date": "Dato",
+      "incomeSeries": "Inntekter",
+      "expenseSeries": "Utgifter",
+      "addEntry": "Legg til post",
+      "entryAdded": "Post lagt til"
+    },
+    "theme": {
+      "live": "Forhåndsvisning",
+      "frame": "Det offentlige nettstedet. Rammen er det eneste stedet foreningens farger vises.",
+      "brand": "Merkefarge",
+      "saved": "Tema lagret",
+      "savedBody": "Det offentlige nettstedet bruker nå {theme}.",
+      "mode": "Visning",
+      "light": "Lys",
+      "dark": "Mørk",
+      "welcome": "Velkommen til vår Durga Puja",
+      "meta": "Lør 17. okt · Furuset Forum · 10:00",
+      "buy": "Kjøp billetter",
+      "nav": "Arrangementer · Om oss"
+    },
+    "domain": {
+      "title": "Koble til domenet",
+      "text": "Nettstedet er alltid tilgjengelig på den gratis adressen. Legg til eget domene når du er klar.",
+      "free": "Gratis adresse",
+      "own": "Eget domene",
+      "check": "Sjekk nå",
+      "start": "Koble til domene",
+      "remove": "Bruk gratis adresse",
+      "checking": "Sjekker",
+      "domainField": "Domenet ditt",
+      "wentLive": "Domenet er aktivt",
+      "wentLiveBody": "{domain} fungerer nå med sikker tilkobling.",
+      "records": "Oppføringer som skal legges inn",
+      "step": "Sjekk {n} av 2"
+    },
+    "billing": {
+      "plan": "Fellesskapsplanen",
+      "perMonth": "/ mnd",
+      "next": "Neste betaling 1. nov 2026 · Visa ····4242",
+      "change": "Bytt plan",
+      "card": "Oppdater kort",
+      "included": "Inkludert",
+      "invoices": "Fakturaer",
+      "invoice": "Faktura",
+      "amount": "Beløp",
+      "status": "Status",
+      "pdf": "PDF",
+      "pdfDone": "Faktura klar (demo)",
+      "planChanged": "Planbytte forespurt",
+      "cardUpdated": "Kortoppdatering startet (demo)",
+      "features": [
+        "Eget domene",
+        "Billetter og arrangementer",
+        "Medlemmer og styre",
+        "Regnskap"
+      ]
+    },
+    "settings": {
+      "profile": "Foreningens profil",
+      "name": "Foreningens navn",
+      "email": "Kontakt-e-post",
+      "place": "Adresse",
+      "notifications": "Varsler",
+      "nOrders": "Send meg e-post når en ny bestilling kommer",
+      "nMembers": "Send meg e-post når et medlem melder seg inn",
+      "nReminders": "Send kontingentpåminnelser automatisk",
+      "danger": "Faresone",
+      "dangerText": "Avpublisering skjuler nettstedet for besøkende. Dataene dine blir.",
+      "unpublish": "Avpubliser nettstedet",
+      "unpublishQ": "Avpublisere nettstedet?",
+      "unpublishText": "Besøkende ser en melding om at nettstedet er offline. Du kan publisere igjen når som helst.",
+      "unpublished": "Nettstedet er avpublisert",
+      "nameError": "Skriv inn et navn",
+      "emailError": "Skriv inn en e-postadresse som navn{'@'}eksempel.no"
+    },
+    "alertTitle": "{n} bestillinger venter på betaling",
+    "alertText": "Sjekk Vipps-kontoen og marker dem som betalt, så sendes billettene på e-post."
+  },
+  "landing": {
+    "hero": {
+      "eyebrow": "For frivillige styrer",
+      "title": "Foreningens nettsted,",
+      "titleEm": "klart på en time.",
+      "lede": "Arrangementer, billetter, medlemskap og regnskap på ett rolig sted. Du trenger ingen utvikler, og besøkende ser aldri navnet vårt.",
+      "primary": "Start nettstedet ditt",
+      "secondary": "Se priser",
+      "trial": "Gratis i 14 dager. Ikke noe kort nødvendig.",
+      "price": "Fra {price} kr/mnd"
+    },
+    "launch": {
+      "name": "Foreningens navn",
+      "placeholder": "Nordlys kulturforening",
+      "theme": "Utseende",
+      "mockLabel": "Forhåndsvisning av nettstedet til {name}",
+      "mockNav": "Arrangementer · Bli med",
+      "mockTitle": "Velkommen. Dette skjer denne sesongen.",
+      "mockCta": "Bli med",
+      "go": "Start med dette utseendet"
+    },
+    "modules": {
+      "eyebrow": "Dette får du",
+      "title": "Alt et styre trenger, og ingenting mer.",
+      "events": {
+        "name": "Arrangementer",
+        "hint": "Dato, sted og beskrivelse"
+      },
+      "tickets": {
+        "name": "Billetter",
+        "hint": "Selg, skann, marker Vipps som betalt"
+      },
+      "membership": {
+        "name": "Medlemskap",
+        "hint": "Fornyelser og påminnelser"
+      },
+      "committee": {
+        "name": "Styret",
+        "hint": "Hvem som gjør hva i år"
+      },
+      "gallery": {
+        "name": "Galleri og artikler",
+        "hint": "Bilder og nyheter"
+      },
+      "accounting": {
+        "name": "Regnskap",
+        "hint": "Eksport revisor godtar"
+      },
+      "domain": {
+        "name": "Eget domene",
+        "hint": "Klart på få minutter"
+      }
+    },
+    "preview": {
+      "events": "Kommende arrangementer",
+      "tickets": "Billetter og bestillinger",
+      "membership": "Medlemmer",
+      "committee": "Styret",
+      "gallery": "Galleri og artikler",
+      "accounting": "Regnskap",
+      "domain": "Domene",
+      "markPaid": "Marker som betalt",
+      "income": "Inntekter",
+      "expenses": "Utgifter",
+      "balance": "Saldo"
+    },
+    "who": {
+      "eyebrow": "Hvem det er for",
+      "title": "Laget for grupper drevet av frivillige.",
+      "cultural": {
+        "label": "Kultur",
+        "name": "Kulturforeninger",
+        "text": "Fester, konserter og en medlemsliste som overlever neste styre."
+      },
+      "religious": {
+        "label": "Tro",
+        "name": "Trossamfunn",
+        "text": "Samlinger, møter og gaver på ett rolig sted."
+      },
+      "language": {
+        "label": "Læring",
+        "name": "Språkskoler",
+        "text": "Kurs, terminavgift og foreldre som alltid vet hvor de skal lete."
+      },
+      "youth": {
+        "label": "Ungdom",
+        "name": "Ungdomsklubber",
+        "text": "Påmelding, turer og beskjeder uten gruppechat."
+      }
+    },
+    "proof": {
+      "eyebrow": "I bruk",
+      "title": "BCA Oslo var live på én kveld.",
+      "stats": {
+        "launch": "til nettstedet var live",
+        "members": "medlemmer flyttet over",
+        "festivals": "fester med billetter",
+        "sheets": "regneark igjen"
+      },
+      "link": "Les eksemplet",
+      "mock": "Eksempeltall"
+    },
+    "steps": {
+      "eyebrow": "Slik fungerer det",
+      "title": "Live på tre steg.",
+      "minutes": "{n} min",
+      "click": "1 klikk",
+      "name": {
+        "name": "Gi foreningen et navn",
+        "text": "Navn, adresse og hva slags gruppe dere er."
+      },
+      "look": {
+        "name": "Velg utseende og moduler",
+        "text": "Velg et tema og slå på det dere trenger."
+      },
+      "launch": {
+        "name": "Publiser",
+        "text": "Trykk på knappen og del lenken."
+      }
+    },
+    "trust": {
+      "label": "Hvorfor du kan stole på det",
+      "commission": "Ingen provisjon på billetter",
+      "vipps": "Medlemmene betaler med Vipps",
+      "cancel": "Avslutt når som helst"
+    },
+    "cta": {
+      "title": "Klar når styret er det.",
+      "text": "Start gratis i 14 dager. Ikke noe kort nødvendig."
+    }
+  },
+  "cmt": {
+    "sub": "Rekkefølge og synlighet styrer den offentlige Om oss-siden.",
+    "add": "Legg til medlem",
+    "editTitle": "Rediger medlem",
+    "addTitle": "Legg til medlem",
+    "name": "Navn",
+    "namePh": "Fullt navn",
+    "role": "Rolle",
+    "rolePh": "f.eks. Leder",
+    "email": "E-post (vises på den offentlige siden)",
+    "bio": "Kort presentasjon",
+    "bioPh": "Skriv en kort presentasjon…",
+    "bioHint": "Vises under portrettet.",
+    "portrait": "Portrett",
+    "visibleLabel": "Synlig på det offentlige nettstedet",
+    "visible": "Synlig",
+    "hidden": "Skjult",
+    "up": "Flytt {name} opp",
+    "down": "Flytt {name} ned",
+    "hide": "Skjul {name}",
+    "show": "Vis {name}",
+    "editName": "Rediger {name}",
+    "saved": "Lagret. Det offentlige nettstedet oppdateres om et øyeblikk.",
+    "close": "Lukk",
+    "saveChanges": "Lagre endringer",
+    "addMember": "Legg til medlem",
+    "remove": "Fjern",
+    "removeQ": "Fjerne {name}?",
+    "removeText": "{name} tas bort fra styret og fra den offentlige Om oss-siden.",
+    "removeVerb": "Fjern medlem",
+    "removed": "Medlem fjernet",
+    "added": "Medlem lagt til",
+    "emptyTitle": "Ingen styremedlemmer ennå",
+    "emptyText": "Legg til menneskene besøkende bør kjenne.",
+    "nameError": "Skriv inn et navn.",
+    "roleError": "Skriv inn en rolle.",
+    "emailError": "Skriv inn en gyldig e-postadresse.",
+    "bioError": "Presentasjonen er for lang. Kort ned med {n} tegn.",
+    "portraitMeta": "Eksempelportrett"
+  },
+  "dmn": {
+    "sub": "Der besøkende finner nettstedet ditt.",
+    "states": {
+      "none": "Ikke satt",
+      "pending": "Venter på DNS",
+      "verifying": "Bekrefter",
+      "live": "Aktiv",
+      "error": "Feil"
+    },
+    "subdomain": "Underdomene",
+    "siteAddress": "Nettstedsadresse",
+    "save": "Lagre",
+    "saved": "Adressen er lagret",
+    "custom": "Eget domene",
+    "chipLive": "Aktiv",
+    "chipError": "Feil",
+    "chipNotLive": "Ikke aktiv",
+    "intro": "Bruk foreningens egen adresse. Vi veileder deg gjennom DNS-oppføringene.",
+    "domainName": "Domenenavn",
+    "domainHint": "Uten https:// eller www.",
+    "connect": "Koble til domene",
+    "domainError": "Skriv inn et domene som forening.no.",
+    "waitingTitle": "Venter på DNS",
+    "waitingText": "Legg inn disse oppføringene hos domeneleverandøren din. Endringer kan ta opptil 24 timer.",
+    "checkNow": "Sjekk nå",
+    "lastChecked": "Sist sjekket {time}",
+    "checking": "Sjekker…",
+    "verifyingTitle": "Bekrefter {domain}",
+    "verifyingText": "Leter etter oppføringene dine. Det tar vanligvis under ett minutt.",
+    "verifyingLabel": "Bekrefter",
+    "liveTitle": "Domenet er aktivt",
+    "liveText": "{domain} viser nettstedet ditt med sikker tilkobling.",
+    "address": "Adresse",
+    "certificate": "Sertifikat",
+    "certificateValue": "Gyldig til 14. mars 2027, fornyes automatisk",
+    "redirect": "Videresending",
+    "redirectValue": "www.{domain} til {domain}",
+    "visit": "Besøk nettstedet",
+    "removeDomain": "Fjern domene",
+    "removeTitle": "Fjern eget domene",
+    "removeText": "Nettstedet ditt er fortsatt tilgjengelig på {sub}. Besøkende som bruker den gamle adressen får en feilmelding.",
+    "errorTitle": "Vi kunne ikke bekrefte dette domenet",
+    "errorText": "TXT- og A-oppføringene ble ikke funnet. Har du lagt dem inn nylig, vent noen minutter.",
+    "checkAgain": "Sjekk igjen",
+    "type": "Type",
+    "name": "Navn",
+    "value": "Verdi",
+    "ttl": "TTL",
+    "status": "Status",
+    "found": "Funnet",
+    "missing": "Mangler",
+    "copyValue": "Kopier {value}",
+    "wentLive": "Domenet er aktivt",
+    "wentLiveBody": "{domain} viser nå nettstedet ditt."
+  },
+  "sa": {
+    "sub": "La rootsquares-support hjelpe deg, i en begrenset periode.",
+    "activeTitle": "Support har tilgang til {when}",
+    "activeText": "{who} kan se {scopes}. Hver handling logges nedenfor.",
+    "revokeNow": "Trekk tilbake nå",
+    "revoked": "Tilgangen er trukket tilbake. Support kan ikke lenger se organisasjonen din.",
+    "grant": "Gi tilgang",
+    "grantText": "Bare en eier kan gi tilgang. Tilgangen utløper automatisk, og du kan trekke den tilbake når som helst.",
+    "duration": "Varighet",
+    "expires": "Utløper {when}.",
+    "scope": "Omfang",
+    "note": "Hva trenger du hjelp med? (valgfritt)",
+    "noteHint": "Synlig for support-medarbeideren.",
+    "grantBtn": "Gi tilgang i {duration}",
+    "never": "Fakturering og brukeradministrasjon er aldri med.",
+    "granted": "Tilgang gitt",
+    "durations": {
+      "1h": "1 time",
+      "24h": "24 timer",
+      "7d": "7 dager"
+    },
+    "scopes": {
+      "content": "Innhold på nettstedet",
+      "orders": "Bestillinger og medlemmer",
+      "settings": "Innstillinger"
+    },
+    "scopeHints": {
+      "content": "Arrangementer, sider og galleri. Bare lesetilgang.",
+      "orders": "Kundeopplysninger. Lese og rette bestillinger.",
+      "settings": "Domene og profil. Aldri fakturering eller brukere."
+    },
+    "audit": "Revisjonslogg",
+    "last30": "Siste 30 dager",
+    "time": "Tid",
+    "who": "Hvem",
+    "action": "Handling",
+    "scopeCol": "Omfang",
+    "actions": {
+      "viewedOrders": "Så bestillingslisten",
+      "resentConfirmation": "Sendte bekreftelsen for bestilling #1047 på nytt",
+      "changedAddress": "Endret nettstedsadressen",
+      "viewedDomain": "Så domeneoppføringene"
+    },
+    "emptyTitle": "Ingenting ennå",
+    "emptyText": "Handlinger fra support vises her, med tid og omfang.",
+    "supportAgent": "Anna K.",
+    "noScopes": "ingen områder"
+  },
+  "pv": {
+    "label": "Kontroller for forhåndsvisning",
+    "theme": "Tema",
+    "colourMode": "Fargemodus",
+    "light": "Lys",
+    "dark": "Mørk",
+    "deviceWidth": "Enhetsbredde",
+    "deviceLabel": "{name} {px}px",
+    "devices": {
+      "phone": "Mobil",
+      "tablet": "Nettbrett",
+      "desktop": "Skjerm"
+    },
+    "exit": "Avslutt"
+  },
+  "gal": {
+    "sub": "Bilder som vises på den offentlige gallerisiden.",
+    "add": "Legg til bilder",
+    "empty": "Ingen bilder ennå",
+    "emptyText": "Legg til bilder for å vise dem i det offentlige galleriet.",
+    "remove": "Fjern {name}",
+    "removed": "Bildet er fjernet",
+    "added": "Bilde lagt til (demo, ingenting lastes opp)"
+  }
+}

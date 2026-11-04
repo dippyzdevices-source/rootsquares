@@ -1,0 +1,85 @@
+/* The member, admin and check-in components in the shapes and type of the square's theme (W10-R6, from the Japandi work of W10-R3 to R5).
+   Hand-written, for every theme but the default: each rule needs html[data-square-theme] (the default, paper-brick, has none, so it is untouched).
+   The values come from the per-theme knobs the generator writes next to the --t-* tokens (--t-input-radius, --t-btn-case, --t-tab-*, --t-badge-*,
+   --t-nav-radius, --t-card-pad; scripts/build_layout_themes.py), so a new theme needs no code here. Spec: inputs, selects and search 48 px with a
+   1.5 px line; buttons 36/44/52 px; pills 38 px; badges 12 px bold; alerts 14 px corners without the side stripe; tabs in the display face when it is a
+   serif; ruled tables; side navigation as soft pills. */
+
+html[data-square-theme] .ds-scope {
+  --ds-shadow-xs: var(--t-shadow-sm);
+  --ds-shadow-sm: var(--t-shadow-sm);
+  --ds-shadow-md: var(--t-shadow-md);
+  --ds-shadow-lg: var(--t-shadow-lg);
+  --ds-tracking-button: var(--t-btn-tracking);
+}
+
+/* Containers on the inverse surface (footer, sign-in aside, inverse bands, hero, utility bar): ivory text, never the info, accent or page-surface
+   colours (the olive or blue of some themes had no contrast on the inverse surface, and the dark-mode paper tokens flip to dark on dark). */
+html[data-square-theme] :is(.ds-footer, .ds-auth-aside, .ds-band-inverse, .ds-band-hero, .ds-utility-bar) {
+  --ds-saffron-300: var(--t-on-inverse);
+  --ds-nil-100: color-mix(in srgb, var(--t-on-inverse) 82%, var(--t-inverse));
+  --ds-paper-50: var(--t-on-inverse);
+  --ds-paper-100: var(--t-on-inverse);
+  --ds-paper-200: var(--t-on-inverse);
+}
+html[data-square-theme] :is(.ds-footer, .ds-auth-aside) .ds-eyebrow { color: color-mix(in srgb, var(--t-on-inverse) 78%, var(--t-inverse)); }
+html[data-square-theme] :is(.ds-footer, .ds-auth-aside) :is(.ds-wordmark, .ds-wordmark-dot-dark, .ds-display) { color: var(--t-on-inverse); }
+html[data-square-theme] .ds-utility-bar { --ds-action-accent: var(--t-on-inverse); }
+html[data-square-theme] .ds-utility-link-active { text-decoration: underline; text-underline-offset: 4px; }
+
+/* The theme toggle is made for dark bars; on the light header of the member drive it uses the page's own text colours, on the always-dark check-in header ivory. */
+html[data-square-theme] .ds-theme-toggle { color: var(--ds-text-heading); border-color: var(--ds-border-default); }
+html[data-square-theme] :is(.ds-utility-bar, .ds-footer, .ds-band-inverse, .ds-force-dark) .ds-theme-toggle { color: var(--t-on-inverse); border-color: var(--ds-border-on-dark); }
+
+/* Check-in camera frame: the original is a fixed green-black, here the theme's sunken surface. */
+html[data-square-theme] .ds-scan-frame { background: var(--t-surface-sunken); }
+
+/* Buttons */
+html[data-square-theme] .ds-btn { text-transform: var(--t-btn-case); font-weight: 600; letter-spacing: var(--t-btn-tracking); }
+html[data-square-theme] .ds-btn-sm { min-height: 36px; padding: 0 16px; font-size: 14px; }
+html[data-square-theme] .ds-btn-md { min-height: 44px; padding: 0 22px; font-size: 15px; }
+html[data-square-theme] .ds-btn-lg { min-height: 52px; padding: 0 28px; font-size: 16px; }
+
+/* Form fields */
+html[data-square-theme] :is(.ds-field-control, .ds-textarea-control, .base-select-button, .base-search) {
+  border-width: var(--t-input-bw); border-color: var(--t-border-default); border-radius: var(--t-input-radius); box-shadow: none;
+}
+html[data-square-theme] .ds-field-control { min-height: var(--t-input-h); }
+html[data-square-theme] .base-select-sm .base-select-button, html[data-square-theme] .base-search-sm { height: 36px; }
+html[data-square-theme] :is(.ds-field-control:focus-within, .ds-textarea-control:focus-within, .base-search:focus-within) { border-color: var(--t-accent); box-shadow: 0 0 0 3px var(--ds-focus-ring-soft); }
+html[data-square-theme] .ds-field-control-error { border-color: var(--t-danger); }
+html[data-square-theme] .ds-field-label { font-weight: 700; letter-spacing: .14em; }
+html[data-square-theme] .ds-checkbox-box { border-radius: calc(var(--t-input-radius) / 2); }
+
+/* Pills (toolbar filters) */
+html[data-square-theme] .ds-tag { min-height: 38px; padding: 0 18px; border-width: 1.5px; border-color: var(--t-border-default); background: var(--t-surface); color: var(--t-text-strong); font: 600 14px/1 var(--t-font-body); }
+html[data-square-theme] .ds-tag-selected { background: var(--t-accent); border-color: var(--t-accent); color: var(--t-on-primary); }
+
+/* Badges */
+html[data-square-theme] .ds-badge { padding: 4px 12px; text-transform: var(--t-badge-case); letter-spacing: var(--t-badge-tracking); font-weight: var(--t-badge-weight); font-size: 12px; }
+
+/* Alerts */
+html[data-square-theme] .ds-alert { border-radius: max(var(--t-input-radius), 4px); padding: 14px 18px; border-left-width: 0; font-weight: 500; }
+
+/* Tabs */
+html[data-square-theme] .ds-tab { font: var(--t-tab-style) var(--t-tab-weight) var(--t-tab-size)/1.2 var(--t-tab-family); text-transform: var(--t-tab-case); letter-spacing: var(--t-tab-tracking); padding: 10px 0; }
+html[data-square-theme] .ds-tab-active { color: var(--t-link); border-bottom-color: var(--t-accent); }
+html[data-square-theme] .ds-tabs { gap: 22px; flex-wrap: wrap; }
+
+/* Tables */
+html[data-square-theme] .ds-table-wrap { border-radius: var(--t-radius); }
+html[data-square-theme] .ds-table thead tr { background: transparent; }
+html[data-square-theme] .ds-table th { border-bottom: 1px solid var(--t-border-default); font-weight: 700; letter-spacing: .14em; }
+html[data-square-theme] .ds-table td { padding-block: 16px; }
+
+/* Side navigation of the admin and member areas */
+html[data-square-theme] .ds-appshell__link { border-radius: var(--t-nav-radius); font-weight: 500; font-size: 15px; padding: 11px 16px; }
+html[data-square-theme] .ds-appshell__link-active { border-color: transparent; background: var(--t-primary-soft); box-shadow: none; color: var(--t-text-strong); }
+html[data-square-theme] .ds-appshell__link-active:hover { background: var(--t-primary-soft); }
+
+/* Cards */
+html[data-square-theme] .ds-card { padding: var(--t-card-pad); box-shadow: none; }
+html[data-square-theme] .ds-card-interactive:hover { box-shadow: var(--t-shadow-md); }
+
+/* The revenue stat card: its default ground (the border colour) is too dark or too light for the eyebrow of many themes; the sunken surface is a ground every text colour is checked against. */
+html[data-square-theme] .ds-card-revenue.ds-card { background: var(--t-surface-sunken); border-color: var(--t-border); }

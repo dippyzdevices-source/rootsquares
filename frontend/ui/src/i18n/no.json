@@ -1,0 +1,618 @@
+{
+  "app": {
+    "name": "rootsquares",
+    "skipToContent": "Hopp til innhold"
+  },
+  "common": {
+    "close": "Lukk",
+    "language": "Språk",
+    "lightMode": "Bytt til lyst tema",
+    "darkMode": "Bytt til mørkt tema",
+    "openMenu": "Åpne meny",
+    "closeMenu": "Lukk meny",
+    "selected": "Valgt",
+    "comingSoon": "Denne siden bygges i et senere trinn.",
+    "backHome": "Tilbake til forsiden",
+    "notFound": "Vi finner ikke siden",
+    "notFoundText": "Lenken kan være gammel, eller siden er flyttet.",
+    "back": "Tilbake",
+    "next": "Neste",
+    "save": "Lagre endringer",
+    "cancel": "Avbryt",
+    "search": "Søk",
+    "all": "Alle",
+    "add": "Legg til",
+    "saved": "Endringene er lagret",
+    "demoNote": "Demo: ingenting lagres.",
+    "loading": "Laster",
+    "status": {
+      "paid": "Betalt",
+      "pending": "Venter på betaling",
+      "overdue": "Forfalt",
+      "live": "Publisert",
+      "draft": "Utkast",
+      "trial": "Prøve"
+    },
+    "scale": "Størrelse"
+  },
+  "nav": {
+    "product": "Produkt",
+    "pricing": "Priser",
+    "templates": "Maler",
+    "caseStudy": "Eksempel",
+    "contact": "Kontakt",
+    "startTrial": "Start gratis prøve",
+    "admin": "Konsoll",
+    "owner": "Plattformeier",
+    "viewSite": "Se nettstedet",
+    "main": "Hovedmeny",
+    "adminNav": "Konsollnavigasjon",
+    "siteNav": "Nettstedsnavigasjon",
+    "backToPlatform": "Laget med rootsquares",
+    "menu": "Meny",
+    "features": "Funksjoner",
+    "themes": "Temaer",
+    "help": "Hjelp",
+    "signIn": "Logg inn",
+    "startFree": "Kom i gang gratis"
+  },
+  "admin": {
+    "association": "Forening",
+    "dashboard": "Oversikt",
+    "events": "Arrangementer",
+    "orders": "Bestillinger",
+    "members": "Medlemmer",
+    "committee": "Styret",
+    "accounting": "Regnskap",
+    "theme": "Utseende",
+    "domain": "Domene",
+    "billing": "Fakturering",
+    "settings": "Innstillinger",
+    "more": "Mer",
+    "support": "Støttetilgang",
+    "gallery": "Galleri"
+  },
+  "pages": {
+    "landing": "Foreningens nettsted, klart på under en time",
+    "pricing": "Priser",
+    "templates": "Maler",
+    "caseStudy": "Eksempel: BCA Oslo",
+    "contact": "Kontakt oss",
+    "start": "Start nettstedet ditt",
+    "components": "Komponenter",
+    "signIn": "Logg inn",
+    "squares": "Velg en forening",
+    "supportRequired": "Støttetilgang kreves",
+    "login": "Logg inn",
+    "organizationNew": "Opprett organisasjonen din",
+    "signup": "Opprett konto",
+    "dashboard": "Dine foreninger",
+    "squareNew": "Opprett forening",
+    "square": "Forening"
+  },
+  "footer": {
+    "tagline": "Laget for foreninger i hele Norden.",
+    "privacy": "Personvern",
+    "terms": "Vilkår",
+    "legalNote": "Dette er en prototype. Det finnes ingen juridisk tekst ennå.",
+    "copy": "© rootsquares",
+    "nordics": "Laget i Norden"
+  },
+  "marketing": {
+    "hero": {
+      "chip": "Laget for frivillige styrer",
+      "title": "Foreningens nettsted, klart på under en time.",
+      "lede": "Arrangementer, billetter, medlemmer og regnskap på ett sted, til én fast månedspris.",
+      "primary": "Start gratis prøve",
+      "secondary": "Se et eksempel",
+      "hint": "30 dager gratis. Ikke noe kort nødvendig.",
+      "shot": "Plassholder for produktbilde"
+    },
+    "features": {
+      "title": "Alt et styre trenger",
+      "events": {
+        "title": "Arrangementer",
+        "text": "Publiser arrangementer med dato, sted og beskrivelse."
+      },
+      "tickets": {
+        "title": "Billetter",
+        "text": "Selg billetter og marker Vipps-betalinger som betalt."
+      },
+      "membership": {
+        "title": "Medlemskap",
+        "text": "Hold medlemslisten og kontingenten samlet."
+      },
+      "gallery": {
+        "title": "Galleri og artikler",
+        "text": "Del bilder og nyheter med miljøet ditt."
+      },
+      "accounting": {
+        "title": "Regnskap",
+        "text": "Se hva som kom inn og gikk ut, klart til årsmøtet."
+      },
+      "domain": {
+        "title": "Eget domene",
+        "text": "Bruk foreningens eget navn, med sikker tilkobling."
+      }
+    },
+    "steps": {
+      "title": "I gang på tre steg",
+      "s1": "Skriv inn navnet og velg et utseende",
+      "s2": "Slå på det dere trenger",
+      "s3": "Trykk publiser og del lenken"
+    },
+    "themes": {
+      "title": "Ser ut som dere, ikke som oss",
+      "text": "Velg tema og farger. Besøkende ser aldri rootsquares-profil på nettstedet deres.",
+      "all": "Se alle ti temaene"
+    },
+    "faq": {
+      "title": "Spørsmål styrer stiller",
+      "q1": "Må jeg være teknisk?",
+      "a1": "Nei. Oppsettet er et kort skjema. Kan du skrive en e-post, kan du drifte nettstedet.",
+      "q2": "Hva skjer når styret byttes?",
+      "a2": "Legg til det nye styret og fjern det gamle. Nettstedet, medlemmene og regnskapet blir.",
+      "q3": "Kan jeg avslutte?",
+      "a3": "Ja, når som helst. Du kan eksportere medlemmer og regnskap først.",
+      "q4": "Hvordan betaler medlemmene for billetter?",
+      "a4": "Med Vipps. Du ser bestillingen, sjekker at betalingen er kommet og markerer den som betalt."
+    },
+    "pricing": {
+      "title": "Én fast pris. Ingen overraskelser.",
+      "lede": "Betal månedlig, avslutt når du vil. Ingen billettgebyr fra oss. Prisene er plassholdere.",
+      "badge": "Mest valgt",
+      "cta": "Start gratis prøve",
+      "chosen": "{plan} valgt",
+      "chosenBody": "Tar deg videre til oppsettet.",
+      "plans": {
+        "small": {
+          "name": "Liten klubb",
+          "price": "{amount} kr",
+          "period": "/ mnd",
+          "text": "For noen få arrangementer i året.",
+          "f1": "Din.rootsquares.com-adresse",
+          "f2": "Arrangementer og galleri",
+          "f3": "Opptil 50 medlemmer"
+        },
+        "community": {
+          "name": "Fellesskap",
+          "price": "{amount} kr",
+          "period": "/ mnd",
+          "text": "For en aktiv forening.",
+          "f1": "Eget domene",
+          "f2": "Billetter og Vipps",
+          "f3": "Ubegrenset antall medlemmer",
+          "f4": "Regnskap"
+        },
+        "federation": {
+          "name": "Forbund",
+          "price": "{amount} kr",
+          "period": "/ mnd",
+          "text": "For flere grupper sammen.",
+          "f1": "Alt i Fellesskap",
+          "f2": "Flere nettsteder",
+          "f3": "Prioritert støtte"
+        }
+      }
+    },
+    "templates": {
+      "title": "Ti temaer, lyse og mørke",
+      "lede": "Hvert tema former bare det offentlige nettstedet. Velg ett for å se hva det passer til, og se det med ekte innhold.",
+      "mode": "Visning",
+      "light": "Lys",
+      "dark": "Mørk",
+      "suits": "Passer for",
+      "preview": "Se nettstedet",
+      "use": "Bruk dette temaet",
+      "chosen": "{theme} valgt",
+      "chosenBody": "Tar deg videre til oppsettet.",
+      "empty": "Velg et tema for å se detaljer.",
+      "eyebrow": "Tema",
+      "titleA": "Ti temaer,",
+      "titleB": "lyse og mørke",
+      "list": "Temaer",
+      "use2": "Bruk",
+      "pv": {
+        "org": "Nordlys kulturforening",
+        "nav": "Arrangementer · Om oss · Bli med",
+        "kicker": "Vinterkonsert",
+        "h": "En kveld med nordisk korsang",
+        "when": "Lør 12. november · Fjordkirken · 19:00",
+        "buy": "Kjøp billetter",
+        "details": "Detaljer",
+        "r1": "Luciakveld",
+        "r2": "Julemarked",
+        "r3": "Årsmøte",
+        "d1": "19. nov",
+        "d2": "14. des",
+        "d3": "19. jan",
+        "tickets": "Billetter"
+      }
+    },
+    "case": {
+      "chip": "Eksempel",
+      "title": "BCA Oslo gikk fra regneark til fullt nettsted på {minutes} minutter.",
+      "lede": "Bengali Cultural Association i Oslo arrangerer {festivals} fester i året med et frivillig styre. rootsquares erstattet spredte regneark og meldingstråder.",
+      "stats": {
+        "launch": "til nettstedet var live",
+        "members": "medlemmer flyttet over",
+        "events": "fester med billetter i sesongen",
+        "sheets": "regneark igjen"
+      },
+      "challenge": "Utfordringen",
+      "challengeText": "Billetter ble solgt på melding og ført for hånd. Medlemmene sto på tre ulike lister. Hvert nye styre startet på bar bakke.",
+      "solution": "Dette gjorde de",
+      "solutionText": "De valgte et tradisjonelt tema, la inn Rabindra Jayanti, Saraswati Puja, Mahalaya og Durga Puja, og satte opp billettyper for medlemmer, gjester og barn.",
+      "result": "Resultatet",
+      "resultText": "Styret markerer Vipps-betalinger som betalt fra mobilen, medlemmene ser statusen sin på nett, og neste styre arver ryddig regnskap.",
+      "quote": "Vi brukte tiden på festen, ikke på regnearket.",
+      "quoteBy": "Styremedlem, BCA Oslo (eksempelsitat)",
+      "viewSite": "Se nettstedet til BCA Oslo",
+      "viewConsole": "Se konsollen"
+    },
+    "contact": {
+      "title": "Snakk med oss",
+      "lede": "Fortell om foreningen din, så svarer vi innen to virkedager.",
+      "name": "Navnet ditt",
+      "email": "E-post",
+      "type": "Hva slags gruppe er dere?",
+      "message": "Hvordan kan vi hjelpe?",
+      "send": "Send melding",
+      "sending": "Sender",
+      "doneTitle": "Meldingen er sendt",
+      "done": "Takk. Vi svarer innen to virkedager. (Demo: ingenting ble sendt.)",
+      "another": "Send en ny melding",
+      "errors": {
+        "name": "Skriv inn navnet ditt så vi vet hvem vi skal svare",
+        "email": "Skriv inn en e-postadresse som navn{'@'}eksempel.no",
+        "message": "Skriv noen ord om hva dere trenger (minst 10 tegn)"
+      },
+      "types": {
+        "cultural": "Kulturforening",
+        "religious": "Trossamfunn",
+        "language": "Språkskole",
+        "other": "Noe annet"
+      },
+      "side": {
+        "title": "Foretrekker du å snakke?",
+        "email": "hello{'@'}rootsquares.example",
+        "hours": "Man til fre, 09:00 til 16:00 (Oslo-tid)"
+      }
+    }
+  },
+  "upload": {
+    "prompt": "Slipp en fil eller trykk for å velge",
+    "hint": "PNG, SVG eller JPG · opptil 2 MB",
+    "done": "Klar",
+    "remove": "Fjern",
+    "tooLarge": "Filen er for stor. Velg en under 2 MB."
+  },
+  "owner": {
+    "title": "Foreninger",
+    "intro": "Alle foreninger på plattformen.",
+    "mrr": "Månedlig inntekt",
+    "tenants": "Foreninger",
+    "live": "Aktive",
+    "trials": "I prøveperiode",
+    "vs": "mot september",
+    "name": "Forening",
+    "plan": "Plan",
+    "status": "Status",
+    "members": "Medlemmer",
+    "since": "Siden",
+    "country": "Land",
+    "mrrCol": "MRR (kr)",
+    "open": "Åpne konsoll",
+    "opened": "Åpner konsollen for {name}",
+    "suspend": "Suspender",
+    "suspendQ": "Suspendere {name}?",
+    "suspendText": "Nettstedet deres går offline til du aktiverer det igjen. Dataene beholdes.",
+    "suspended": "{name} er suspendert",
+    "plans": "Planer",
+    "export": "Eksporter CSV",
+    "exported": "Foreningslisten er klar (demo)",
+    "noneTitle": "Ingen foreninger passer",
+    "noneText": "Prøv et annet navn eller filter."
+  },
+  "bx": {
+    "loading": "Laster",
+    "copy": "Kopier",
+    "copied": "Kopiert",
+    "copyFailed": "Kunne ikke kopiere. Marker teksten og trykk Ctrl+C.",
+    "afterSave": "Lages når du lagrer",
+    "rowActions": "Handlinger for raden",
+    "chooseFile": "Velg fil",
+    "chooseAnother": "Velg en annen fil",
+    "remove": "Fjern",
+    "replace": "Bytt ut",
+    "removeFile": "Fjern filen",
+    "dropFile": "Slipp en fil her",
+    "addPortrait": "Legg til portrett",
+    "fileHint": "PDF, DOCX eller XLSX, opptil 5 MB",
+    "portraitHint": "Forhold 4:5, JPG eller PNG, opptil 5 MB",
+    "portrait": "Forhåndsvisning av portrett",
+    "uploading": "Laster opp",
+    "tooLargeTitle": "Filen er for stor",
+    "typeBefore": "Skriv",
+    "typeAfter": "for å bekrefte",
+    "roles": {
+      "owner": "Eier",
+      "admin": "Administrator",
+      "editor": "Redaktør",
+      "viewer": "Leser",
+      "support": "rootsquares-support"
+    },
+    "tenant": {
+      "trial": "Prøveperiode",
+      "active": "Aktiv",
+      "pastDue": "Forfalt",
+      "suspended": "Suspendert"
+    },
+    "viewState": "Visningstilstand",
+    "errorTitle": "Kunne ikke laste listen",
+    "errorText": "Noe gikk galt hos oss. Dataene dine er trygge.",
+    "retry": "Prøv igjen",
+    "state": {
+      "default": "Standard",
+      "loading": "Laster",
+      "empty": "Tom",
+      "error": "Feil"
+    }
+  },
+  "set": {
+    "sub": "Organisasjon, personer og data.",
+    "profile": "Organisasjonsprofil",
+    "orgName": "Organisasjonens navn",
+    "orgNumber": "Organisasjonsnummer",
+    "contactEmail": "Kontakt-e-post",
+    "about": "Om organisasjonen",
+    "aboutHint": "Vises i bunnteksten på nettstedet.",
+    "saveProfile": "Lagre profil",
+    "profileSaved": "Profilen er lagret",
+    "langTz": "Språk og tidssone",
+    "adminLang": "Språk i administrasjonen",
+    "timezone": "Tidssone",
+    "save": "Lagre",
+    "langSaved": "Språk og tidssone er lagret",
+    "users": "Brukere og roller",
+    "usersCount": "{users} brukere · {invited} invitert",
+    "invite": "Inviter via e-post",
+    "invitePh": "navn{'@'}eksempel.no",
+    "role": "Rolle",
+    "sendInvite": "Send invitasjon",
+    "inviteError": "Skriv inn en gyldig e-postadresse.",
+    "inviteSent": "Invitasjon sendt til {email}. Den utløper om sju dager.",
+    "usersEmptyTitle": "Du er den eneste brukeren",
+    "usersEmptyText": "Inviter noen til å dele arbeidet.",
+    "pending": "Ventende invitasjoner",
+    "pendingEmptyTitle": "Ingen ventende invitasjoner",
+    "pendingEmptyText": "Invitasjoner du sender vises her.",
+    "sentToday": "Sendt i dag",
+    "sentAgo": "Sendt for {n} dager siden · utløper om {m} dager",
+    "resend": "Send på nytt",
+    "revoke": "Trekk tilbake",
+    "resent": "Invitasjonen er sendt på nytt",
+    "revoked": "Invitasjonen er trukket tilbake",
+    "roles": {
+      "admin": "Administrator",
+      "editor": "Redaktør",
+      "viewer": "Leser"
+    },
+    "menuChangeRole": "Endre rolle",
+    "menuResend": "Send innloggingslenke på nytt",
+    "menuRemove": "Fjern bruker",
+    "menuTransfer": "Overfør eierskap…",
+    "changeRoleTitle": "Endre rolle for {name}",
+    "changeRoleVerb": "Endre rolle",
+    "roleChanged": "Rollen er endret",
+    "removeTitle": "Fjerne {name}?",
+    "removeText": "{name} mister tilgangen til administrasjonen med en gang. Arbeidet beholdes.",
+    "removeVerb": "Fjern bruker",
+    "removed": "Brukeren er fjernet",
+    "linkSent": "Innloggingslenke sendt",
+    "transfer": "Overføring av eierskap",
+    "transferText": "Overlat organisasjonen til en ny eier når styret skiftes. Du blir administrator. Den nye eieren må godta på e-post.",
+    "newOwner": "Ny eier",
+    "transferBtn": "Overfør eierskap…",
+    "transferTitle": "Overfør eierskap",
+    "transferBody": "{name} blir eier og kan stenge organisasjonen og styre fakturering. Du beholder administratortilgang.",
+    "transferVerb": "Send overføringsforespørsel",
+    "transferSent": "Overføringsforespørsel sendt til {name}",
+    "danger": "Faresone",
+    "export": "Eksporter alle data",
+    "exportText": "Medlemmer, bestillinger og regnskap som CSV. Vi sender en lenke på e-post innen en time.",
+    "exportBtn": "Eksporter data",
+    "exportStarted": "Eksporten er startet",
+    "close": "Steng organisasjonen",
+    "closeText": "Nettstedet tas ned. Dataene beholdes i en frist på 30 dager, og du kan åpne på nytt til da.",
+    "closeBtn": "Steng organisasjonen…",
+    "closeTitle": "Steng organisasjonen",
+    "closeBody": "Nettstedet ditt tas ned nå. Medlemmer, bestillinger og regnskap beholdes i 30 dager og slettes deretter. Du kan åpne på nytt til da.",
+    "closeVerb": "Steng organisasjonen",
+    "closed": "Organisasjonen er stengt. Nettstedet er nede.",
+    "notifications": "Varsler",
+    "nOrders": "Send meg e-post om nye bestillinger",
+    "nMembers": "Send meg e-post om nye medlemmer",
+    "nReminders": "Send betalingspåminnelser automatisk",
+    "ownerOnlyHint": "Bare en eier kan gjøre dette."
+  },
+  "auth": {
+    "demo": "Demo",
+    "title": "Logg inn",
+    "lede": "Dette er en demo. Velg en rolle for å se plattformen slik den personen ville sett den. Ingen konto, passord eller server er med.",
+    "banner": "Demo-innlogging: ingenting her er ekte. Den ekte innloggingsskjermen er ikke designet ennå.",
+    "roleGroup": "Demorolle",
+    "roles": {
+      "platformOwner": {
+        "name": "Plattformeier",
+        "hint": "Driver rootsquares. Ser alle leietakere, men ikke dataene deres."
+      },
+      "squareOwner": {
+        "name": "Foreningseier",
+        "hint": "Eier én forening. Alt i administrasjonen."
+      },
+      "squareAdmin": {
+        "name": "Foreningsadministrator",
+        "hint": "Arrangementer, bestillinger, medlemmer, styre og galleri."
+      },
+      "treasurer": {
+        "name": "Kasserer",
+        "hint": "Bestillinger (merke som betalt) og regnskap."
+      },
+      "volunteer": {
+        "name": "Frivillig",
+        "hint": "Arrangementer, galleri og innsjekk i døra."
+      },
+      "multiSquare": {
+        "name": "Bruker med flere foreninger",
+        "hint": "Velger hvilken forening som skal åpnes."
+      },
+      "newUser": {
+        "name": "Ny bruker",
+        "hint": "Ingen forening ennå. Starter oppsettsveiviseren."
+      }
+    },
+    "continueAs": "Fortsett som {role}",
+    "currentRole": "Gjeldende demorolle: {role}",
+    "squaresTitle": "Velg en forening",
+    "squaresLede": "Kontoen din tilhører flere foreninger. Velg den du vil åpne.",
+    "openShort": "Åpne",
+    "squaresRole": "Du er eier",
+    "open": "Åpne {name}",
+    "noRole": "Velg en demorolle først.",
+    "toSignIn": "Tilbake til innlogging",
+    "switchRole": "Demo: bytt rolle",
+    "signOut": "Logg ut",
+    "signedOut": "Du er logget ut",
+    "signedInAs": "Logget inn som {role} (demo)",
+    "supportTitle": "Støttetilgang kreves",
+    "supportText": "Plattformansatte har ingen stående tilgang til en forenings data. Be foreningens eier om å gi tidsbegrenset støttetilgang (Innstillinger, Støttetilgang), og åpne deretter den foreningen.",
+    "toOwner": "Tilbake til eierkonsollen",
+    "checkIn": "Sjekk inn",
+    "checkedIn": "Sjekket inn",
+    "checkInTitle": "Innsjekk",
+    "checkInText": "Du kan sjekke folk inn i døra. Betalinger og summer vises ikke for rollen din."
+  },
+  "plat": {
+    "nav": {
+      "dashboard": "Oversikt",
+      "signOut": "Logg ut",
+      "owner": "Eierkonsoll",
+      "signedOut": "Du er logget ut"
+    },
+    "mockBanner": "Mock-modus: kontoer og foreninger lagres i denne nettleseren (VITE_USE_MOCK=true).",
+    "errors": {
+      "invalid_credentials": "E-post eller passord er feil.",
+      "rate_limited": "For mange forsøk. Vent ett minutt og prøv igjen.",
+      "network_error": "Får ikke kontakt med serveren. Kjører backend?",
+      "email_taken": "Det finnes allerede en konto med denne e-postadressen.",
+      "not_failed": "Bare en forening som har feilet, kan prøves på nytt.",
+      "account_exists": "Det finnes allerede en konto med denne e-postadressen. Logg inn med den i stedet.",
+      "slug_taken": "Denne adressen er tatt.",
+      "validation_error": "Sjekk feltene og prøv igjen.",
+      "not_found": "Fant ikke foreningen.",
+      "forbidden": "Du har ikke lov til å gjøre dette.",
+      "generic": "Noe gikk galt. Prøv igjen."
+    },
+    "login": {
+      "title": "Velkommen tilbake",
+      "lede": "Logg inn for å styre foreningene dine.",
+      "email": "E-post",
+      "password": "Passord",
+      "submit": "Logg inn",
+      "busy": "Logger inn…",
+      "noAccount": "Ingen konto ennå?",
+      "signupLink": "Opprett en",
+      "forgot": "Glemt passordet?",
+      "resetSent": "Tilbakestilling av passord er ikke tilgjengelig ennå. Ingenting ble sendt.",
+      "useAdmin": "Innlogging for plattformadmin",
+      "useProvider": "Logg inn med kontoen din"
+    },
+    "signup": {
+      "title": "Opprett kontoen din",
+      "lede": "Én konto, én organisasjon. Du oppretter den første foreningen deretter.",
+      "name": "Navnet ditt",
+      "org": "Organisasjonens navn",
+      "email": "E-post",
+      "password": "Passord",
+      "passwordHint": "Minst 10 tegn.",
+      "submit": "Opprett konto",
+      "busy": "Oppretter…",
+      "haveAccount": "Har du allerede en konto?",
+      "signinLink": "Logg inn",
+      "verify": "Sjekk e-posten din og bekreft adressen, og logg deretter inn. Organisasjonen opprettes når du logger inn."
+    },
+    "or": "eller",
+    "google": {
+      "login": "Fortsett med Google",
+      "signup": "Registrer deg med Google"
+    },
+    "org": {
+      "title": "Gi organisasjonen et navn",
+      "lede": "Én organisasjon per forening. Du oppretter den første foreningssiden din neste.",
+      "submit": "Fortsett",
+      "busy": "Lagrer…"
+    },
+    "dashboard": {
+      "title": "Dine foreninger",
+      "sub": "Hver forening er sitt eget nettsted med sin egen database.",
+      "create": "Opprett forening",
+      "emptyTitle": "Ingen foreninger ennå",
+      "emptyText": "Opprett din første forening. Den er vanligvis klar på under ett minutt.",
+      "colName": "Forening",
+      "colAddress": "Adresse",
+      "colStatus": "Status",
+      "colCreated": "Opprettet",
+      "open": "Åpne"
+    },
+    "create": {
+      "title": "Opprett en forening",
+      "lede": "En forening er nettstedet til organisasjonen din. Den får sin egen database.",
+      "name": "Navn",
+      "namePh": "For eksempel BCA Oslo",
+      "slug": "Adresse",
+      "slugHint": "3 til 40 tegn: små bokstaver, tall og bindestreker.",
+      "theme": "Tema",
+      "submit": "Opprett forening",
+      "busy": "Oppretter…"
+    },
+    "detail": {
+      "back": "Dine foreninger",
+      "status": "Status",
+      "link": "Lenke",
+      "domain": "Domene",
+      "theme": "Tema",
+      "created": "Opprettet",
+      "database": "Database",
+      "dbReady": "Egen database er klar",
+      "dbPending": "Ikke opprettet ennå",
+      "retry": "Prøv igjen",
+      "provisioningTitle": "Setter opp foreningen din",
+      "provisioningText": "Siden oppdaterer seg selv.",
+      "readyTitle": "Foreningen din er klar",
+      "readyText": "Databasen finnes og du er den første administratoren.",
+      "failedTitle": "Oppsettet mislyktes",
+      "failedText": "Foreningen kunne ikke settes opp: {error}",
+      "openConsole": "Åpne administrasjonen (demo)",
+      "notFound": "Fant ikke foreningen",
+      "owner": "Eier"
+    },
+    "status": {
+      "provisioning": "Settes opp",
+      "ready": "Klar",
+      "failed": "Mislyktes"
+    },
+    "owner": {
+      "title": "Foreninger",
+      "sub": "{n} foreninger på plattformen.",
+      "colSquare": "Forening",
+      "colOrg": "Organisasjon",
+      "colOwner": "Eier",
+      "colTheme": "Tema",
+      "colStatus": "Status",
+      "colCreated": "Opprettet",
+      "emptyTitle": "Ingen foreninger ennå",
+      "emptyText": "Foreninger vises her når eierne oppretter dem."
+    }
+  }
+}

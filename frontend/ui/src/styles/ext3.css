@@ -1,0 +1,50 @@
+.tp{display:grid;gap:18px;max-width:1040px}
+.tp-hd{display:grid;gap:4px}
+.tp-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:28px;align-items:start}.tp--m .tp-grid{grid-template-columns:1fr;gap:18px}
+.tp--m .tp-prev{order:-1}
+.tp-pick{display:grid;gap:10px;min-width:0}
+.tp-chips{display:flex;flex-wrap:wrap;gap:6px}
+.tp-chips button{display:flex;gap:6px;align-items:center;min-height:34px;padding:0 10px;border:1px solid var(--color-border-strong);border-radius:var(--shape-control);background:var(--color-surface);color:var(--color-text);font:400 var(--text-sm) var(--font-sans);cursor:pointer}
+.tp-chips button small{font-size:.7rem;color:var(--color-text-muted)}
+.tp-chips button[aria-pressed=true]{background:var(--color-brass-subtle);border-color:var(--color-brass);font-weight:500}
+.tp--m .tp-chips{flex-wrap:nowrap;overflow:auto;padding-bottom:4px}.tp--m .tp-chips button{min-height:44px;flex:none}
+.tp-list{display:grid;gap:6px;max-height:420px;overflow:auto;padding-inline-end:4px}.tp--m .tp-list{max-height:340px}
+.tp-item{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;padding:10px 12px;min-height:56px;border:1px solid var(--color-border);border-radius:var(--shape-inner);background:var(--color-surface);color:var(--color-text);text-align:start;font-family:inherit;font-size:var(--text-sm);cursor:pointer}
+.tp-item:hover{border-color:var(--color-border-strong)}
+.tp-item[aria-pressed=true]{border-color:var(--color-brass);background:var(--color-brass-subtle)}
+.tp-item b{font-weight:500;display:block}.tp-item small{display:block;color:var(--color-text-muted);font-size:var(--text-xs);overflow-wrap:anywhere}
+.tp-sw{display:flex;width:44px;height:30px;border:1px solid var(--color-border-strong);border-radius:4px;overflow:hidden}.tp-sw b{flex:1}
+.tp-empty{display:grid;gap:6px;justify-items:start;padding:20px;border:1px dashed var(--color-border-strong);border-radius:var(--shape-surface);font-size:var(--text-sm)}
+.tp-prev{display:grid;gap:12px;position:sticky;top:0;min-width:0}.tp--m .tp-prev{position:static}
+.tp-pv{border:1px solid var(--color-border-strong);border-radius:var(--shape-surface);overflow:hidden;background:var(--color-surface);box-shadow:var(--shadow-md)}
+.tp-pv-u{display:flex;gap:4px;align-items:center;padding:6px 10px;border-bottom:1px solid var(--color-border);background:var(--color-surface-sunken)}
+.tp-pv-u i{width:7px;height:7px;border-radius:50%;background:var(--color-border-strong)}.tp-pv-u span{margin-inline-start:8px;font-size:.65rem;color:var(--color-text-muted)}
+.tp-logos{display:grid;gap:14px;border-top:1px solid var(--color-border);padding-top:18px}
+.tp-up{display:grid;gap:8px}.tp-up h3{margin:0;font:500 var(--text-lg) var(--font-sans)}
+.tp-up-row{display:grid;grid-template-columns:96px 1fr;gap:16px;align-items:start}.tp--m .tp-up-row{grid-template-columns:72px 1fr;gap:12px}
+.tp-up-tile{aspect-ratio:1;display:grid;place-items:center;border:1px solid var(--color-border-strong);border-radius:var(--shape-inner);background:#fbf8f0;color:#1c1a16}.tp-up-tile--d{background:#1c1a16;color:#f4efe4}
+.tp-drop{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;padding:14px;border:1px dashed var(--color-border-strong);border-radius:var(--shape-inner);background:var(--color-surface)}.tp--m .tp-drop{grid-template-columns:auto 1fr}.tp--m .tp-drop .rs-btn{grid-column:1/3;justify-content:center;min-height:44px}
+.tp-drop b{font-weight:500;display:block;font-size:var(--text-sm)}.tp-drop small{display:block;color:var(--color-text-muted);font-size:var(--text-xs)}
+/* platform v4 screen 13: Sign in (si-*), verbatim from the design (Brass Screens 3, screens/ext3.css, as updated 2026-10-12: a card on a sunken
+   page). The design's .si--m mobile variants are container queries here (app container below 760px). */
+.si{flex:1;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.9fr);min-height:0}
+.si-form{display:flex;justify-content:center;padding:48px 40px}
+.si-in{width:100%;max-width:400px;display:grid;gap:16px;align-content:start}
+.si h1{font:500 48px/1.05 var(--font-display);margin:0;letter-spacing:-.01em}
+.rs .si h1 em,.rs .si-q em{font-style:italic;color:var(--color-brass-text)}
+.si-g{display:flex;align-items:center;justify-content:center;gap:10px;border:1px solid var(--color-border-strong);border-radius:var(--shape-control);background:var(--color-surface);color:var(--color-text);font:500 var(--text-sm) var(--font-sans);cursor:pointer}.si-g:hover{background:var(--color-surface-sunken)}.si-g:disabled{opacity:.5;cursor:not-allowed}
+.si-or{display:flex;align-items:center;gap:12px;color:var(--color-text-muted);font-size:var(--text-xs)}.si-or:before,.si-or:after{content:"";flex:1;height:1px;background:var(--color-border)}
+.si-pw{position:relative;display:flex}.si-pw .rs-input{flex:1;padding-inline-end:46px}
+.si-pw button{position:absolute;inset-block:0;inset-inline-end:0;width:44px;border:0;background:transparent;color:var(--color-text-muted);cursor:pointer;display:grid;place-items:center}.si-pw button:hover{color:var(--color-text)}
+.si-ft{border-top:1px solid var(--color-border);padding-top:12px}
+.si-side{background:var(--color-brass-subtle);border-inline-start:1px solid var(--color-border);display:grid;align-content:space-between;padding:48px;color:var(--color-text)}
+.si-art{width:110px;height:110px}
+.si-q{font:500 34px/1.12 var(--font-display);margin:0 0 10px;max-width:16ch}
+.si-art{color:#3a2218}[data-theme=dark] .si-art{color:#efe3d0}
+.si{flex:none;width:calc(100% - 80px);max-width:1040px;margin:48px auto;border:1px solid var(--color-border);border-radius:var(--shape-surface);background:var(--color-surface);overflow:hidden;box-shadow:var(--shadow-md)}
+.si-form{padding:48px}
+.si-bg{background:var(--color-surface-sunken)}
+.si-side{background:var(--color-surface-sunken)}
+@container app (max-width:759px){.si{grid-template-columns:1fr;width:100%;margin:0;border:0;border-radius:0;box-shadow:none;background:transparent}.si-form{padding:22px 16px}.si h1{font-size:34px}.si-side{display:none}.si-bg{background:transparent}}
+/* Sign in and sign up (W19-R21): the text boxes and the Google button are as tall as the big submit button (42px, brass .rs-btn--lg), instead of the 34px control height */
+[data-brand="brass"] .si-in .rs-input,[data-brand="brass"] .si-in .rs-btn{min-height:42px}

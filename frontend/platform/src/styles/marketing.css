@@ -1,0 +1,154 @@
+/* Marketing layout classes. First block: verbatim from design/ui_kits/marketing/index.html (.mk-*).
+   Second block: additions for pages the kit does not have (menu panel, preferences, case study, tile detail). Tokens only. */
+.mk{min-height:100%;background:var(--color-bg);color:var(--color-text);font-family:var(--font-sans)}
+.mk-head{display:flex;align-items:center;gap:12px;justify-content:space-between;padding:12px 16px;border-bottom:1px solid var(--color-border);background:var(--color-surface);position:sticky;top:0;z-index:5}
+.mk-nav{display:none;gap:4px}.mk-nav a{min-height:44px;display:inline-flex;align-items:center;padding:0 14px;border-radius:var(--shape-control);color:var(--color-text);text-decoration:none;font-weight:500}.mk-nav a:hover{background:var(--color-surface-sunken)}.mk-nav a[aria-current=page]{font-weight:700;color:var(--color-accent)}
+.mk-hero{display:grid;gap:32px;padding:32px 16px 40px}.mk-hero h1{font-size:var(--text-4xl);max-width:16ch}.mk-lede{font-size:var(--text-lg);color:var(--color-text-muted);max-width:52ch;margin:0}
+.mk-shot{aspect-ratio:4/3;border-radius:var(--shape-surface);background:repeating-linear-gradient(135deg,var(--color-surface-sunken) 0 12px,var(--color-bg) 12px 24px);border:1px solid var(--color-border);display:grid;place-items:center;text-align:center;font:500 var(--text-sm) ui-monospace,monospace;color:var(--color-text-muted)}
+.mk-sec{padding:32px 16px;display:grid;gap:20px;align-content:start}.mk-sec h2{font-size:var(--text-3xl)}.mk-tint{background:var(--color-accent-subtle)}
+.mk-feat{display:grid;gap:24px;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr))}.mk-price{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));align-items:start}
+.mk-steps{list-style:none;margin:0;padding:0;display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr))}.mk-steps li{display:flex;gap:12px;align-items:center;background:var(--color-surface);border-radius:var(--shape-surface);padding:16px;border:1px solid var(--color-border)}.mk-steps b{flex:none;width:36px;height:36px;border-radius:50%;background:var(--color-accent);color:var(--color-on-accent);display:grid;place-items:center}
+.mk-faq{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--shape-surface);padding:0 16px}.mk-faq summary{min-height:52px;display:flex;align-items:center;font-weight:600;cursor:pointer}.mk-faq p{margin:0 0 16px;color:var(--color-text-muted)}
+.mk-foot{display:grid;gap:12px;padding:32px 16px;border-top:1px solid var(--color-border);background:var(--color-surface)}
+@container app (min-width:760px){.mk-nav{display:flex}.mk-head{padding:12px 48px}.mk-hero{grid-template-columns:1.1fr 1fr;align-items:center;padding:64px 48px}.mk-hero h1{font-size:var(--text-5xl)}.mk-sec{padding:56px 48px}.mk-foot{padding:32px 48px;grid-auto-flow:column;justify-content:space-between;align-items:center}}
+
+/* --- additions (not in the kit) --- */
+.mk-head__end{display:flex;align-items:center;gap:8px}
+.mk-pref{display:none}.mk-burger{display:inline-flex}
+.mk-menu{display:grid;gap:4px;padding:8px 16px 16px;border-bottom:1px solid var(--color-border);background:var(--color-surface);position:sticky;top:69px;z-index:4}
+.mk-menu a{min-height:48px;display:flex;align-items:center;padding:0 12px;border-radius:var(--shape-inner);color:var(--color-text);text-decoration:none;font-weight:500}.mk-menu a[aria-current=page]{font-weight:700;color:var(--color-accent);background:var(--color-accent-subtle)}
+.mk-menu__pref{display:flex;flex-wrap:wrap;gap:8px;padding-top:8px}
+@container app (min-width:760px){.mk-pref{display:flex}.mk-burger{display:none}.mk-menu{display:none}}
+.mk-sec--narrow{max-width:760px;width:100%;margin:0 auto}
+.mk-split{display:grid;gap:20px;align-items:start}
+@container app (min-width:760px){.mk-split{grid-template-columns:2fr 1fr}}
+.mk-quote{font:italic 400 var(--text-3xl)/1.3 var(--font-display);margin:0;max-width:30ch}
+.mk-cols{display:grid;gap:24px;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr))}
+.mk-detail{display:grid;gap:12px}
+.mk-seg{display:inline-flex;gap:4px;align-items:center}
+.rs-sr:focus{position:fixed;top:8px;left:8px;width:auto;height:auto;clip:auto;overflow:visible;white-space:normal;background:var(--color-surface);color:var(--color-text);padding:12px 16px;border-radius:var(--radius-md);box-shadow:var(--shadow-md);z-index:70}
+/* Buttons rendered as links: `.rs a` (components.css) would otherwise override the button text colours. */
+.rs a.rs-btn{color:var(--color-on-accent)}.rs a.rs-btn:hover{color:var(--color-on-accent)}
+.rs a.rs-btn--secondary,.rs a.rs-btn--secondary:hover{color:var(--color-text)}
+.rs a.rs-btn--ghost,.rs a.rs-btn--ghost:hover{color:var(--color-accent)}
+.rs a.rs-btn--danger,.rs a.rs-btn--danger:hover{color:var(--color-surface)}
+.rs a.rs-btn[aria-disabled=true]{color:var(--color-text-muted)}
+
+/* Centred content column. NOT in the design: the marketing kit lets sections run full width with 48px side padding.
+   Bands (header, tinted section, footer) stay full-bleed; their content is held to 1200px (the design's only container width, .rs-app__main). */
+@container app (min-width:760px){
+  .mk-head,.mk-foot,.mk-hero,.mk-sec{padding-inline:max(48px,calc((100cqw - 1200px) / 2))}
+}
+
+/* Console content well centred on wide screens (design: left-aligned, max-width 1200px). */
+@container app (min-width:900px){.rs-app__main{width:100%;margin-inline:auto}}
+
+/* --- Brass site header (design: .bs-top / .bs-nav; the design shows desktop and mobile as separate renders, so the switch below is ours) --- */
+.bs-top--site{position:sticky;top:0;z-index:5;background:var(--color-bg)}
+.bs-nav a[aria-current=page]{color:var(--color-text)}
+.bs-end{display:none;align-items:center;gap:8px}.bs-burger{display:inline-flex}
+.bs-top--site .bs-nav--site{display:none}
+.bs-top--site{padding-inline:14px;gap:10px;height:56px}
+.bs-menu{display:grid;gap:4px;padding:8px 14px 14px;border-bottom:1px solid var(--color-border);background:var(--color-bg)}
+.bs-menu a{min-height:40px}
+@container app (min-width:760px){
+  .bs-top--site{height:64px;gap:20px}
+  .bs-top--site .bs-nav--site{display:flex}.bs-end{display:flex}.bs-burger{display:none}.bs-menu{display:none}
+}
+.bs-foot{padding-block:16px}
+
+/* Brass: weights never above 600 (design components.md). components.css still carries a few 700s and <b> defaults to bolder. */
+[data-brand="brass"] b,[data-brand="brass"] strong,[data-brand="brass"] .rs-pass,[data-brand="brass"] .rs-avatar,
+[data-brand="brass"] .rs-step[data-state=current] .rs-step__label,[data-brand="brass"] .rs-tile__prev header,
+[data-brand="brass"] .rs-tile__prev div b,[data-brand="brass"] .rs-tile__prev div u,[data-brand="brass"] .rs-bs-n{font-weight:600}
+
+/* Language switch (PrefControls, used in the site header, mobile menu, console, wizard and owner view): the language switch is compact so it sits level with the nav links and buttons (the design has no language switch; R29). */
+.bs-lang{padding:2px;gap:1px}
+.bs-lang button{min-height:24px;padding:0 8px;font-size:var(--text-xs)}
+
+/* Themes page layout (/templates), after screens/C.jsx. Narrow stacks; wide = container app >= 760px. */
+.bt-page{display:flex;flex-direction:column;flex:1}
+.bt-grid{display:grid;gap:16px;padding:16px 14px;flex:1}
+.bt-left,.bt-right{display:flex;flex-direction:column;gap:14px;min-width:0}
+.bt-head{display:grid;gap:8px}
+.rs .bt-head .bs-d{font-size:32px}
+.bt-site-h{font-size:24px;line-height:1.08;letter-spacing:-.01em}
+.bt-kick{font:400 11px var(--font-sans);letter-spacing:.12em;text-transform:uppercase}
+.bt-when{font:400 13px var(--font-sans)}
+.bt-only-wide{display:none!important}
+.bt-site-body{padding:16px 14px;gap:8px}
+@container app (min-width:760px){
+  .bt-grid{grid-template-columns:minmax(0,430px) minmax(0,1fr);gap:40px;padding:32px max(40px,calc((100cqw - 1120px) / 2))}
+  .bt-left{gap:22px}
+  .bt-right{margin-top:24px}
+  .rs .bt-head .bs-d{font-size:48px}.bt-head{gap:12px}
+  .bt-only-wide{display:grid!important}.bt-list.bt-only-wide,.bt-seg.bt-only-wide{display:flex!important}.bt-only-narrow{display:none!important}
+  .bt-site-body{padding:40px 36px 28px;gap:12px}.bt-site-h{font-size:40px}.bt-when{font-size:14px}
+}
+
+/* Footer stays at the bottom on short pages: same position on every page until content scrolls */
+.mk{display:flex;flex-direction:column;min-height:100vh;min-height:100dvh}
+.mk>main{flex:1;display:flex;flex-direction:column}
+.mk>main>*{flex:1 0 auto}
+.mk>.bs-foot{margin-top:0}
+
+/* One container for every platform page (public, dashboard, owner console): the header, the page content and the footer all take the same side
+   padding, so their left and right edges line up. Content width 1200px; below that the padding is 16 to 32px. */
+:root{--page-x:max(clamp(16px,4cqw,32px),calc((100cqw - 1200px) / 2))}
+.bs-top--site,.bs-foot,.mk-hero,.mk-sec,.mk-head,.mk-foot{padding-inline:var(--page-x)}
+/* Owner console: the sections in a side bar and the page, inside the container, between the shared header and the footer */
+.own-shell{flex:1;display:grid;grid-template-columns:minmax(0,1fr);gap:16px;padding:24px var(--page-x);align-content:start}
+.own-side{display:none}
+.own-toggle{display:block}
+.own-menu{display:grid;gap:2px;padding:4px 0}
+main.own-main{display:flex;flex-direction:column;gap:16px;min-width:0}
+main.own-main>*{flex:none}
+@container app (min-width:900px){
+  .own-shell{grid-template-columns:220px minmax(0,1fr);gap:40px}
+  .own-side{display:block;position:sticky;top:84px;align-self:start}
+  .own-toggle,.own-menu{display:none}
+}
+.au-col{margin-inline:0}
+
+/* Keep the page from shifting sideways when the scrollbar appears on long pages and not on short ones (home vs dashboard vs owner) */
+html{scrollbar-gutter:stable}
+/* Header, footer and section lines run from one window edge to the other (user decision, W6-R16); only the content is held to the container. */
+.bs-top--site{border-bottom:0}
+.bs-top--site::after{content:"";position:absolute;inset-inline:0;bottom:0;height:1px;background:var(--color-border)}
+.bs-foot{border-top:0;position:relative}
+.bs-foot::before{content:"";position:absolute;inset-inline:0;top:0;height:1px;background:var(--color-border)}
+/* Landing page section dividers: same rule, full width */
+.bs-hero,.bs-band,.bs-cta{border-bottom:0;position:relative}
+.bs-hero::after,.bs-band::after,.bs-cta::after{content:"";position:absolute;inset-inline:0;bottom:0;height:1px;background:var(--color-border)}
+
+/* Templates preview: the shell of the theme and the device (W9-R10) */
+.bt-site[data-device=mobile]{max-width:340px;margin-inline:auto}
+.bt-site{position:relative}
+.bt-site[data-shell=side],.bt-site[data-shell=right]{display:grid;grid-template-columns:96px minmax(0,1fr)}
+.bt-site[data-shell=right]{grid-template-columns:minmax(0,1fr) 96px}
+.bt-site[data-shell=side]>.bt-site-nav,.bt-site[data-shell=right]>.bt-site-nav{flex-direction:column;align-items:flex-start;justify-content:flex-start;gap:10px;grid-row:1 / span 3;font-size:12px;padding:14px 10px}
+.bt-site[data-shell=right]>.bt-site-nav{grid-column:2}
+.bt-site[data-shell=right]>.bt-site-body,.bt-site[data-shell=right]>.bt-site-rows{grid-column:1}
+.bt-site[data-shell=mast]>.bt-site-nav{flex-direction:column;justify-content:center;gap:2px;text-align:center}
+.bt-site[data-shell=tabs]>.bt-site-nav{flex-wrap:wrap;row-gap:6px;padding-bottom:6px}
+.bt-site[data-shell=dock]>.bt-site-nav>span{display:none}
+.bt-site[data-shell=dock]::after{content:'';position:absolute;left:50%;bottom:10px;width:46%;height:14px;transform:translateX(-50%);border-radius:var(--shape-control);background:var(--ac)}
+.bt-site[data-device=mobile]>.bt-site-nav>span,.bt-site[data-device=mobile] .bt-site-rows{display:none}
+/* "Coming up" sits under the theme list, outside its scrolling box, with room around it (W10-R32) */
+.bt-coming{padding:4px 2px 0}
+/* Templates page, wide layout: exactly the height of the window below the header, so the tool itself never scrolls (W10-R36); the footer comes after it, one page scroll down (W13-R12). The theme list and Coming up share the left column's
+   leftover height and scroll inside; the right column scrolls inside only when the preview is taller than the window. */
+.bt-list.bt-only-wide{overflow-y:auto}
+@container app (min-width:760px){
+  .mk:has(.bt-page) > main{flex:none;height:calc(100vh - 64px);height:calc(100dvh - 64px);min-height:0;display:flex;flex-direction:column} /* one screen below the 64 px header; the footer follows below it (W13-R12) */
+  .bt-page{flex:1;min-height:0}
+  .bt-grid{min-height:0;overflow:hidden;padding-block:20px}
+  .bt-left{min-height:0;overflow:hidden;gap:14px}
+  .bt-left .bt-head .bs-d{font-size:40px}
+  .bt-list.bt-only-wide{flex:0 1 auto;min-height:112px;max-height:230px} /* at most six rows (38 px each), then it scrolls */
+  .bt-coming{flex:0 1 auto;min-height:150px;display:grid;padding:0 2px}
+  .bt-coming .tc-box{margin-top:0;box-sizing:border-box;min-height:0;grid-template-rows:auto auto minmax(0,auto)}
+  .bt-coming .tc-list{min-height:0;max-height:282px;overflow-y:auto;padding-inline-end:4px;align-content:start} /* at most six rows (42 px, 6 px apart), then it scrolls */
+  .bt-coming .tc-item{height:42px;box-sizing:border-box;padding:4px 10px}.bt-coming .tc-name{line-height:1.2}
+  .bt-right{min-height:0;overflow-y:auto;margin-top:0;padding-top:4px;padding-inline-end:4px}
+}

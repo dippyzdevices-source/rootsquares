@@ -1,0 +1,38 @@
+/* Button text, one rule per application (W25-R37, the user's decision).
+   Customer app (`data-app="platform"`): every button is capitals, 11px, weight 600, letter spacing 0.1em; the small size is 10px. The public marketing pages (`.mk`, the landing design) keep their own.
+   Admin app (`data-app="admin"`): every button is mixed case, weight 500, the product size (.85rem; small .78rem), no letter spacing.
+   Page-local button classes (`.st-btn`, `.sl-btn`, ...) only add padding and outline on top of this. */
+html[data-brand="brass"][data-app="platform"] .rs-btn:not(.mk .rs-btn) { font-weight: 600; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; }
+html[data-brand="brass"][data-app="platform"] .rs-btn--sm:not(.mk .rs-btn) { font-size: 10px; }
+html[data-brand="brass"][data-app="admin"] .rs-btn { font-weight: 500; font-size: var(--text-sm); letter-spacing: 0; text-transform: none; }
+html[data-brand="brass"][data-app="admin"] .rs-btn--sm { font-size: var(--text-xs); }
+/* Heights and outlines (W25-R37): two sizes only, 34px and small 28px (the hero buttons are large). In the customer app every secondary button is the quiet one: light outline (--color-border), brass on hover (the rule of W23-R50).
+   In the admin app a secondary button keeps the stronger outline of the design system at both sizes. */
+html[data-brand="brass"][data-app="platform"] .rs-btn--secondary:not(.mk .rs-btn) { border-color: var(--color-border); }
+html[data-brand="brass"][data-app="platform"] .rs-btn--secondary:not(.mk .rs-btn):hover:not(:disabled) { border-color: var(--color-brass); background: var(--color-surface-sunken); }
+/* Admin breathing space (W25-R39): 36px buttons with 18px sides, small 30px with 14px sides, the red button is outlined and fills on hover (as End access now in the customer app),
+   a button group has a 10px gap. */
+html[data-brand="brass"][data-app="admin"] .rs-btn { min-height: 36px; }
+html[data-brand="brass"][data-app="admin"] .rs-btn--sm { min-height: 30px; }
+html[data-brand="brass"][data-app="admin"] .rs-btn--danger:not(:disabled) { background: var(--color-surface); color: var(--color-danger); border-color: var(--color-danger); }
+html[data-brand="brass"][data-app="admin"] .rs-btn--danger:hover:not(:disabled) { background: var(--color-danger); color: var(--color-surface); filter: none; }
+
+/* Icon and text (W25-R40, the user's decision): every labelled button has a 16px icon in front of its text (13px on a small button), 8px between them, and the same space on both sides:
+   20px on a normal button, 16px on a small one, in both apps. Icon-only controls (theme toggle, close X, copy icons) stay as they are. */
+html[data-brand="brass"] .rs-btn:not(.rs-btn--lg):not(.rs-btn--icon):not(.mk .rs-btn) { padding-inline: 20px; gap: 8px; }
+html[data-brand="brass"] .rs-btn--sm:not(.rs-btn--icon):not(.mk .rs-btn) { padding-inline: 16px; }
+html[data-brand="brass"] .rs-btn:not(.mk .rs-btn) .rs-icon { width: 16px; height: 16px; }
+html[data-brand="brass"] .rs-btn--sm:not(.mk .rs-btn) .rs-icon { width: 14px; height: 14px; }
+html[data-brand="brass"][data-app="admin"] :is(.oc-btn, .ox-btn, .vo-addbtn) { padding-inline: 16px; gap: 8px; display: inline-flex; align-items: center; justify-content: center; }
+html[data-brand="brass"][data-app="admin"] :is(.oc-btn, .ox-btn, .vo-addbtn) .rs-icon { width: 14px; height: 14px; }
+
+/* Mobile (W25-R43): a button label never breaks inside a word or onto a second line; a row of buttons wraps as a whole instead. */
+html[data-brand="brass"] :is(.rs-btn, .oc-btn, .ox-btn, .vo-addbtn, .sd-cp) { white-space: nowrap; flex-shrink: 0; }
+html[data-brand="brass"] :is(.ox-act, .sd-act, .oc-acts, .vo-save) { flex-wrap: wrap; }
+
+/* The top bar on a phone: Sign out keeps its icon and loses its word (the label stays for screen readers) so the bar fits at 375px. */
+@media (max-width: 640px) { .pt-so .pt-so-t { display: none; } html[data-brand="brass"] .pt-so.rs-btn.rs-btn--sm.rs-btn--ghost:not(.mk .rs-btn) { padding-inline: 8px; } }
+.rs-field, .bx-cf { min-width: 0; max-width: 100%; }
+
+/* A disabled button looks disabled whatever its kind (W25-R54, TS-01): the primary rule of ext-app.css painted a disabled Save look as dark as an enabled one. */
+html[data-brand="brass"] .rs .rs-btn:disabled, html[data-brand="brass"] .rs .rs-btn[aria-disabled="true"] { background: var(--color-surface-sunken); color: var(--color-text-muted); border-color: var(--color-border); filter: none; }

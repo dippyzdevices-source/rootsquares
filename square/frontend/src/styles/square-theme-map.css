@@ -1,0 +1,112 @@
+/* --t-* to --ds-* (rootsquares W6-R50, kept by W9-R10): the square's components read --ds-*; a square on a theme points them at its --t-* values.
+   The per-theme --t-* blocks are generated into square-layout-themes.css (scripts/build_layout_themes.py). */
+/* --t-* to --ds-*: the square's components read --ds-*; a themed square points them at its --t-* values. */
+/* The colour part also serves paper-brick when the owner has chosen own colours (W25-R55): there is no theme id, so a marker `data-own-colours` (set by applyThemeOverrides) turns it on;
+   radius and fonts stay with a themed square only, paper-brick keeps its own. */
+html[data-square-theme] .ds-scope,
+html:not([data-square-theme])[data-own-colours] .ds-scope {
+  --ds-paper-50: var(--t-surface);
+  --ds-paper-100: var(--t-bg);
+  --ds-paper-200: var(--t-surface-sunken);
+  --ds-paper-300: var(--t-border);
+  --ds-paper-400: var(--t-border-default);
+  --ds-ink-900: color-mix(in srgb, var(--t-text-strong) 80%, black);
+  --ds-ink-800: var(--t-text-strong);
+  --ds-ink-700: color-mix(in srgb, var(--t-text-strong) 60%, var(--t-text));
+  --ds-ink-600: var(--t-text);
+  --ds-ink-500: var(--t-text-muted);
+  --ds-ink-400: color-mix(in srgb, var(--t-text-muted) 70%, var(--t-bg));
+  --ds-ink-300: var(--t-border-strong);
+  --ds-terracotta-50: var(--t-primary-soft);
+  --ds-terracotta-100: color-mix(in srgb, var(--t-accent) 20%, var(--t-surface));
+  --ds-terracotta-200: color-mix(in srgb, var(--t-accent) 45%, var(--t-surface));
+  --ds-terracotta-300: color-mix(in srgb, var(--t-accent) 70%, var(--t-surface));
+  --ds-terracotta-400: color-mix(in srgb, var(--t-accent) 88%, var(--t-surface));
+  --ds-terracotta-500: var(--t-accent);
+  --ds-terracotta-600: var(--t-accent-hover);
+  --ds-terracotta-700: var(--t-accent-press);
+  --ds-saffron-50: color-mix(in srgb, var(--t-accent-soft) 55%, var(--t-surface));
+  --ds-saffron-100: var(--t-accent-soft);
+  --ds-saffron-200: color-mix(in srgb, var(--t-accent-2) 50%, var(--t-surface));
+  --ds-saffron-300: var(--t-accent-2);
+  --ds-saffron-400: color-mix(in srgb, var(--t-accent-2) 85%, black);
+  --ds-saffron-500: color-mix(in srgb, var(--t-accent-2) 68%, black);
+  --ds-palm-100: var(--t-success-bg);
+  --ds-palm-300: color-mix(in srgb, var(--t-success) 60%, var(--t-surface));
+  --ds-palm-500: var(--t-success);
+  --ds-palm-700: color-mix(in srgb, var(--t-success) 70%, black);
+  --ds-palm-800: color-mix(in srgb, var(--t-success) 55%, black);
+  --ds-palm-900: color-mix(in srgb, var(--t-success) 40%, black);
+  --ds-palm-950: color-mix(in srgb, var(--t-success) 25%, black);
+  --ds-nil-100: var(--t-info-bg);
+  --ds-nil-300: color-mix(in srgb, var(--t-info) 60%, var(--t-surface));
+  --ds-nil-500: var(--t-info);
+  --ds-nil-700: color-mix(in srgb, var(--t-inverse) 75%, white);
+  --ds-nil-900: var(--t-inverse);
+
+  --ds-surface-page: var(--t-bg);
+  --ds-surface-card: var(--t-surface);
+  --ds-surface-sunken: var(--t-surface-sunken);
+  --ds-surface-inverse: var(--t-inverse);
+  --ds-surface-hero: radial-gradient(120% 90% at 80% 0%, color-mix(in srgb, var(--t-inverse) 80%, white) 0%, var(--t-inverse) 58%);
+  --ds-surface-primary-soft: var(--t-primary-soft);
+  --ds-surface-accent-soft: var(--t-accent-soft);
+  --ds-surface-quote: var(--t-surface-sunken);
+  --ds-quote-mark-color: var(--t-accent);
+  --ds-surface-skeleton: var(--t-border);
+
+  --ds-text-heading: var(--t-text-strong);
+  --ds-text-body: var(--t-text);
+  --ds-text-muted: var(--t-text-muted);
+  --ds-text-faint: color-mix(in srgb, var(--t-text-muted) 70%, var(--t-bg));
+  --ds-text-on-dark: var(--t-on-inverse);
+  --ds-text-on-primary: var(--t-on-primary);
+  --ds-text-primary: var(--t-link);
+
+  --ds-border-hairline: var(--t-border);
+  --ds-border-default: var(--t-border-default);
+  --ds-border-strong: var(--t-border-strong);
+  --ds-border-primary: var(--t-accent);
+  --ds-border-on-dark: color-mix(in srgb, var(--t-on-inverse) 20%, transparent);
+
+  --ds-action-primary: var(--t-accent);
+  --ds-action-primary-hover: var(--t-accent-hover);
+  --ds-action-ghost-hover: var(--t-surface-sunken);
+  --ds-action-accent: var(--t-accent-2);
+  --ds-action-accent-hover: color-mix(in srgb, var(--t-accent-2) 85%, black);
+  --ds-focus-ring: var(--t-focus);
+  --ds-focus-ring-soft: color-mix(in srgb, var(--t-focus) 25%, transparent);
+  --ds-control-track: var(--t-border-default);
+  --ds-control-on: var(--t-success);
+
+  --ds-status-success: var(--t-success);
+  --ds-status-success-soft: var(--t-success-bg);
+  --ds-status-success-ink: var(--t-success);
+  --ds-status-warning: var(--t-warning);
+  --ds-status-warning-soft: var(--t-warning-bg);
+  --ds-status-warning-ink: var(--t-warning);
+  --ds-status-danger: var(--t-danger);
+  --ds-status-danger-soft: var(--t-danger-bg);
+  --ds-status-danger-ink: var(--t-danger);
+  --ds-status-info: var(--t-info);
+  --ds-status-info-soft: var(--t-info-bg);
+  --ds-status-info-ink: var(--t-info);
+  --ds-status-accent-ink: var(--t-warning);
+}
+
+/* paper-brick's dark look hard-codes three more tokens in green (the hero wash, the translucent header, the scrim); with own colours they follow the page and the inverse colour (W25-R62). */
+html:not([data-square-theme])[data-own-colours] .ds-scope {
+  --ds-wash-warm: radial-gradient(120% 90% at 80% 0%, var(--ds-saffron-50) 0%, var(--ds-paper-100) 58%);
+  --ds-glass-paper: color-mix(in srgb, var(--t-bg) 84%, transparent);
+  --ds-scrim: color-mix(in srgb, var(--t-inverse) 68%, transparent);
+}
+
+html[data-square-theme] .ds-scope {
+  --ds-radius-sm: var(--t-radius-sm);
+  --ds-radius-md: var(--t-radius);
+  --ds-radius-lg: var(--t-radius-lg);
+  --ds-radius-pill: var(--t-radius-btn);
+  --ds-font-display: var(--t-font-display);
+  --ds-font-editorial: var(--t-font-display);
+  --ds-font-body: var(--t-font-body);
+}

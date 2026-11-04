@@ -1,0 +1,8 @@
+/*
+ * The customer app's stylesheet: the shared design system (@rootsquares/ui, tokens and components) plus what only this app uses (ADR 084).
+ */
+@import "@rootsquares/ui/styles/main.css";
+@import "./themes.css"; /* ten tenant themes: tenant public site only */
+@import "./number-font.css"; /* the digits in the display font: Playfair Display (W26-R39) */
+@import "./landing.css";
+@import "./marketing.css";

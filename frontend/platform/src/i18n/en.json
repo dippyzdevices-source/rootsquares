@@ -1,0 +1,989 @@
+{
+  "site": {
+    "home": "Home",
+    "events": "Events",
+    "event": "Event",
+    "membership": "Membership",
+    "committee": "Committee",
+    "gallery": "Gallery",
+    "contact": "Contact",
+    "joinCta": "Become a member",
+    "viewEvents": "See events",
+    "details": "Details",
+    "eventsTitle": "Events",
+    "eventsText": "What is coming up.",
+    "seasonEyebrow": "Season 2026-27",
+    "homeTitle": "A home for everyone who belongs here",
+    "homeLead": "Festivals, classes and monthly dinners, all run by volunteers.",
+    "stats": {
+      "members": "Members",
+      "events": "Events",
+      "committee": "Committee"
+    },
+    "plansTitle": "Membership",
+    "plansText": "Membership runs for the calendar year and covers everyone in your household.",
+    "perYear": "NOK per year",
+    "join": "Join",
+    "popular": "Most chosen",
+    "plans": {
+      "student": [
+        "Student",
+        "Free for students and those on a low income",
+        [
+          "Event discounts",
+          "Newsletter"
+        ]
+      ],
+      "full": [
+        "Full member",
+        "One adult",
+        [
+          "Vote at the AGM",
+          "Member ticket prices",
+          "Newsletter"
+        ]
+      ],
+      "family": [
+        "Family",
+        "Everyone in your household",
+        [
+          "All of Full member",
+          "Children's events free"
+        ]
+      ]
+    },
+    "joinTitle": "Join BCA Oslo",
+    "joinName": "Full name",
+    "joinEmail": "Email",
+    "joinPlan": "Plan",
+    "joinSend": "Send application",
+    "joined": "Application sent",
+    "joinedBody": "We will email you a Vipps request for the fee. (Demo: nothing was sent.)",
+    "joinNameError": "Enter your name",
+    "joinEmailError": "Enter an email address like name{'@'}example.no",
+    "committeeTitle": "The committee",
+    "committeeText": "Volunteers elected at the annual general meeting.",
+    "galleryTitle": "Gallery",
+    "galleryText": "Photos from our events.",
+    "close": "Close",
+    "photo": "Photo {n}",
+    "contactTitle": "Get in touch",
+    "contactText": "Write to us and the committee will reply.",
+    "contactName": "Your name",
+    "contactEmail": "Email",
+    "contactMessage": "Message",
+    "contactSend": "Send message",
+    "contactSent": "Message sent",
+    "contactSentBody": "Thank you. (Demo: nothing was sent.)",
+    "contactMessageError": "Write a few words (at least 10 characters)",
+    "address": "Find us",
+    "free": "Free",
+    "each": "each",
+    "yourOrder": "Your order",
+    "subtotal": "Subtotal",
+    "fee": "Service fee",
+    "total": "Total",
+    "reserve": "Reserve seats",
+    "reserving": "Reserving",
+    "orderNote": "You pay by Vipps. The committee confirms your payment and emails the tickets.",
+    "chooseTickets": "Choose at least one ticket",
+    "ordered": "Order placed",
+    "orderedBody": "Order #{id}: {total} NOK. Pay by Vipps to {vipps} (demo).",
+    "back": "All events",
+    "notFound": "Page not found",
+    "orderDone": "Thank you. Your order is waiting for payment.",
+    "sold": "{sold} of {capacity} sold",
+    "switcher": {
+      "label": "Preview controls",
+      "theme": "Theme",
+      "mode": "Mode",
+      "light": "Light",
+      "dark": "Dark",
+      "title": "Preview"
+    },
+    "offline": "This site is offline",
+    "offlineText": "The committee has unpublished it for now.",
+    "publishAgain": "Publish again",
+    "footerNote": "A volunteer-run association.",
+    "articles": "News",
+    "pay": {
+      "title": "Pay for your tickets",
+      "lead": "Send the total with Vipps, using the reference below. Your seats are held for 48 hours.",
+      "to": "Pay to {name}",
+      "ref": "Payment reference",
+      "iPaid": "I have paid",
+      "pendingTitle": "Waiting for confirmation",
+      "pendingText": "The treasurer checks payments by hand, usually within a day. We email you when it is confirmed.",
+      "viewOrder": "View order",
+      "summary": "Summary",
+      "noOrder": "There is no order to pay.",
+      "copyRef": "Copy reference",
+      "qr": "QR code",
+      "demo": "Demo: the Vipps number and QR code are placeholders."
+    },
+    "order": {
+      "confirmed": "Your order is confirmed",
+      "waiting": "We have your order. Payment not confirmed yet.",
+      "orderNo": "Order number",
+      "line": "{qty} × {label}",
+      "confirmedText": "Show this order number at the door. A copy is on its way by email.",
+      "waitingText": "Your seats are held until the treasurer has confirmed your Vipps payment.",
+      "addCal": "Add to calendar",
+      "calAdded": "Calendar file created (demo, nothing is downloaded)",
+      "back": "Back to the site",
+      "none": "We could not find this order."
+    },
+    "news": {
+      "title": "News",
+      "lead": "Notes from the committee.",
+      "read": "Read more",
+      "back": "News",
+      "cover": "cover"
+    },
+    "nf": {
+      "title": "We could not find that page",
+      "text": "The page may have moved. Start from the home page.",
+      "home": "Home page"
+    },
+    "maint": {
+      "title": "We are making changes",
+      "text": "The site is offline for now. Please come back soon.",
+      "back": "Back soon"
+    },
+    "cookie": {
+      "title": "Cookies",
+      "text": "We use one cookie to remember your language. No tracking.",
+      "decline": "Decline",
+      "accept": "Accept"
+    },
+    "lightbox": {
+      "prev": "Previous photo",
+      "next": "Next photo",
+      "close": "Close"
+    },
+    "member": {
+      "status": "Membership",
+      "plan": "Annual",
+      "until": "Valid until 31 Dec 2026",
+      "active": "Active"
+    }
+  },
+  "attentionStrip": {
+    "title": "Needs your attention",
+    "go": "Go to it",
+    "mail_domain_records": "One step is left for your own sending domain {domain}: add its e-mail records.",
+    "mail_domain_failed": "We could not verify your sending domain {domain}. Check the records or ask us for help.",
+    "support_request": "rootsquares asks to look at your square to help you: \"{note}\". You decide: allow or ignore."
+  },
+  "lockedLook": {
+    "pitch": "Make the site look like your association: your own colours and fonts, shapes and feel on top of any theme, with a live preview, and drafts you can share by a private link before they go live."
+  },
+  "siteDomain": {
+    "loading": "Loading...",
+    "lockedTitle": "In the Grove package",
+    "locked": "Your own website domain, such as www.yourassociation.org, is part of the Grove package. Your square works on its rootsquares address meanwhile.",
+    "pitch": "Members and visitors find you at your own name, in the address bar, on posters and in e-mails. Your rootsquares address keeps working beside it. We add the domain for you; you only add one record at your domain provider.",
+    "upgrade": "Upgrade to {package}",
+    "talkTitle": "Not sure it is for you?",
+    "talkBody": "Tell us about your association and we will say what fits and what it costs.",
+    "talkButton": "Talk to us",
+    "lede": "Use your own web address for the square. You add one record at your domain provider that points to {target}; we add the domain on our side and tell you by e-mail. Your rootsquares address keeps working.",
+    "field": "Your domain",
+    "hint": "For example www.yourassociation.org. Use the www form: most providers cannot point a bare domain this way.",
+    "request": "Request this domain",
+    "yourDomain": "Your domain",
+    "state": "Status",
+    "stateRequested": "Waiting for us to add it",
+    "stateActive": "In use",
+    "requestedBody": "We add your domain on our side and tell you by e-mail when it is ready. You can add the record below now.",
+    "activeBody": "Your square is served on this domain. Your address {address} keeps working as well.",
+    "recordTitle": "Add this record at your domain provider.",
+    "recordBody": "Create a CNAME for {domain} that points to the value below. Some providers want only the first part, for example www.",
+    "recordType": "Type",
+    "recordName": "Name (host)",
+    "recordValue": "Points to (value)",
+    "apexNote": "A bare domain such as yourassociation.org cannot be a CNAME at most providers: use the www form, or ask your provider about a CNAME on the bare domain (it may be called flattening or ALIAS).",
+    "check": "Check the record",
+    "dnsPointingTitle": "The record is in place",
+    "dnsPointing": "Your domain leads to us. If the page does not open yet, we may still be adding it.",
+    "dnsNotTitle": "Not pointing to us yet",
+    "dnsNot": "Your domain does not lead to {target} yet. A change at your provider can take a few hours to spread. Check the name and the value of the record.",
+    "dnsUnknownTitle": "We could not see the record",
+    "dnsUnknown": "The name does not answer yet. Add the record, wait a few hours, and check again.",
+    "withdraw": "Withdraw the request",
+    "remove": "Remove the domain",
+    "removeAsk": "The square stops being served on this domain. Remove it?",
+    "removeYes": "Yes, remove",
+    "keep": "Keep it",
+    "errorTitle": "That did not work"
+  },
+  "squareSettings": {
+    "basicsSub": "Name, address and plan.",
+    "identity": "Identity",
+    "address": "Address",
+    "plan": "Plan",
+    "region": "Region & billing",
+    "notConnected": "Not connected",
+    "connect": "Connect",
+    "manage": "Manage",
+    "createdOn": "Created {date}",
+    "logoSub": "Shown across your site. Drop a file onto a box or choose one.",
+    "mainSub": "Header, footer and tab icon.",
+    "darkSub": "Footer and dark mode.",
+    "mailTitle": "E-mail contact",
+    "mailLabel": "E-mail address",
+    "mailHint": "Contact-form messages, payment notices and replies to your site's mails arrive here. Not shown on your site; the public address is under Content, Contact details. Leave empty to use that one.",
+    "mailSave": "Save",
+    "mailSaved": "Saved",
+    "domainTitle": "Own sending domain",
+    "domainLoading": "Loading…",
+    "domainLocked": "Sending your site's e-mail from your own domain (for example tickets{'@'}yourassociation.org instead of the shared rootsquares address) is included in the Grove package.",
+    "domainLede": "Send your site's e-mail from your own domain. Optional: until then, mail goes out from the shared address and newsletters can't be sent.",
+    "domainField": "Domain",
+    "domainHint": "Use a subdomain, such as mail.yourassociation.org, so your normal e-mail stays untouched. Whoever looks after your domain must be able to add records for it.",
+    "domainLocal": "Sender name",
+    "domainLocalHint": "Mail will be sent from {address}. Replies still go to your E-mail contact.",
+    "domainFrom1": "Mail will be sent from",
+    "domainFrom2": ". Replies still go to your e-mail contact.",
+    "domainStateNone": "Not set up",
+    "domainStateRequested": "Requested",
+    "domainStateWaiting": "Waiting for DNS records",
+    "domainSendsFrom": "Sends from",
+    "domainStatusCol": "Status",
+    "domainRequest": "Request this domain",
+    "domainAdd": "Add this domain",
+    "domainSaveName": "Save name",
+    "domainRequested": "You asked for {address}.",
+    "domainRequestedBody": "We'll set it up and e-mail you, usually within a working day. Then one step is left for you or whoever looks after your domain.",
+    "domainWithdraw": "Withdraw the request",
+    "domainStatus": {
+      "not_started": "Not started",
+      "pending": "Checking",
+      "verified": "Verified",
+      "partially_verified": "Partly verified",
+      "partially_failed": "Partly failed",
+      "failed": "Failed",
+      "temporary_failure": "Cannot be found right now"
+    },
+    "domainPending": "Not used yet: mail still goes out from the shared address.",
+    "domainOneStep": "One step left for you or whoever looks after {domain}: add four e-mail records at the domain provider.",
+    "domainWeb": "Send the instructions to your web person",
+    "domainWebHint": "We e-mail the records and plain steps. They don't change your website or normal mailboxes.",
+    "domainSend": "Send instructions",
+    "domainSent": "Sent. We e-mail you when it works.",
+    "domainMyself": "I'll add the records myself",
+    "domainStep1": "Add these where your domain is managed (your provider's DNS page). Copy each name and value exactly; names are relative to your main domain.",
+    "domainStep2": "It can take minutes to hours before they're seen. If not seen within 72 hours it fails and we help you start again.",
+    "domainAuto": "We check every hour and e-mail you when it's ready.",
+    "domainRecords": "DNS records to add",
+    "domainType": "Type",
+    "domainName": "Name",
+    "domainValue": "Value",
+    "domainPriority": "(priority {n})",
+    "domainCopy": "Copy",
+    "domainCopied": "Copied",
+    "domainCheck": "Check now",
+    "domainVerified": "Your site's mail is sent from {address}.",
+    "domainRemove": "Remove domain",
+    "domainRemoveAsk": "Remove it? Your mail goes back to the shared address.",
+    "domainRemoveYes": "Yes, remove",
+    "domainPitch": "Your members then see mail from your own name, and it is more likely to reach the inbox. We set the domain up for you; you only add a few records at your domain provider. Until then your mail is sent from the shared rootsquares address with your square's name and your reply address.",
+    "domainHelpTitle": "Need IT help?",
+    "domainHelpBody": "We can do this with you for a small one-time support fee.",
+    "domainHelpButton": "Ask us for help",
+    "domainHelpThanksTitle": "Thank you.",
+    "domainHelpThanks": "We will write to your E-mail contact with what it costs and how we go on.",
+    "domainKeep": "Keep it"
+  },
+  "analytics": {
+    "title": "Analytics",
+    "pageLede": "How your public site is used: visits, pages, where visitors come from, and how events turn into tickets.",
+    "lede": "How your public site is used. Counted without cookies and without keeping who a visitor is; shown to you only.",
+    "switchOn": "Count visits",
+    "switchOff": "Switch counting off",
+    "loading": "Loading…",
+    "offText": "Counting is off. Nothing is counted about your site's visitors until you switch it on. When it is on you see visits, page views, where visitors come from and how events turn into tickets.",
+    "unreachable": "Your site's server did not answer, so the numbers cannot be shown now. Try again in a minute.",
+    "resting": "Your site is resting, so nothing is counted or shown now.",
+    "notCounting": "Counting is switched on, but your site's server is not set up to count yet. This is set up by rootsquares; nothing is wrong with your site.",
+    "range": "Period",
+    "d7": "7 days",
+    "d30": "30 days",
+    "d90": "90 days",
+    "empty": "No visits counted yet. They appear here after the next visit to your site.",
+    "visits": "Visits",
+    "views": "Page views",
+    "visitors": "Visitors",
+    "vsBefore": "against the period before",
+    "new": "new",
+    "chartLabel": "Page views for each day of the period",
+    "visitorsNote": "Visitors are counted once a day. Nobody is followed from one day to the next, so the visitors of several days are added up, not matched.",
+    "topPages": "Most viewed pages",
+    "topSources": "Where visitors come from",
+    "direct": "Direct (no referring site)",
+    "none": "Nothing yet.",
+    "few": "fewer than 5",
+    "eventsTitle": "Events and tickets",
+    "event": "Event",
+    "eventViews": "Page views",
+    "eventTickets": "Tickets bought",
+    "confirmTitle": "Count the visits to your site?",
+    "confirmVerb": "Switch counting on",
+    "counted": "What is counted:",
+    "countedText": "which page was shown, which site the visitor came from, and how many different visitors there were each day.",
+    "notCountedTitle": "What is not:",
+    "notCountedText": "no cookies, no names, no addresses, nothing that follows a person from one day to the next. A visitor who has Do Not Track or Global Privacy Control on is not counted. You and your admins are not counted. Small numbers are shown as \"fewer than 5\".",
+    "tell": "It is good practice to say so on your privacy page: \"We count visits to this site without cookies and without keeping who the visitor is.\"",
+    "errors": {
+      "owner_only": "Only the owner of the square can switch counting on or off."
+    }
+  },
+  "squareHealth": {
+    "verdict": "{n} of {total} checks are fine",
+    "checkedAt": "Checked {time}",
+    "nOk": "{n} OK",
+    "nOff": "{n} off",
+    "nLook": "{n} need a look"
+  },
+  "squarePayments": {
+    "started": "Started {date}",
+    "count": "{n} of {total}",
+    "all": "Show all payments",
+    "fewer": "Show fewer",
+    "confirmTitle": "Change the default billing period?",
+    "confirmVerb": "Change to {period}",
+    "from": "From",
+    "to": "To",
+    "yourPlan": "Your plan",
+    "changesTitle": "What changes:",
+    "changesText": "The plan cards and the payment page will offer {period} first. You can still pick the other period each time you pay.",
+    "keepsTitle": "What does not change:",
+    "keepsText": "Your current paid period and every payment already made stay as they are. Nothing is charged now."
+  },
+  "supportPage": {
+    "onTitle": "Support access is on",
+    "onUntil": "rootsquares staff can open your square until {date}",
+    "onHead": "Staff can open your square until {time}",
+    "pillOnChanges": "Can make changes",
+    "leftMin": "{n} min left",
+    "leftHours": "{n} h left",
+    "leftDays": "{n} days left",
+    "offTitle": "Support access is off",
+    "offText": "Staff can only look in when you ask for help. Every use is shown in Activity and mailed to you, and you can end it whenever you like.",
+    "allowTitle": "Allow access",
+    "statusOff": "Off · nobody can see your square",
+    "ownerOnly": "Only the owner of the square can allow or end support access.",
+    "endNow": "End access now",
+    "endTitle": "End support access now?",
+    "endText": "Anyone from rootsquares who is in your square now is sent out at their next click. You can allow access again later.",
+    "endVerb": "End access",
+    "openedBy": "Opened by",
+    "nobody": "Nobody has opened your square yet.",
+    "open": "open now",
+    "howLong": "How long",
+    "d60": "1 hour",
+    "d1440": "24 hours",
+    "d10080": "7 days",
+    "which": "Which parts can staff see?",
+    "editing": "Caution · editing",
+    "editingHint": "Only turn this on if you want staff to change things for you.",
+    "membersConfirm": "I understand that staff can read my member list, which can hold personal details.",
+    "allowChanges": "Allow changes",
+    "allowChangesHint": "Staff may edit site content and settings. The member list and the logs always stay read only.",
+    "allowChangesOff": "Choose site content or settings first.",
+    "note": "A note for yourself (optional)",
+    "notePlaceholder": "For example: help with the ticket page, call at 14:00",
+    "allowBtn": "Allow support access",
+    "confirmTitle": "Allow support access?",
+    "confirmVerb": "Allow access",
+    "confirmFor": "For",
+    "confirmParts": "Parts",
+    "confirmChanges": "Staff can",
+    "pillChanges": "Make changes",
+    "pillRead": "View only",
+    "confirmEnds": "Access ends",
+    "confirmText": "rootsquares staff can open your square's admin until then. Every use is shown on this page and mailed to you. You can end it at any time.",
+    "requestsTitle": "Requests from rootsquares",
+    "requestsEmpty": "Nobody has asked for access.",
+    "answered": "answered",
+    "activityTitle": "Activity",
+    "activityEmpty": "Nothing has happened yet.",
+    "you": "You",
+    "someone": "Someone",
+    "tabAccess": "Access",
+    "tabActivity": "Activity",
+    "pager": "Pages of the activity log",
+    "prev": "Previous",
+    "next": "Next",
+    "pageOf": "Page {page} of {pages}",
+    "range": "{from} to {to} of {total}",
+    "neverTitle": "Never reachable, whatever you allow",
+    "neverText": "Payments, billing, orders, tickets sold, donations, accounting, reports, messages to your members, newsletter recipients, user accounts and door check-in.",
+    "sum": "Staff can {mode} {parts} for {duration}.",
+    "sumView": "view",
+    "sumViewEdit": "view and edit",
+    "sumEditing": "Editing is on.",
+    "sumNone": "Choose at least one part to allow.",
+    "mode": {
+      "read": "Read only",
+      "changes": "May make changes"
+    },
+    "ended": {
+      "staff": "ended by staff",
+      "expired": "the access ran out",
+      "revoked": "you ended the access"
+    },
+    "scopes": {
+      "content": {
+        "name": "Site content",
+        "hint": "Events, news, gallery, committee, founders, magazines, sponsors, testimonials and lists."
+      },
+      "settings": {
+        "name": "Settings and theme",
+        "hint": "Your square's settings and its look."
+      },
+      "health": {
+        "name": "Health and logs",
+        "hint": "Technical state and the log of what was done. No content."
+      },
+      "members": {
+        "name": "Member list (read only)",
+        "hint": "Names and details of your members. Staff can only look, never change."
+      }
+    },
+    "log": {
+      "grant": "{who} allowed support access ({parts}; {mode})",
+      "revoke": "{who} ended support access",
+      "request": "{who} from rootsquares asked for access",
+      "session_start": "{who} opened your square ({parts}; {mode})",
+      "session_end": "{who}: the session ended ({how})",
+      "denied": "{who} tried to open your square but there was no access"
+    },
+    "errors": {
+      "grant_active": "Support access is already on. End it first to change it.",
+      "owner_only": "Only the owner of the square can allow or end support access.",
+      "validation_error": "Check the choices: at least one part, and the member list needs your confirmation."
+    }
+  },
+  "yourSquare": {
+    "plan": "Plan",
+    "planCustom": "Custom package",
+    "upgradePlan": "Upgrade plan",
+    "managePlan": "Manage plan",
+    "live": "Live · you are its first admin",
+    "copyLink": "Copy link",
+    "linkCopied": "Link copied",
+    "copyFailed": "Could not copy. Select the link and copy it by hand.",
+    "stepCreated": "Square created",
+    "stepCreatedText": "Your own database is ready.",
+    "stepGoogle": "Google sign-in",
+    "inProgress": "In progress",
+    "details": "Square details"
+  },
+  "tax": {
+    "included": "Includes {percent}% tax: {net} + {tax}",
+    "pricingNote": "In {country} the price already includes {percent}% tax: you pay exactly the price shown."
+  },
+  "color": {
+    "label": "Accent colour",
+    "textOnColour": "Text on colour",
+    "colourOnPage": "Colour on page",
+    "custom": "Custom colour",
+    "hex": "Hex value",
+    "pass": "Passes AA",
+    "fail": "Too light, try darker"
+  },
+  "domain": {
+    "pending": {
+      "label": "Waiting for DNS",
+      "text": "Add these records at your domain provider. This is the only thing left to do."
+    },
+    "verifying": {
+      "label": "Verifying",
+      "text": "We found your records and are issuing the security certificate. Usually a few minutes, at most 24 hours."
+    },
+    "live": {
+      "label": "Live",
+      "text": "Your site is live with a secure connection."
+    },
+    "error": {
+      "label": "Needs attention",
+      "text": "We could not find the records. Check for typos, or that the old ones were removed."
+    }
+  },
+  "wizard": {
+    "steps": {
+      "account": "Account",
+      "name": "Name and address",
+      "theme": "Theme",
+      "modules": "Modules",
+      "domain": "Domain",
+      "review": "Review"
+    },
+    "rail": "Set up your site",
+    "saveExit": "Save and exit",
+    "stepWord": "Step",
+    "ofWord": "of",
+    "eyebrow": "Step {n} of 6",
+    "progress": "Set-up progress",
+    "back": "Back",
+    "continue": "Continue",
+    "skip": "Skip for now",
+    "edit": "Edit",
+    "account": {
+      "title": "Create your account",
+      "text": "Free for 7 days. No card needed.",
+      "name": "Your name",
+      "email": "Email",
+      "password": "Password",
+      "passwordHint": "At least 10 characters.",
+      "terms": "By continuing you accept the {terms} and {privacy}.",
+      "termsLink": "terms",
+      "privacyLink": "privacy policy",
+      "create": "Create account",
+      "creating": "Creating…",
+      "dupTitle": "This email already has an account",
+      "dupText": "Sign in instead, or reset your password.",
+      "dupField": "Already registered",
+      "fieldRequired": "Required",
+      "passwordShort": "Use at least 10 characters"
+    },
+    "name": {
+      "title": "Name your site",
+      "text": "This appears at the top of your website. You can change it later.",
+      "name": "Association name",
+      "nameError": "Enter a name so we can set up your site",
+      "address": "Site address",
+      "addressHint": "Letters, numbers and dashes. This is where visitors find you.",
+      "addressError": "Use letters, numbers and dashes only",
+      "type": "What kind of group are you?",
+      "types": {
+        "cultural": [
+          "Cultural association",
+          "Festivals, heritage, dance and music"
+        ],
+        "religious": [
+          "Religious community",
+          "Services, gatherings and fellowship"
+        ],
+        "language": [
+          "Language school",
+          "Classes, terms and families"
+        ],
+        "other": [
+          "Something else",
+          "Another kind of association"
+        ]
+      }
+    },
+    "theme": {
+      "title": "Choose a theme",
+      "text": "Preview updates as you pick. Change it any time.",
+      "darkPreview": "Preview in dark mode",
+      "group": "Theme",
+      "sample": "Northern light, shared.",
+      "sampleText": "Concerts, language evenings and the spring market.",
+      "sampleNav": "Events · About · Join",
+      "sampleButton": "Get tickets"
+    },
+    "modules": {
+      "title": "Choose modules",
+      "text": "Switch on what you need. Turn others on later.",
+      "count": "{n} of {total} on · all included in your trial",
+      "error": "Could not load modules"
+    },
+    "domain": {
+      "title": "Connect your domain",
+      "text": "Optional. Your site works at {address} meanwhile.",
+      "own": "Your domain",
+      "ownHint": "For example nordlys.no. Leave empty to use the free address.",
+      "ownError": "Enter a domain like nordlys.no",
+      "status": "Status",
+      "pending": "Pending DNS",
+      "verifying": "Verifying",
+      "live": "Live",
+      "error": "Not found",
+      "record": "{type} record · host {host}",
+      "copy": "Copy {type}",
+      "verify": "Verify now",
+      "verifyAgain": "Verify again",
+      "checking": "Checking…",
+      "lastChecked": "Last checked just now",
+      "notChecked": "Not checked yet",
+      "errTitle": "We could not find the records",
+      "errText": "DNS changes can take up to 24 hours. Check the values below, then verify again.",
+      "liveTitle": "{domain} is live",
+      "liveText": "HTTPS certificate issued. Visitors are served on your domain."
+    },
+    "review": {
+      "title": "Review and launch",
+      "text": "Everything can be changed later in the console.",
+      "rName": "Association",
+      "rAddress": "Address",
+      "rTheme": "Theme",
+      "rModules": "Modules",
+      "rDomain": "Domain",
+      "none": "None",
+      "freeAddress": "Free address",
+      "launch": "Launch my site",
+      "launching": "Launching…",
+      "s1": "Create site",
+      "s2": "Apply theme",
+      "s3": "Enable modules",
+      "queued": "Queued",
+      "working": "Working",
+      "done": "Done",
+      "errTitle": "Launch failed",
+      "errText": "We could not publish your site. Nothing was lost.",
+      "retry": "Try again",
+      "trial": "Your 7-day free trial starts now. No card needed."
+    },
+    "live": {
+      "eyebrow": "Launched",
+      "title": "Your site is",
+      "em": "live.",
+      "text": "{name} is now open to visitors.",
+      "share": "Share link",
+      "copyLink": "Copy link",
+      "email": "Email",
+      "facebook": "Facebook",
+      "qr": "QR code",
+      "qrSoon": "QR codes are not available yet",
+      "qrSoonBody": "Copy the link instead.",
+      "mailSubject": "Our new website",
+      "console": "Open console",
+      "visit": "Visit site",
+      "goConsole": "Go to console",
+      "launched": "Site launched"
+    }
+  },
+  "landing": {
+    "hero": {
+      "eyebrow": "For volunteer committees",
+      "title": "Your association's website,",
+      "titleEm": "ready in an hour.",
+      "lede": "Events, tickets, membership and accounting in one calm place. No developer needed, and your visitors never see our name.",
+      "primary": "Start your website",
+      "secondary": "See pricing",
+      "trial": "Free for 7 days. No card needed.",
+      "price": "From {launch}, then {month} a month"
+    },
+    "launch": {
+      "name": "Association name",
+      "placeholder": "Nordlys Cultural Society",
+      "theme": "Look",
+      "mockLabel": "Preview of the website for {name}",
+      "mockNav": "Events · Join",
+      "mockTitle": "Welcome. Here is what is on this season.",
+      "mockCta": "Join us",
+      "go": "Start with this look"
+    },
+    "modules": {
+      "eyebrow": "What you get",
+      "title": "Everything a committee needs, nothing it doesn't.",
+      "events": {
+        "name": "Events",
+        "hint": "Dates, places, descriptions"
+      },
+      "tickets": {
+        "name": "Tickets",
+        "hint": "Sell, scan, mark Vipps as paid"
+      },
+      "membership": {
+        "name": "Membership",
+        "hint": "Renewals and reminders"
+      },
+      "committee": {
+        "name": "Committee",
+        "hint": "Who does what this year"
+      },
+      "gallery": {
+        "name": "Gallery and articles",
+        "hint": "Photos and news"
+      },
+      "accounting": {
+        "name": "Accounting",
+        "hint": "Exports your auditor accepts"
+      },
+      "domain": {
+        "name": "Your own domain",
+        "hint": "Set up in minutes"
+      }
+    },
+    "preview": {
+      "events": "Upcoming events",
+      "tickets": "Tickets and orders",
+      "membership": "Members",
+      "committee": "Committee",
+      "gallery": "Gallery and articles",
+      "accounting": "Accounting",
+      "domain": "Domain",
+      "markPaid": "Mark as paid",
+      "income": "Income",
+      "expenses": "Expenses",
+      "balance": "Balance"
+    },
+    "who": {
+      "eyebrow": "Who it is for",
+      "title": "Made for groups run by volunteers.",
+      "cultural": {
+        "label": "Culture",
+        "name": "Cultural societies",
+        "text": "Festivals, concerts and a members list that survives the next committee."
+      },
+      "religious": {
+        "label": "Faith",
+        "name": "Religious communities",
+        "text": "Services, gatherings and donations in one calm place."
+      },
+      "language": {
+        "label": "Learning",
+        "name": "Language schools",
+        "text": "Classes, term fees and parents who always know where to look."
+      },
+      "youth": {
+        "label": "Youth",
+        "name": "Youth clubs",
+        "text": "Sign-ups, trips and updates without a group chat."
+      }
+    },
+    "proof": {
+      "eyebrow": "In use",
+      "title": "BCA Oslo went live in one evening.",
+      "stats": {
+        "launch": "to launch the site",
+        "members": "members moved over",
+        "festivals": "festivals with tickets",
+        "sheets": "spreadsheets left"
+      },
+      "unit": "min",
+      "link": "Read the case study",
+      "mock": "Sample figures"
+    },
+    "domain": {
+      "label": "Domain",
+      "name": "nordlys.no",
+      "status": "Waiting for DNS",
+      "text": "Add these records at your domain provider. This is the only thing left to do."
+    },
+    "steps": {
+      "eyebrow": "How it works",
+      "title": "Live in three steps.",
+      "minutes": "{n} min",
+      "click": "1 click",
+      "name": {
+        "name": "Name your association",
+        "text": "Name, address and the kind of group you are."
+      },
+      "look": {
+        "name": "Pick a look and modules",
+        "text": "Choose a theme and switch on what you need."
+      },
+      "launch": {
+        "name": "Launch",
+        "text": "Press the button and share the link."
+      }
+    },
+    "trust": {
+      "label": "Why you can trust it",
+      "commission": "No commission on tickets",
+      "vipps": "Members pay with Vipps",
+      "cancel": "Cancel any time"
+    },
+    "cta": {
+      "title": "Ready when your committee is.",
+      "text": "Start free for 7 days. No card needed."
+    }
+  },
+  "cmt": {
+    "sub": "Order and visibility control the public About page.",
+    "add": "Add member",
+    "editTitle": "Edit member",
+    "addTitle": "Add member",
+    "name": "Name",
+    "namePh": "Full name",
+    "role": "Role title",
+    "rolePh": "e.g. Chair",
+    "email": "Email (shown on the public page)",
+    "bio": "Short bio",
+    "bioPh": "Write a short bio…",
+    "bioHint": "Shown under the portrait.",
+    "portrait": "Portrait",
+    "visibleLabel": "Visible on public site",
+    "visible": "Visible",
+    "hidden": "Hidden",
+    "up": "Move {name} up",
+    "down": "Move {name} down",
+    "hide": "Hide {name}",
+    "show": "Show {name}",
+    "editName": "Edit {name}",
+    "saved": "Saved. The public site updates in a moment.",
+    "close": "Close",
+    "saveChanges": "Save changes",
+    "addMember": "Add member",
+    "remove": "Remove",
+    "removeQ": "Remove {name}?",
+    "removeText": "{name} is taken off the committee and the public About page.",
+    "removeVerb": "Remove member",
+    "removed": "Member removed",
+    "added": "Member added",
+    "emptyTitle": "No committee members yet",
+    "emptyText": "Add the people visitors should know.",
+    "nameError": "Enter a name.",
+    "roleError": "Enter a role title.",
+    "emailError": "Enter a valid email address.",
+    "bioError": "Bio is too long. Shorten by {n} characters.",
+    "portraitMeta": "Sample portrait"
+  },
+  "dmn": {
+    "sub": "Where visitors find your site.",
+    "states": {
+      "none": "Not set",
+      "pending": "Pending DNS",
+      "verifying": "Verifying",
+      "live": "Live",
+      "error": "Error"
+    },
+    "subdomain": "Subdomain",
+    "siteAddress": "Site address",
+    "save": "Save",
+    "saved": "Address saved",
+    "custom": "Custom domain",
+    "chipLive": "Live",
+    "chipError": "Error",
+    "chipNotLive": "Not live",
+    "intro": "Use your association’s own address. We guide you through the DNS records.",
+    "domainName": "Domain name",
+    "domainHint": "Without https:// or www.",
+    "connect": "Connect domain",
+    "domainError": "Enter a domain such as forening.no.",
+    "waitingTitle": "Waiting for DNS",
+    "waitingText": "Add these records at your domain registrar. Changes can take up to 24 hours.",
+    "checkNow": "Check now",
+    "lastChecked": "Last checked {time}",
+    "checking": "Checking…",
+    "verifyingTitle": "Verifying {domain}",
+    "verifyingText": "Looking for your records. This usually takes under a minute.",
+    "verifyingLabel": "Verifying",
+    "liveTitle": "Domain is live",
+    "liveText": "{domain} serves your site with a secure connection.",
+    "address": "Address",
+    "certificate": "Certificate",
+    "certificateValue": "Valid until 14 Mar 2027, renews automatically",
+    "redirect": "Redirect",
+    "redirectValue": "www.{domain} to {domain}",
+    "visit": "Visit site",
+    "removeDomain": "Remove domain",
+    "removeTitle": "Remove custom domain",
+    "removeText": "Your site stays available at {sub}. Visitors using the old address will see an error.",
+    "errorTitle": "We could not verify this domain",
+    "errorText": "The TXT and A records were not found. If you added them recently, wait a few minutes.",
+    "checkAgain": "Check again",
+    "type": "Type",
+    "name": "Name",
+    "value": "Value",
+    "ttl": "TTL",
+    "status": "Status",
+    "found": "Found",
+    "missing": "Missing",
+    "copyValue": "Copy {value}",
+    "wentLive": "Domain is live",
+    "wentLiveBody": "{domain} now serves your site."
+  },
+  "sa": {
+    "sub": "Let rootsquares support help, for a limited time.",
+    "activeTitle": "Support has access until {when}",
+    "activeText": "{who} can see {scopes}. Every action is logged below.",
+    "revokeNow": "Revoke now",
+    "revoked": "Access revoked. Support can no longer see your organisation.",
+    "grant": "Grant access",
+    "grantText": "Only an owner can grant access. Access ends automatically, and you can revoke it at any time.",
+    "duration": "Duration",
+    "expires": "Expires {when}.",
+    "scope": "Scope",
+    "note": "What do you need help with? (optional)",
+    "noteHint": "Visible to the support agent.",
+    "grantBtn": "Grant access for {duration}",
+    "never": "Billing and user management are never included.",
+    "granted": "Access granted",
+    "durations": {
+      "1h": "1 hour",
+      "24h": "24 hours",
+      "7d": "7 days"
+    },
+    "scopes": {
+      "content": "Site content",
+      "orders": "Orders and members",
+      "settings": "Settings"
+    },
+    "scopeHints": {
+      "content": "Events, pages and gallery. Read only.",
+      "orders": "Customer details. Read and fix orders.",
+      "settings": "Domain and profile. Never billing or users."
+    },
+    "audit": "Audit log",
+    "last30": "Last 30 days",
+    "time": "Time",
+    "who": "Who",
+    "action": "Action",
+    "scopeCol": "Scope",
+    "actions": {
+      "viewedOrders": "Viewed orders list",
+      "resentConfirmation": "Resent confirmation for order #1047",
+      "changedAddress": "Changed site address",
+      "viewedDomain": "Viewed domain records"
+    },
+    "emptyTitle": "Nothing yet",
+    "emptyText": "Support actions will be listed here, with time and scope.",
+    "supportAgent": "Anna K.",
+    "noScopes": "no scopes"
+  },
+  "pv": {
+    "label": "Preview controls",
+    "theme": "Theme",
+    "colourMode": "Colour mode",
+    "light": "Light",
+    "dark": "Dark",
+    "deviceWidth": "Device width",
+    "deviceLabel": "{name} {px}px",
+    "devices": {
+      "phone": "Phone",
+      "tablet": "Tablet",
+      "desktop": "Desktop"
+    },
+    "exit": "Exit"
+  },
+  "gal": {
+    "sub": "Photos shown on the public gallery page.",
+    "add": "Add photos",
+    "empty": "No photos yet",
+    "emptyText": "Add photos to show them on the public gallery.",
+    "remove": "Remove {name}",
+    "removed": "Photo removed",
+    "added": "Photo added (demo, nothing is uploaded)"
+  },
+  "themes": {
+    "search": "Search by name, colour, mood or font",
+    "clearSearch": "Clear search",
+    "shell": "How the site is navigated",
+    "count": "{n} theme | {n} themes",
+    "preview": {
+      "label": "Preview of the {theme} theme: {shell}, {colour}",
+      "events": "Events",
+      "members": "Members",
+      "about": "About",
+      "join": "Join",
+      "menu": "Menu",
+      "next": "Next up",
+      "title1": "Autumn gathering",
+      "title2": "at the hall",
+      "event": "Event title {n}",
+      "when": "Sat 12 Oct",
+      "whenHall": "Sat 12 Oct · Hall",
+      "free": "Free"
+    },
+    "coming": "Coming up",
+    "comingHint": "Built and being finished. They open for new squares soon.",
+    "none": "No theme matches. Clear the search or pick another group."
+  }
+}

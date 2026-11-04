@@ -1,0 +1,15 @@
+node_modules/
+dist/
+dist-admin/
+.env
+.env.*
+.DS_Store
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+logs/
+!.env.example
+
+# Output of the scripts/test-*.ps1 checks
+scripts/.test-logs/

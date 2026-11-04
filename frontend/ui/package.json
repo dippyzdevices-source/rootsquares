@@ -1,0 +1,29 @@
+{
+  "name": "@rootsquares/ui",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "description": "The shared design system of the customer app and the admin application (ADR 084). Source package: the apps compile it, there is no build step.",
+  "exports": {
+    ".": "./src/index.ts",
+    "./i18n": "./src/i18n/index.ts",
+    "./themes": "./src/themes/index.ts",
+    "./*.vue": "./src/*.vue",
+    "./*.css": "./src/*.css",
+    "./*.json": "./src/*.json",
+    "./*": "./src/*.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit -p tsconfig.json"
+  },
+  "dependencies": {
+    "@fontsource/inter": "5.3.0",
+    "@fontsource/bricolage-grotesque": "5.3.0",
+    "@fontsource/cormorant-garamond": "5.3.0"
+  },
+  "peerDependencies": {
+    "vue": "^3.5.43",
+    "vue-i18n": "^11.4.13",
+    "vue-router": "^5.4.0"
+  }
+}

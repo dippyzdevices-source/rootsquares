@@ -1,0 +1,124 @@
+/*
+ * rootsquares platform tokens: Brass (ink + brass, hairline, Inter + Cormorant Garamond display).
+ * Source: design/rootsquares-platform-brass/export/tokens.css (copied verbatim to brass.css). <html data-brand="brass"> is required;
+ * dark mode adds data-theme="dark". html font-size is 95%.
+ * The values below are the Brass light values in @theme static so Tailwind utilities exist; dark values and the component
+ * character come from brass.css. Tailwind's generic scales (colours, type sizes, radii, shadows, breakpoints, leading,
+ * easings, fonts) are cleared. Spacing keeps Tailwind's 4px step: design --space-1..16 = 4,8,12,16,20,24,32,40,48,64
+ * = steps 1,2,3,4,5,6,8,10,12,16. Full list: design/TOKENS.md.
+ */
+@import "tailwindcss";
+@source "../"; /* the ui package's own sources are scanned for utilities whichever app builds them (ADR 084) */
+@import "./components.css" layer(components);
+@import "./components-extra.css" layer(components);
+@import "./brass.css";
+@import "./screens.css";
+@import "./ext.css"; /* platform v3 extension components (bx-*), verbatim from the design */
+@import "./ext-app.css";
+@import "./console.css"; /* owner console pages: Squares, People, Organisations, Audit log, Health, Subscriptions (W11-R75) */
+@import "./sending-domain.css"; /* the own sending domain cards and the E-mail contact card, from Sending Domain Redesign.html (W25-R36) */
+@import "./ext2.css"; /* platform v4 batch 3: wizard, pricing, case study, contact, toasts, portal shell */
+@import "./ext3.css"; /* platform v4 screen 9b: Theme and logo (tp-*), verbatim from the design */
+@import "./buttons.css"; /* button text per application: capitals in the customer app, mixed case in the admin app (W25-R37) */
+@import "./shape.css"; /* the one place that decides pill or rectangle (W23-R31); keep it last of the style files */
+@import "./scheme.css"; /* the colour roles (W23-R50); keep it after shape.css */
+/* The design system both apps load (ADR 084). The customer app adds themes.css, landing.css and marketing.css on top (src/styles/main.css); the admin application adds nothing. */
+
+@theme static {
+  --color-*: initial;
+  --font-*: initial;
+  --text-*: initial;
+  --leading-*: initial;
+  --radius-*: initial;
+  --shadow-*: initial;
+  --inset-shadow-*: initial;
+  --drop-shadow-*: initial;
+  --breakpoint-*: initial;
+  --container-*: initial;
+  --ease-*: initial;
+  --animate-*: initial;
+
+  --color-bg: #f4efe4;
+  --color-surface: #fbf8f0;
+  --color-surface-raised: #fbf8f0;
+  --color-surface-sunken: #ebe4d4;
+  --color-text: #1c1a16;
+  --color-text-muted: #5e584c;
+  --color-border: #cfc5ad;
+  --color-border-strong: #8a8272;
+  --color-accent: #1c1a16;
+  --color-accent-hover: #38342c;
+  --color-on-accent: #fbf8f0;
+  --color-accent-subtle: #ede7d8;
+  --color-brass: #9a7a2e;
+  --color-brass-text: #735510;
+  --color-brass-subtle: #efe4c6;
+  --color-highlight: #9a7a2e;
+  --color-highlight-hover: #7f6322;
+  --color-on-highlight: #1c1a16;
+  --color-highlight-subtle: #efe4c6;
+  --color-focus: #9a7a2e;
+  --color-overlay: rgb(28 26 22 / 0.5);
+  --color-success: #2d6747;
+  --color-success-subtle: #e1ecdb;
+  --color-warning: #7d5509;
+  --color-warning-subtle: #f1e3bf;
+  --color-danger: #97372b;
+  --color-danger-subtle: #f2dcd5;
+  --color-info: #38587a;
+  --color-info-subtle: #dde6ee;
+
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-heading: "Bricolage Grotesque", "Schibsted Grotesk", system-ui, sans-serif;
+  --font-display: "Cormorant Garamond", "Cormorant", Georgia, serif;
+  --font-mono: ui-monospace, "SF Mono", Menlo, monospace;
+
+  --text-xs: 0.8rem;
+  --text-sm: 0.85rem;
+  --text-base: 0.95rem;
+  --text-lg: 1.05rem;
+  --text-xl: 1.2rem;
+  --text-2xl: 1.4rem;
+  --text-3xl: 1.75rem;
+  --text-4xl: 2.4rem;
+  --text-5xl: 3.2rem;
+  --text-table: 0.85rem;
+
+  --leading-body: 1.5;
+
+  --spacing: 4px;
+  --radius-sm: 6px;
+  --radius-md: 6px;
+  --radius-lg: 6px;
+  --radius-full: 6px;
+  --shadow-sm: none;
+  --shadow-md: 0 8px 24px rgb(28 26 22 / 0.14);
+
+  --breakpoint-sm: 480px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+
+  --ease-out: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --duration-fast: 120ms;
+  --duration-base: 200ms;
+}
+
+:root {
+  --ctl-h: 34px;
+  --tap-min: 34px;
+  --focus-ring: 0 0 0 2px var(--color-bg), 0 0 0 4px var(--color-focus);
+}
+@media (prefers-reduced-motion: reduce) {
+  :root { --duration-fast: 0ms; --duration-base: 0ms; }
+}
+
+@layer base {
+  /* export/tokens.css sets this with html:has([data-brand="brass"]); the attribute is on <html> itself here. */
+  html { font-size: 95%; -webkit-text-size-adjust: 100%; }
+  body { margin: 0; }
+  /* Preflight resets heading sizes; the design relies on the browser defaults where it sets none. */
+  h1 { font-size: 2em; }
+  h2 { font-size: 1.5em; }
+  h3 { font-size: 1.17em; }
+}

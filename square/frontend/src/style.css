@@ -1,0 +1,91 @@
+@import "tailwindcss";
+
+/* Class-based dark mode — toggled on <html> by useTheme.ts, not just OS preference. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-bg: #faf7f1;
+  --color-surface: #ffffff;
+  --color-border: #e7e1d8;
+
+  --color-primary: #7a2038;
+  --color-secondary: #e0a458;
+  --color-accent: #c7a028;
+  /* Fixed dark tone for text sitting on bg-secondary/bg-accent — those backgrounds stay a
+     similar light-to-mid warm tone in both themes, so their text must not flip to light
+     the way --color-text does in dark mode. */
+  --color-on-secondary: #2b2622;
+
+  --color-text: #2b2622;
+  --color-text-secondary: #6b6560;
+
+  --color-success: #3f7d58;
+  --color-success-bg: #eaf3ec;
+  --color-error: #a6423a;
+  --color-error-bg: #fbeae8;
+
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --font-bengali: "Noto Sans Bengali", sans-serif;
+  --font-bengali-serif: "Noto Serif Bengali", serif;
+}
+
+/* Dark palette — same tokens, same brand hues (burgundy/saffron/gold), lightened/adjusted for
+   a dark background. Not contrast-audited; expect a design pass later. */
+.dark {
+  --color-bg: #1c1815;
+  --color-surface: #29231e;
+  --color-border: #3d352c;
+
+  --color-primary: #c15a76;
+  --color-secondary: #d9a05a;
+  --color-accent: #d4ae3f;
+  /* Deliberately unchanged from light mode — see the definition above. */
+  --color-on-secondary: #2b2622;
+
+  --color-text: #f0ece5;
+  --color-text-secondary: #a89e93;
+
+  --color-success: #5fa878;
+  --color-success-bg: #1e3327;
+  --color-error: #d16a5f;
+  --color-error-bg: #3a201d;
+}
+
+body {
+  color: var(--color-text);
+  font-family: var(--font-sans);
+}
+
+/* iOS Safari's rubber-band bounce on the *document* (html/body) has long been a known WebKit
+   gap — overscroll-behavior alone (tried first) suppresses it reliably on Android/Chrome but
+   not consistently in Safari, since WebKit's own support for it is really only solid on a
+   nested scrolling element, not the top-level page scroll. So instead of relying on
+   overscroll-behavior at the document level, html/body no longer scroll at all (locked via
+   height:100% + overflow:hidden), and #app (the real Vue app root) becomes the actual
+   scrolling container — that's the "nested element" case Safari does support, so
+   overscroll-behavior-y: none on #app reliably kills the bounce/black-flash everywhere.
+   Router scroll-to-top (router/index.ts) targets #app's own scrollTop for the same reason —
+   window.scrollTo would be a no-op now that the window itself never scrolls. */
+html, body {
+  height: 100%;
+  overflow: hidden;
+  background-color: var(--color-bg);
+}
+
+#app {
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: none;
+}
+
+/* The admin console keeps its scrollbar gutter reserved, so moving between a short page (e.g. the Settings
+   hub) and a long one (e.g. Lists) never shifts the content sideways when a scrollbar appears. */
+#app:has(.ds-appshell) {
+  scrollbar-gutter: stable;
+}
+
+.font-bengali-serif {
+  font-family: var(--font-bengali-serif);
+}

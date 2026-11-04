@@ -1,0 +1,130 @@
+/* The own sending domain cards, the E-mail contact card beside them and the staff card: sizes, shapes and texts of the user's `Sending Domain Redesign.html` (W25-R36).
+   The design is roomier than the rest of the product (46px fields, 44px and 36px buttons, 15px text); these cards follow it as drawn, colours come from the roles in scheme.css.
+   Everything sits under `.sd`; `.sd.sd` beats the brass density rules of brass.css and shape.css without touching any other page. */
+.sd { display: grid; gap: 16px; align-content: start; }
+.sd.sd-card { padding: 22px 26px; }
+.sd-head { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.sd .sd-eyebrow { margin: 0; font: 600 12px/1 var(--font-sans); letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-brass-text); }
+.sd-lead { margin: 0; max-width: 68ch; font-size: 15px; line-height: 1.5; color: var(--color-text-muted); }
+.sd-help { margin: 0; max-width: 60ch; font-size: 14px; line-height: 1.5; color: var(--color-text-muted); }
+.sd-strong { margin: 0; font-size: 15px; color: var(--color-text); }
+.sd-prev { margin: 0; font-size: 14px; color: var(--color-text-muted); }
+.sd-prev b { color: var(--color-text); font-weight: 600; }
+.sd-form { display: grid; gap: 16px; }
+.sd-act { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.sd-error { margin: 0; font-size: 14px; color: var(--color-danger, #b3261e); }
+
+/* fields: 46px, 12px corners, the label above in 15px bold, the hint below in 14px */
+.sd .rs-field { max-width: 460px; gap: 6px; }
+.sd .rs-label { font: 600 15px var(--font-sans); color: var(--color-text); }
+.sd.sd .rs-input { min-height: 46px; padding: 0 14px; border-radius: 12px; font-size: 16px; background: #fff; }
+[data-theme="dark"] .sd.sd .rs-input { background: var(--color-surface); }
+.sd .rs-hint { font-size: 14px; line-height: 1.5; color: var(--color-text-muted); }
+/* the sender name joined to its domain: a 120px name, the domain in one piece */
+.sd.sd .bs-suffix .rs-input { flex: 0 0 120px; width: 120px; min-width: 0; border-radius: 12px 0 0 12px; border-right: 0; }
+.sd.sd .bs-suffix span { flex: 1; justify-content: start; min-height: 46px; padding: 0 14px; font-size: 15px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; border: 1px solid var(--color-border-strong); border-radius: 0 12px 12px 0; background: var(--color-surface-sunken); color: var(--color-text-muted); }
+.sd .sd-wide .rs-field { max-width: 520px; }
+.sd .sd-fields .rs-field { max-width: none; }
+.sd .sd-fields { display: flex; flex-wrap: wrap; gap: 16px; }
+.sd .sd-fields > * { flex: 1 1 260px; max-width: 460px; }
+
+/* buttons: 44px, 600 15px, mixed case; the small one 36px and 14px; the quiet one is the underlined link */
+.sd.sd .rs-btn { min-height: 44px; padding: 0 22px; border-radius: 999px; font: 600 15px/1.2 var(--font-sans); letter-spacing: 0; text-transform: none; gap: 8px; }
+.sd.sd .rs-btn--sm { min-height: 36px; padding: 0 16px; font-size: 14px; }
+.sd.sd .rs-btn--secondary { border-color: var(--color-border-strong); background: var(--color-surface); color: var(--color-text); }
+.sd.sd .rs-btn--secondary:hover { border-color: var(--color-text); background: var(--color-surface); }
+.sd.sd .rs-btn--ghost { padding: 0 6px; color: var(--color-text); text-decoration: underline; text-underline-offset: 3px; }
+.sd.sd .rs-btn--ghost:hover { background: transparent; color: var(--color-brass-text); }
+
+/* the state pill: a dot and the state in words */
+.sd-st { display: inline-flex; align-items: center; gap: 8px; padding: 4px 12px; border-radius: 999px; background: var(--color-brass-subtle); color: var(--color-text); font: 600 14px var(--font-sans); white-space: nowrap; }
+.sd-st::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: currentColor; flex: none; }
+.sd-st--warn { background: var(--color-warning-subtle); color: var(--color-warning); }
+.sd-st--ok { background: var(--color-success-subtle); color: var(--color-success); }
+.sd-st--bad { background: var(--color-danger-subtle); color: var(--color-danger); }
+
+/* "Need IT help?": one calm strip */
+.sd-need { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; padding: 14px 18px; border: 1px solid var(--color-border); border-radius: 14px; background: var(--color-surface-sunken); font-size: 15px; }
+.sd-need > span { min-width: 0; }
+
+/* key and value lines (Domain, Sends from, Status) */
+.sd-dl { display: grid; grid-template-columns: auto 1fr; gap: 6px 18px; margin: 0; font-size: 15px; }
+.sd-dl dt { color: var(--color-text-muted); }
+.sd-dl dd { margin: 0; font-weight: 600; overflow-wrap: anywhere; }
+
+/* requested: the details left, the help strip right */
+.sd-cols { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 28px; align-items: start; }
+.sd-cols > div:not(.sd-need) { display: grid; gap: 16px; }
+.sd-cols .sd-need { flex-direction: column; align-items: flex-start; }
+@media (max-width: 900px) { .sd-cols { grid-template-columns: 1fr; } }
+
+/* the DNS records: type, name, value (each with its Copy), status */
+.sd details > summary { cursor: pointer; font-weight: 600; font-size: 15px; padding: 4px 0; }
+.sd-rec { border: 1px solid var(--color-border); border-radius: 14px; overflow: hidden; background: var(--color-surface); }
+.sd-rh, .sd-rr { display: grid; grid-template-columns: 76px minmax(150px, 0.9fr) minmax(0, 2fr) 120px; gap: 16px; padding: 12px 18px; align-items: start; }
+.sd-rh { align-items: center; background: var(--color-surface-sunken); font: 600 12px/1 var(--font-sans); letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-text-muted); }
+.sd-rr { border-top: 1px solid var(--color-border); font-size: 15px; }
+.sd-ty { font-weight: 700; }
+.sd-ty small { display: block; font-weight: 500; font-size: 12px; color: var(--color-text-muted); }
+.sd-cv { display: grid; gap: 8px; justify-items: start; min-width: 0; }
+.sd-mono { display: block; max-width: 100%; padding: 6px 10px; border-radius: 8px; background: var(--color-surface-sunken); font: 500 13px/1.45 var(--font-mono, ui-monospace, monospace); overflow-wrap: anywhere; }
+.sd.sd .sd-cp { min-height: 30px; padding: 0 12px; font-size: 12px; border: 1px solid var(--color-border-strong); border-radius: 999px; background: var(--color-surface); color: var(--color-text); cursor: pointer; font-weight: 600; font-family: var(--font-sans); }
+.sd.sd .sd-cp:hover { border-color: var(--color-text); }
+@media (max-width: 800px) { .sd-rh { display: none; } .sd-rr { grid-template-columns: 1fr; gap: 8px; } }
+
+/* staff card: the console's oc-card with a header bar (title and state over a rule) and the body, as in the design's "flush" card */
+.sd.sd-oc { gap: 0; }
+.sd-oc .sd-hd { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; padding: 14px 26px; border-bottom: 1px solid var(--color-border); }
+.sd-oc .sd-bd { padding: 22px 26px; display: grid; gap: 16px; align-content: start; }
+.sd-rule { border: 0; border-top: 1px solid var(--color-border); width: 100%; margin: 0; }
+.sd-rec--staff .sd-rh, .sd-rec--staff .sd-rr { grid-template-columns: 76px minmax(150px, 1fr) minmax(0, 1.4fr) 120px; align-items: center; }
+.sd.sd-card { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--shape-surface); }
+.sd-st--plain { background: var(--color-brass-subtle); color: var(--color-text); }
+.sd-rec--staff .sd-mono { justify-self: start; }
+
+/* The customer cards on the Settings page (E-mail contact, Own sending domain) sit among the other cards (Identity, Address, Plan) and take their size:
+   the same padding, the 10px capital heading, 14px text, the product's 34px controls and buttons. The structure stays as drawn; the staff card keeps the roomy size. */
+.sd.sd.sd-card { padding: 16px 20px; gap: 12px; }
+.sd.sd-card .sd-eyebrow { font: 600 10px var(--font-sans); letter-spacing: 0.14em; color: var(--color-text-muted); }
+.sd.sd-card .sd-head { gap: 10px; }
+.sd.sd-card .sd-lead, .sd.sd-card .sd-strong { font-size: var(--text-sm); line-height: 1.45; }
+.sd.sd-card .sd-help, .sd.sd-card .sd-prev, .sd.sd-card .sd-error, .sd.sd-card .rs-hint { font-size: var(--text-xs, 0.78rem); line-height: 1.45; }
+.sd.sd-card .sd-form { gap: 12px; }
+.sd.sd-card .rs-field { gap: 4px; }
+.sd.sd-card .rs-label { font: 600 var(--text-sm) var(--font-sans); }
+.sd.sd.sd-card .rs-input { min-height: var(--ctl-h, 34px); padding: 0 12px; border-radius: var(--shape-field); font-size: var(--text-sm); }
+.sd.sd.sd-card .bs-suffix .rs-input { flex-basis: 100px; width: 100px; border-radius: var(--shape-field) 0 0 var(--shape-field); }
+.sd.sd.sd-card .bs-suffix span { min-height: var(--ctl-h, 34px); padding: 0 12px; font-size: var(--text-sm); border-radius: 0 var(--shape-field) var(--shape-field) 0; }
+.sd.sd.sd-card .rs-btn { min-height: var(--ctl-h, 34px); padding: 0 16px; font: 600 11px/1.2 var(--font-sans); letter-spacing: 0.1em; text-transform: uppercase; }
+.sd.sd.sd-card .rs-btn--sm { min-height: 28px; padding: 0 12px; font-size: 10px; }
+.sd.sd.sd-card .rs-btn--ghost { padding: 0 6px; }
+.sd.sd-card .sd-st { padding: 2px 10px; font-size: 12px; }
+.sd.sd-card .sd-need { padding: 10px 14px; gap: 10px; font-size: var(--text-sm); }
+.sd.sd-card .sd-dl { font-size: var(--text-sm); gap: 4px 14px; }
+.sd.sd-card .sd-rr, .sd.sd-card .sd-rh { padding: 8px 14px; gap: 12px; font-size: var(--text-sm); }
+.sd.sd-card .sd-rh { font-size: 10px; }
+.sd.sd-card .sd-mono { font-size: 12px; padding: 4px 8px; }
+.sd.sd.sd-card .sd-cp { min-height: 28px; padding: 0 10px; font-size: 11px; }
+.sd.sd-card details > summary { font-size: var(--text-sm); }
+
+/* The staff card sits among the console's other cards (oc-card, oc-h3: 14px 18px, .72rem capitals) and takes their size in the same way as the customer cards above. */
+.sd.sd-oc .sd-hd { padding: 14px 18px; gap: 10px; }
+.sd.sd-oc .sd-bd { padding: 14px 18px; gap: 12px; }
+.sd.sd-oc .sd-eyebrow { font: 600 .72rem var(--font-sans); letter-spacing: 0.12em; color: var(--color-text-muted); }
+.sd.sd-oc .sd-lead, .sd.sd-oc .sd-strong { font-size: var(--text-sm); line-height: 1.45; }
+.sd.sd-oc .sd-help, .sd.sd-oc .sd-error, .sd.sd-oc .rs-hint { font-size: var(--text-xs, 0.78rem); line-height: 1.45; }
+.sd.sd-oc .sd-form, .sd.sd-oc .sd-fields { gap: 12px; }
+.sd.sd-oc .rs-field { gap: 4px; }
+.sd.sd-oc .rs-label { font: 600 var(--text-sm) var(--font-sans); }
+.sd.sd.sd-oc .rs-input { min-height: var(--ctl-h, 34px); padding: 0 12px; border-radius: var(--shape-field); font-size: var(--text-sm); }
+.sd.sd.sd-oc .bs-suffix .rs-input { flex-basis: 100px; width: 100px; border-radius: var(--shape-field) 0 0 var(--shape-field); }
+.sd.sd.sd-oc .bs-suffix span { min-height: var(--ctl-h, 34px); padding: 0 12px; font-size: var(--text-sm); border-radius: 0 var(--shape-field) var(--shape-field) 0; }
+.sd.sd.sd-oc .rs-btn { min-height: 36px; padding: 0 18px; font: 500 var(--text-sm)/1.2 var(--font-sans); letter-spacing: 0; text-transform: none; }
+.sd.sd-oc .sd-st { padding: 2px 10px; font-size: 12px; }
+.sd.sd-oc .sd-dl { font-size: var(--text-sm); gap: 4px 14px; }
+.sd.sd-oc .sd-rr, .sd.sd-oc .sd-rh { padding: 8px 14px; gap: 12px; font-size: var(--text-sm); }
+.sd.sd-oc .sd-rh { font-size: 10px; }
+.sd.sd-oc .sd-mono { font-size: 12px; padding: 4px 8px; }
+/* Copy is a button like the others: capitals, 600, letter spacing 0.1em, a light outline (W23-R50 button rule). */
+.sd.sd.sd-card .sd-cp { font: 600 10px var(--font-sans); letter-spacing: 0.1em; text-transform: uppercase; border-color: var(--color-border); }
+.sd.sd.sd-card .sd-cp:hover { border-color: var(--color-brass); background: var(--color-surface-sunken); }

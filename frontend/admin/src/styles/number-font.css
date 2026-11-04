@@ -1,0 +1,9 @@
+/* The font of the digits in the admin application (W26-R40, the same as the customer app, W26-R39: Playfair Display).
+   The family "Playfair Digits" is the Playfair Display files of @fontsource (a dependency of this app) limited to the characters 0 to 9 (`unicode-range`), so every letter
+   stays in Inter or Cormorant Garamond and only a digit in the display font (the big figures: the overview, subscriptions, costs) changes. It comes first in the display font
+   stack; Inter's digits (table cells, small text) are not touched. */
+@font-face{font-family:"Playfair Digits";font-style:normal;font-weight:400;font-display:swap;src:url("../../../node_modules/@fontsource/playfair-display/files/playfair-display-latin-400-normal.woff2") format("woff2");unicode-range:U+0030-0039}
+@font-face{font-family:"Playfair Digits";font-style:normal;font-weight:500;font-display:swap;src:url("../../../node_modules/@fontsource/playfair-display/files/playfair-display-latin-500-normal.woff2") format("woff2");unicode-range:U+0030-0039}
+@font-face{font-family:"Playfair Digits";font-style:italic;font-weight:400;font-display:swap;src:url("../../../node_modules/@fontsource/playfair-display/files/playfair-display-latin-400-italic.woff2") format("woff2");unicode-range:U+0030-0039}
+@font-face{font-family:"Playfair Digits";font-style:italic;font-weight:500;font-display:swap;src:url("../../../node_modules/@fontsource/playfair-display/files/playfair-display-latin-500-italic.woff2") format("woff2");unicode-range:U+0030-0039}
+html[data-app="admin"]{--font-display:"Playfair Digits","Cormorant Garamond","Cormorant",Georgia,serif}

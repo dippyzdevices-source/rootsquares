@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <!-- The rootsquares mark (design v4 "Logo mark (final)"): an ink square with a brass stem forking like roots. Light and dark browsers get their own ink and brass (W26-R23). -->
+  <style>
+    .o { stroke: #1c1a16; }
+    .s { stroke: #9a7a2e; }
+    @media (prefers-color-scheme: dark) { .o { stroke: #efe9dc; } .s { stroke: #c9a55a; } }
+  </style>
+  <rect class="o" x="3" y="3" width="18" height="18" rx="3" fill="none" stroke-width="2.2" />
+  <path class="s" d="M12 4v9M12 9l-4 3M12 9l4 3" fill="none" stroke-width="2.2" stroke-linecap="round" />
+</svg>

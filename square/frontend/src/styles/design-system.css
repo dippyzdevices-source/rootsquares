@@ -1,0 +1,1046 @@
+/* BCA·Oslo Design System — ported from the Claude Design project. Every selector is scoped
+   under .ds-scope so it can never leak into the admin/member/checkin Tailwind-token surface —
+   see CLAUDE.md's "Design language" section for that existing convention.
+
+   Dark mode: the design system's own "deep palm" dark palette is applied via the app's
+   existing `html.dark` class toggle (useTheme() composable) — see the `html.dark .ds-scope`
+   override block below. The design system itself gates dark mode on `[data-theme="dark"]`;
+   we deliberately keep the app's own `.dark`-class mechanism instead of adding a second
+   theme-attribute system, and just re-point the same --ds-* custom properties.
+
+   This is a straight visual/structural port: real data and real functionality on every page
+   that uses these classes come from the app's own APIs, never from the design system's
+   example content (fabricated stats, fake quotes, fake RSVP/payment forms are not carried
+   over — see PROJECT_STATUS.md). */
+
+@import url("https://fonts.googleapis.com/css2?family=Marcellus&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Karla:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Noto+Serif+Bengali:wght@400;500;600;700&family=Sacramento&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500&display=swap");
+
+.ds-scope {
+  /* ---- Colors ---- */
+  --ds-paper-50: #FDF8F1;
+  --ds-paper-100: #F9F2E8;
+  --ds-paper-200: #F4EADC;
+  --ds-paper-300: #EADCC9;
+  --ds-paper-400: #DCC9B0;
+  --ds-ink-900: #3A2A1E;
+  --ds-ink-800: #4A3627;
+  --ds-ink-700: #5C4632;
+  --ds-ink-600: #6E5540;
+  --ds-ink-500: #8A7359;
+  --ds-ink-400: #A8947B;
+  --ds-ink-300: #C6B7A1;
+  --ds-terracotta-50: #FBEEE8;
+  --ds-terracotta-100: #F4D7C8;
+  --ds-terracotta-200: #E7B29A;
+  --ds-terracotta-300: #D88A6B;
+  --ds-terracotta-400: #C2603D;
+  --ds-terracotta-500: #A8422A;
+  --ds-terracotta-600: #8E3520;
+  --ds-terracotta-700: #6F2716;
+  --ds-saffron-50: #FDF2DC;
+  --ds-saffron-100: #FAE3BC;
+  --ds-saffron-200: #F3CB86;
+  --ds-saffron-300: #E8A33D;
+  --ds-saffron-400: #D2871F;
+  --ds-saffron-500: #AE6C13;
+  --ds-nil-100: #D7DEE6;
+  --ds-nil-300: #6C8298;
+  --ds-nil-500: #35506B;
+  --ds-nil-700: #1E3347;
+  --ds-nil-900: #142331;
+  --ds-palm-100: #DDE7DF;
+  --ds-palm-300: #71937F;
+  --ds-palm-500: #3C6350;
+  --ds-palm-700: #274536;
+  --ds-palm-800: #1E3628;
+  --ds-palm-900: #14241A;
+  --ds-palm-950: #0C1810;
+
+  --ds-surface-page: var(--ds-paper-100);
+  --ds-surface-card: var(--ds-paper-50);
+  --ds-surface-sunken: var(--ds-paper-200);
+  --ds-surface-inverse: var(--ds-nil-900);
+  /* A page-hero band that actually follows the light/dark toggle (unlike -inverse, which is
+     deliberately frozen dark in both themes for footer/checkin use) — ink in light mode, palm
+     in dark mode, per explicit user color choice. Kept as its own token rather than reusing
+     -inverse so this doesn't also recolor the footer/utility-bar/checkin surfaces. A gradient,
+     not a flat fill, matching --ds-wash-warm's own radial-gradient treatment used by every
+     other page's hero band — a flat fill read noticeably flatter once live. */
+  --ds-surface-hero: radial-gradient(120% 90% at 80% 0%, var(--ds-ink-600) 0%, var(--ds-ink-800) 58%);
+  --ds-surface-primary-soft: var(--ds-terracotta-50);
+  --ds-surface-accent-soft: var(--ds-saffron-50);
+  /* Committee portrait quote background — explicit per-theme choice (ink-300 / palm-800),
+     not a shared token whose value happens to differ by theme like every other --ds-surface-*
+     above, so it's spelled out as its own token rather than reusing --ds-ink-300 directly (that
+     variable is itself redefined to a different, unrelated value in dark mode). --surface-quote
+     itself is now just the solid fallback color (used by .ds-portrait-quote's `background`);
+     the actual rendered fill is --ds-surface-quote-gradient, layered on top via
+     `background-image` the same two-layer way .ds-portrait-card already combines --ds-grain with
+     its own gradient — a flat quote box read noticeably flatter next to the card's own gradient. */
+  --ds-surface-quote: #E9DED0;
+  /* The decorative quote-mark glyph needs its own per-theme color: --ds-terracotta-200 alone
+     measured at only ~1.05:1 contrast against the old flat --ds-ink-300 quote background (nearly
+     invisible) — terracotta-500 restores real contrast (~3.7:1) against the new paper-toned
+     gradient above. Dark mode's terracotta-200 already contrasted fine (~3.6:1) against its own
+     palm-toned gradient, so it's kept there unchanged. */
+  --ds-quote-mark-color: var(--ds-terracotta-500);
+  --ds-text-heading: var(--ds-ink-800);
+  --ds-text-body: var(--ds-ink-600);
+  --ds-text-muted: var(--ds-ink-500);
+  --ds-text-faint: var(--ds-ink-400);
+  --ds-text-on-dark: var(--ds-paper-100);
+  --ds-text-on-primary: var(--ds-paper-50);
+  --ds-text-primary: var(--ds-terracotta-500);
+  --ds-border-hairline: #E0D0BA;
+  --ds-border-default: var(--ds-paper-400);
+  --ds-border-strong: var(--ds-ink-300);
+  --ds-border-primary: var(--ds-terracotta-400);
+  --ds-border-on-dark: rgba(249, 242, 232, 0.22);
+  --ds-action-primary: var(--ds-terracotta-500);
+  --ds-action-primary-hover: var(--ds-terracotta-600);
+  --ds-action-ghost-hover: var(--ds-paper-200);
+  --ds-action-accent: var(--ds-saffron-300);
+  --ds-action-accent-hover: var(--ds-saffron-400);
+  --ds-focus-ring: var(--ds-saffron-400);
+  --ds-focus-ring-soft: rgba(210, 135, 31, 0.22);
+  --ds-surface-skeleton: var(--ds-paper-300);
+  --ds-control-track: var(--ds-paper-400);
+  --ds-control-on: var(--ds-palm-500);
+  --ds-status-success: var(--ds-palm-500);
+  --ds-status-success-soft: var(--ds-palm-100);
+  --ds-status-info: var(--ds-nil-500);
+  --ds-status-info-soft: var(--ds-nil-100);
+  --ds-status-warning: var(--ds-saffron-400);
+  --ds-status-warning-soft: var(--ds-saffron-100);
+  --ds-status-danger: var(--ds-terracotta-600);
+  --ds-status-danger-soft: var(--ds-terracotta-50);
+  /* "Ink" tokens: text color for sitting on a *-soft badge/alert ground — kept distinct from
+     the ramps so dark mode can lighten them without touching --ds-status-* itself. */
+  --ds-status-success-ink: var(--ds-palm-700);
+  --ds-status-warning-ink: var(--ds-ink-800);
+  --ds-status-danger-ink: var(--ds-terracotta-700);
+  --ds-status-info-ink: var(--ds-nil-700);
+  --ds-status-accent-ink: #7A4A0A;
+
+  /* ---- Type ---- */
+  --ds-font-display: "Marcellus", "Cormorant Garamond", Georgia, serif;
+  --ds-font-editorial: "Cormorant Garamond", Georgia, serif;
+  --ds-font-body: "Karla", "Helvetica Neue", Arial, sans-serif;
+  --ds-font-bengali: "Noto Serif Bengali", "Marcellus", serif;
+  --ds-font-script: "Sacramento", cursive;
+  --ds-text-display-l: clamp(33px, 5.6vw, 58px);
+  --ds-text-display-m: clamp(27px, 4.2vw, 44px);
+  --ds-text-display-s: clamp(23px, 3.1vw, 34px);
+  --ds-text-title: clamp(21px, 2.4vw, 26px);
+  --ds-text-subtitle: clamp(18px, 1.8vw, 21px);
+  --ds-text-body-l: 18px;
+  --ds-text-body-m: 16px;
+  --ds-text-body-s: 14px;
+  --ds-text-caption: 13px;
+  --ds-text-eyebrow: 12px;
+  --ds-tracking-display: -0.015em;
+  --ds-tracking-eyebrow: 0.18em;
+  --ds-tracking-button: 0.08em;
+
+  /* ---- Spacing / layout ---- */
+  --ds-space-1: 4px;
+  --ds-space-2: 8px;
+  --ds-space-3: 12px;
+  --ds-space-4: 16px;
+  --ds-space-5: 24px;
+  --ds-space-6: 32px;
+  --ds-space-7: 48px;
+  --ds-space-8: 64px;
+  --ds-space-9: 96px;
+  --ds-container-max: 1200px;
+  --ds-container-narrow: 720px;
+  --ds-gutter: 24px;
+  --ds-section-y: var(--ds-space-9);
+  --ds-nav-height: 76px;
+  --ds-radius-xs: 3px;
+  --ds-radius-sm: 6px;
+  --ds-radius-md: 10px;
+  --ds-radius-lg: 18px;
+  --ds-radius-pill: 999px;
+  --ds-radius-arch: 50% 50% var(--ds-radius-md) var(--ds-radius-md) / 38% 38% var(--ds-radius-md) var(--ds-radius-md);
+
+  /* ---- Elevation / motion ---- */
+  --ds-shadow-xs: 0 1px 2px rgba(90, 66, 46, 0.06);
+  --ds-shadow-sm: 0 2px 6px rgba(90, 66, 46, 0.07);
+  --ds-shadow-md: 0 8px 20px -6px rgba(90, 66, 46, 0.13);
+  --ds-shadow-lg: 0 22px 48px -18px rgba(90, 66, 46, 0.24);
+  --ds-scrim: rgba(58, 42, 30, 0.5);
+  --ds-blur-glass: saturate(120%) blur(10px);
+  --ds-glass-paper: rgba(253, 248, 241, 0.82);
+  --ds-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23g)' opacity='0.055'/%3E%3C/svg%3E");
+  --ds-wash-warm: radial-gradient(120% 90% at 80% 0%, var(--ds-saffron-50) 0%, var(--ds-paper-100) 58%);
+  --ds-ease: cubic-bezier(.32, .72, .24, 1);
+
+  background: var(--ds-surface-page);
+  font-family: var(--ds-font-body);
+  color: var(--ds-text-body);
+}
+
+.ds-scope :lang(bn),
+.ds-scope .ds-bn { font-family: var(--ds-font-bengali); }
+
+/* ---- Layout ---- */
+.ds-container { max-width: var(--ds-container-max); margin: 0 auto; padding: 0 var(--ds-gutter); }
+.ds-band { padding: var(--ds-section-y) 0; }
+.ds-band-paper { background: var(--ds-surface-page); background-image: var(--ds-grain); }
+.ds-band-card { background: var(--ds-surface-card); }
+.ds-band-wash { background: var(--ds-wash-warm); background-image: var(--ds-grain), var(--ds-wash-warm); border-bottom: 1px solid var(--ds-border-hairline); }
+.ds-band-inverse { background: var(--ds-surface-inverse); color: var(--ds-text-on-dark); }
+.ds-band-hero { background: var(--ds-surface-hero); background-image: var(--ds-grain), var(--ds-surface-hero); color: var(--ds-text-on-dark); }
+/* minmax(0, ...) everywhere a track could otherwise inherit a wide child's content-based
+   min-width (e.g. a scrollable table) and blow the whole row out past the viewport. */
+.ds-row { display: grid; gap: var(--ds-space-8); min-width: 0; }
+.ds-row--split { grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr); align-items: center; }
+.ds-row--half { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: center; }
+.ds-row--sidebar { grid-template-columns: minmax(0, 1fr) minmax(0, 340px); align-items: start; gap: var(--ds-space-7); }
+.ds-row--thirds { grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.3fr) minmax(0, 1fr); }
+@media (max-width: 900px) {
+  .ds-row--split, .ds-row--half, .ds-row--sidebar, .ds-row--thirds { grid-template-columns: minmax(0, 1fr); }
+}
+.ds-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--ds-space-5); }
+/* Fixed 3-column stat/KPI grid — unlike .ds-cards' auto-fit (which can leave an uneven last
+   row or over-stretch a lone card on a wide screen), this always divides the row's width
+   evenly across exactly 3 columns down to tablet width, then collapses to 2 and 1. */
+.ds-stat-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--ds-space-5); }
+@media (max-width: 860px) { .ds-stat-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 520px) { .ds-stat-grid { grid-template-columns: 1fr; } }
+.ds-stat-grid--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+@media (max-width: 860px) { .ds-stat-grid--4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 520px) { .ds-stat-grid--4 { grid-template-columns: 1fr; } }
+/* Revenue stat card (AdminDashboardView.vue): a fixed brand color per theme, not the
+   generic --ds-text-primary/--ds-text-heading tokens every other stat card uses. */
+/* Revenue stat card (AdminDashboardView.vue): only the card's own background/border is a
+   fixed brand color per theme (not the neutral --ds-surface-card every other stat card
+   uses) — label/value keep the same default eyebrow/heading text color every other stat
+   card already uses, since --ds-text-heading is already a dark-theme-appropriate light
+   tone against this card's equally-dark palm-800 background. */
+.ds-card-revenue.ds-card { background: var(--ds-paper-300); border-color: var(--ds-paper-300); }
+html.dark .ds-scope .ds-card-revenue.ds-card { background: var(--ds-palm-800); border-color: var(--ds-palm-800); }
+/* Same fixed-3-column behavior as .ds-stat-grid, as a modifier on .ds-cards so content cards
+   (not just stat/KPI tiles) can opt into exactly 3 per row instead of auto-fit's variable
+   count. */
+.ds-cards--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+@media (max-width: 860px) { .ds-cards--3 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 520px) { .ds-cards--3 { grid-template-columns: 1fr; } }
+/* auto-fill (not .ds-cards' auto-fit) so a content-driven list with only 1-2 items keeps normal
+   card width instead of stretching a lone card across the whole row. */
+.ds-cards--fill { grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr)); }
+/* 2 fixed columns, collapsing to 1 on mobile — for content that wants more width per card than
+   .ds-cards--3 gives (e.g. committee portrait cards, which pack a full-height photo, contact
+   details, and a quote into one card and looked cramped at 3-per-row). */
+.ds-cards--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--ds-space-7); }
+@media (max-width: 520px) { .ds-cards--2 { grid-template-columns: 1fr; } }
+
+/* ---- App shell (member/admin sidebar layouts) ---- */
+.ds-appshell { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: var(--ds-space-7); align-items: start; }
+.ds-appshell__nav { position: sticky; top: calc(var(--ds-nav-height) + var(--ds-space-5)); }
+.ds-appshell__links { display: flex; flex-direction: column; gap: var(--ds-space-1); }
+.ds-appshell__link { display: flex; align-items: center; gap: var(--ds-space-3); text-align: left; cursor: pointer; padding: 9px 12px; border-radius: var(--ds-radius-sm); white-space: nowrap; border: 1px solid transparent; background: transparent; color: var(--ds-text-body); font: 500 14px/1 var(--ds-font-body); text-decoration: none; }
+.ds-appshell__link:hover { background: var(--ds-action-ghost-hover); }
+.ds-appshell__link-active { border-color: var(--ds-border-hairline); background: var(--ds-surface-card); color: var(--ds-text-heading); box-shadow: var(--ds-shadow-xs); }
+.ds-appshell__link-active:hover { background: var(--ds-surface-card); }
+.ds-appshell__link-icon { width: 16px; height: 16px; flex-shrink: 0; color: var(--ds-text-faint); }
+.ds-appshell__link-active .ds-appshell__link-icon { color: var(--ds-text-primary); }
+.ds-appshell__link-count { flex-shrink: 0; color: var(--ds-text-faint); font: 600 var(--ds-text-eyebrow)/1.6 var(--ds-font-body); }
+@media (max-width: 900px) {
+  .ds-appshell { grid-template-columns: minmax(0, 1fr); }
+  .ds-appshell__nav { position: static; }
+  .ds-appshell__links { flex-direction: row; overflow-x: auto; gap: var(--ds-space-2); padding-bottom: var(--ds-space-2); -webkit-overflow-scrolling: touch; }
+  .ds-appshell__link { flex: 0 0 auto; }
+}
+
+/* ---- Heading / type roles ---- */
+.ds-heading { display: flex; flex-direction: column; align-items: flex-start; gap: var(--ds-space-3); max-width: 58ch; }
+.ds-heading--center { align-items: center; text-align: center; margin: 0 auto; }
+.ds-eyebrow { display: inline-flex; align-items: center; gap: var(--ds-space-3); font: 600 var(--ds-text-eyebrow)/1.4 var(--ds-font-body); letter-spacing: var(--ds-tracking-eyebrow); text-transform: uppercase; color: var(--ds-text-primary); }
+.ds-eyebrow-rule { width: 28px; height: 1px; background: var(--ds-terracotta-400); display: inline-block; }
+.ds-script { font-family: var(--ds-font-script); font-size: 34px; line-height: 0.9; color: var(--ds-terracotta-500); margin-bottom: -6px; }
+.ds-display { font-family: var(--ds-font-display); line-height: 1.06; letter-spacing: var(--ds-tracking-display); color: var(--ds-text-heading); font-weight: 400; margin: 0; }
+.ds-display-l { font-size: var(--ds-text-display-l); }
+.ds-display-m { font-size: var(--ds-text-display-m); }
+.ds-display-s { font-size: var(--ds-text-display-s); }
+.ds-title { font-family: var(--ds-font-display); font-size: var(--ds-text-title); line-height: 1.22; color: var(--ds-text-heading); font-weight: 400; margin: 0; }
+.ds-subtitle { font-family: var(--ds-font-display); font-size: var(--ds-text-subtitle); color: var(--ds-text-heading); margin: 0; }
+.ds-intro { font-size: var(--ds-text-body-l); color: var(--ds-text-body); margin: var(--ds-space-2) 0 0; max-width: 56ch; line-height: 1.62; }
+.ds-body { font-size: var(--ds-text-body-m); color: var(--ds-text-body); line-height: 1.62; }
+.ds-body-l { font-size: var(--ds-text-body-l); line-height: 1.62; }
+.ds-meta { font-size: var(--ds-text-body-s); color: var(--ds-text-muted); }
+.ds-caption { font-size: var(--ds-text-caption); color: var(--ds-text-faint); }
+
+/* ---- Buttons ---- */
+.ds-btn { display: inline-flex; align-items: center; justify-content: center; gap: var(--ds-space-2); font: 600 14px/1 var(--ds-font-body); letter-spacing: var(--ds-tracking-button); text-transform: uppercase; border: 1px solid transparent; border-radius: var(--ds-radius-pill); text-decoration: none; white-space: nowrap; cursor: pointer; transition: background-color 140ms var(--ds-ease), border-color 140ms var(--ds-ease), color 140ms var(--ds-ease); }
+.ds-btn:disabled { opacity: 0.42; cursor: not-allowed; }
+.ds-btn-lg { padding: 16px 34px; font-size: 15px; }
+.ds-btn-md { padding: 12px 24px; font-size: 14px; }
+.ds-btn-sm { padding: 8px 16px; font-size: 12px; }
+/* Admin console only: fixed control heights shared with BaseSelect / BaseSearchField (design system
+   Button sizes: sm 36, md 48, lg 56). The public site and member portal keep the padding-based
+   heights above — do not move these rules out of the .ds-appshell scope. */
+.ds-appshell .ds-btn-lg { padding: 0 34px; height: 56px; }
+.ds-appshell .ds-btn-md { padding: 0 24px; height: 48px; }
+.ds-appshell .ds-btn-sm { padding: 0 16px; height: 36px; }
+.ds-btn-primary { background: var(--ds-action-primary); color: var(--ds-text-on-primary); border-color: var(--ds-action-primary); }
+.ds-btn-primary:hover { background: var(--ds-action-primary-hover); border-color: var(--ds-action-primary-hover); }
+.ds-btn-secondary { background: transparent; color: var(--ds-text-primary); border-color: var(--ds-border-primary); }
+.ds-btn-secondary:hover { background: var(--ds-surface-primary-soft); }
+/* Tonal, not invisible: a faint ink wash so quiet actions still read as buttons. */
+.ds-btn-ghost { background: color-mix(in oklab, var(--ds-text-heading) 7%, transparent); color: var(--ds-text-heading); border-color: transparent; }
+.ds-btn-ghost:hover { background: color-mix(in oklab, var(--ds-text-heading) 13%, transparent); }
+.ds-btn-inverse { background: var(--ds-paper-50); color: var(--ds-ink-900); border-color: var(--ds-paper-50); }
+.ds-btn-inverse:hover { background: var(--ds-paper-200); }
+.ds-btn-accent-outline { background: transparent; color: var(--ds-action-accent); border-color: var(--ds-action-accent); }
+.ds-btn-accent-outline:hover { background: rgba(232, 163, 61, 0.12); }
+.ds-btn-accent { background: var(--ds-action-accent); color: var(--ds-ink-900); border-color: var(--ds-action-accent); }
+.ds-btn-accent:hover { background: var(--ds-action-accent-hover); border-color: var(--ds-action-accent-hover); }
+.ds-btn-success { background: var(--ds-status-success-soft); color: var(--ds-status-success-ink); border-color: var(--ds-status-success); }
+.ds-btn-success:hover { background: color-mix(in oklab, var(--ds-status-success-soft), var(--ds-status-success) 16%); }
+.ds-btn-warning { background: var(--ds-status-warning-soft); color: var(--ds-status-warning-ink); border-color: var(--ds-status-warning); }
+.ds-btn-warning:hover { background: color-mix(in oklab, var(--ds-status-warning-soft), var(--ds-status-warning) 22%); }
+.ds-btn-danger { background: var(--ds-status-danger-soft); color: var(--ds-status-danger-ink); border-color: var(--ds-status-danger); }
+.ds-btn-danger:hover { background: color-mix(in oklab, var(--ds-status-danger-soft), var(--ds-status-danger) 16%); }
+.ds-btn-info { background: var(--ds-status-info-soft); color: var(--ds-status-info-ink); border-color: var(--ds-status-info); }
+.ds-btn-info:hover { background: color-mix(in oklab, var(--ds-status-info-soft), var(--ds-status-info) 16%); }
+.ds-btn-paper { background: var(--ds-surface-card); color: var(--ds-text-heading); border-color: var(--ds-border-hairline); box-shadow: var(--ds-shadow-xs); }
+.ds-btn-paper:hover { background: var(--ds-action-ghost-hover); box-shadow: var(--ds-shadow-sm); }
+.ds-btn-full { width: 100%; }
+.ds-icon-btn { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; flex-shrink: 0; border-radius: var(--ds-radius-pill); border: 1px solid transparent; cursor: pointer; box-shadow: var(--ds-shadow-xs); transition: background-color 140ms var(--ds-ease), border-color 140ms var(--ds-ease); background: var(--ds-surface-card); color: var(--ds-text-heading); border-color: var(--ds-border-default); }
+.ds-icon-btn:hover { background: var(--ds-action-ghost-hover); border-color: var(--ds-border-strong); }
+/* Disabled — the design system's IconButton: faded to 0.42, no shadow. pointer-events: none also stops
+   the hover fill and lets a wrapper's tooltip (title) show the reason. */
+.ds-icon-btn:disabled, .ds-icon-btn[aria-disabled="true"] { opacity: 0.42; box-shadow: none; pointer-events: none; }
+.ds-icon-btn-solid { background: var(--ds-action-primary); color: var(--ds-paper-50); border-color: var(--ds-action-primary); }
+.ds-icon-btn-solid:hover { background: var(--ds-action-primary-hover); border-color: var(--ds-action-primary-hover); }
+.ds-icon-btn-success { background: var(--ds-status-success-soft); color: var(--ds-status-success-ink); border-color: var(--ds-status-success); }
+.ds-icon-btn-success:hover { background: color-mix(in oklab, var(--ds-status-success-soft), var(--ds-status-success) 16%); border-color: var(--ds-status-success); }
+.ds-icon-btn-warning { background: var(--ds-status-warning-soft); color: var(--ds-status-warning-ink); border-color: var(--ds-status-warning); }
+.ds-icon-btn-warning:hover { background: color-mix(in oklab, var(--ds-status-warning-soft), var(--ds-status-warning) 22%); border-color: var(--ds-status-warning); }
+.ds-icon-btn-danger { background: var(--ds-status-danger-soft); color: var(--ds-status-danger-ink); border-color: var(--ds-status-danger); }
+.ds-icon-btn-danger:hover { background: color-mix(in oklab, var(--ds-status-danger-soft), var(--ds-status-danger) 16%); border-color: var(--ds-status-danger); }
+.ds-icon-btn-info { background: var(--ds-status-info-soft); color: var(--ds-status-info-ink); border-color: var(--ds-status-info); }
+.ds-icon-btn-info:hover { background: color-mix(in oklab, var(--ds-status-info-soft), var(--ds-status-info) 16%); border-color: var(--ds-status-info); }
+.ds-icon-btn-bare { background: color-mix(in oklab, var(--ds-text-heading) 7%, transparent); color: var(--ds-text-heading); border-color: transparent; box-shadow: none; }
+.ds-icon-btn-bare:hover { background: color-mix(in oklab, var(--ds-text-heading) 13%, transparent); }
+.ds-icon-btn-sm { width: 32px; height: 32px; }
+.ds-icon-btn-lg { width: 52px; height: 52px; }
+
+/* ---- Tooltip ---- */
+.ds-tooltip { position: relative; display: inline-flex; }
+.ds-tooltip-bubble { position: absolute; bottom: calc(100% + 8px); left: 50%; transform: translateX(-50%); z-index: 40; pointer-events: none; background: var(--ds-ink-900); color: var(--ds-text-on-dark); border-radius: var(--ds-radius-sm); padding: 6px 10px; font: 400 var(--ds-text-caption)/1.4 var(--ds-font-body); white-space: nowrap; opacity: 0; transition: opacity 140ms var(--ds-ease); }
+.ds-tooltip:hover .ds-tooltip-bubble, .ds-tooltip:focus-within .ds-tooltip-bubble { opacity: 1; }
+
+/* ---- Cards ---- */
+.ds-card { background: var(--ds-surface-card); border: 1px solid var(--ds-border-hairline); border-radius: var(--ds-radius-lg); box-shadow: var(--ds-shadow-sm); padding: var(--ds-space-5); }
+.ds-card-outline { background: transparent; box-shadow: none; border-color: var(--ds-border-default); }
+.ds-card-sunken { background: var(--ds-surface-sunken); border-color: transparent; box-shadow: none; }
+.ds-card-interactive { cursor: pointer; transition: box-shadow 220ms var(--ds-ease), transform 220ms var(--ds-ease); text-decoration: none; color: inherit; display: block; }
+.ds-card-interactive:hover { box-shadow: var(--ds-shadow-md); transform: translateY(-2px); }
+.ds-card-title { font-family: var(--ds-font-display); font-size: var(--ds-text-subtitle); color: var(--ds-text-heading); margin-top: 6px; }
+.ds-card-meta { font-size: var(--ds-text-body-s); color: var(--ds-text-muted); margin-top: 4px; }
+
+/* ---- Badges / tags ---- */
+.ds-badge { display: inline-flex; align-items: center; padding: 4px 10px; border-radius: var(--ds-radius-pill); font: 600 var(--ds-text-eyebrow)/1 var(--ds-font-body); letter-spacing: 0.06em; text-transform: uppercase; }
+.ds-badge-primary { background: var(--ds-action-primary); color: var(--ds-text-on-primary); }
+.ds-sales-callout { display: inline-flex; align-items: center; gap: var(--ds-space-2); margin: 0; padding: 10px 16px; border-radius: var(--ds-radius-pill); background: var(--ds-surface-accent-soft); color: var(--ds-status-accent-ink); border: 1px solid var(--ds-border-primary); font-size: 14px; line-height: 1.3; }
+.ds-sales-callout svg { flex-shrink: 0; }
+.ds-badge-accent { background: var(--ds-surface-accent-soft); color: var(--ds-status-accent-ink); }
+.ds-badge-success { background: var(--ds-status-success-soft); color: var(--ds-status-success-ink); }
+.ds-badge-warning { background: var(--ds-status-warning-soft); color: var(--ds-status-warning-ink); }
+.ds-badge-info { background: var(--ds-status-info-soft); color: var(--ds-status-info-ink); }
+.ds-badge-danger { background: var(--ds-status-danger-soft); color: var(--ds-status-danger-ink); }
+.ds-badge-neutral { background: var(--ds-surface-sunken); color: var(--ds-text-body); }
+.ds-tag { display: inline-flex; align-items: center; padding: 6px 14px; border-radius: var(--ds-radius-pill); border: 1px solid var(--ds-border-hairline); background: transparent; font: 500 var(--ds-text-body-s)/1 var(--ds-font-body); color: var(--ds-text-body); cursor: pointer; transition: background-color 140ms var(--ds-ease), border-color 140ms var(--ds-ease), color 140ms var(--ds-ease); }
+.ds-tag:hover { background: var(--ds-surface-primary-soft); }
+.ds-tag-selected { background: var(--ds-action-primary); border-color: var(--ds-action-primary); color: var(--ds-text-on-primary); }
+.ds-tag-selected:hover { background: var(--ds-action-primary-hover); }
+
+/* ---- Tabs ---- */
+/* Admin toolbar pattern (design system filters card): the page header is title + ONE primary action;
+   filters sit in their own row below it — search 260–420px, selects 140px, 12px gap, all controls the
+   same height (sm 36px in the dense admin console). */
+.ds-toolbar { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+.ds-toolbar-pills { display: flex; flex-wrap: wrap; gap: var(--ds-space-2); }
+.ds-toolbar > .ds-toolbar-search { flex: 1 1 260px; min-width: 260px; max-width: 420px; }
+.ds-toolbar > .ds-toolbar-select { flex: 0 0 140px; min-width: 0; }
+.ds-toolbar > .ds-toolbar-select-wide { flex: 0 0 220px; min-width: 0; }
+/* .ds-toolbar-fit: search on its own full-width line, the dropdowns share the next line equally (a narrow content area, several dropdowns). */
+.ds-toolbar.ds-toolbar-fit > .ds-toolbar-search { flex: 1 1 100%; max-width: none; }
+.ds-toolbar.ds-toolbar-fit > .ds-toolbar-select-wide { flex: 1 1 0; min-width: 150px; }
+@media (max-width: 640px) {
+  .ds-toolbar.ds-toolbar-fit > .ds-toolbar-select-wide { flex: 1 1 100%; }
+  .ds-toolbar > .ds-toolbar-search, .ds-toolbar > .ds-toolbar-select, .ds-toolbar > .ds-toolbar-select-wide { flex: 1 1 100%; min-width: 0; max-width: none; }  /* Status pills stay on ONE line on a phone and swipe sideways, instead of wrapping and leaving a lone
+     pill on a second line (News has five). The next pill peeking out hints that it scrolls. */
+  .ds-toolbar > .ds-toolbar-pills { flex: 1 1 100%; min-width: 0; flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+  .ds-toolbar > .ds-toolbar-pills::-webkit-scrollbar { display: none; }
+  .ds-toolbar > .ds-toolbar-pills .ds-tag { flex-shrink: 0; }
+}
+/* The plain underline under an admin page heading — same weight and colour as a tab strip's line, for pages with no tabs. */
+.ds-section-line { width: 100%; border: none; border-top: 1px solid var(--ds-border-hairline); margin: 0; }
+/* In-page reference link (e.g. a coupon's ticket names): accent colour, no underline until hover/focus. */
+.ds-ref-link { color: var(--ds-terracotta-500); text-decoration: none; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+.ds-ref-link:hover, .ds-ref-link:focus-visible { text-decoration: underline; }
+.ds-tabs { display: flex; gap: var(--ds-space-6); border-bottom: 1px solid var(--ds-border-hairline); }
+.ds-tab { padding: var(--ds-space-3) 0; font: 600 14px/1 var(--ds-font-body); letter-spacing: var(--ds-tracking-button); text-transform: uppercase; color: var(--ds-text-muted); background: none; border: none; border-bottom: 2px solid transparent; margin-bottom: -1px; cursor: pointer; }
+.ds-tab-active { color: var(--ds-text-primary); border-bottom-color: var(--ds-terracotta-500); }
+
+/* ---- Pagination ---- */
+.ds-pagination { display: flex; align-items: center; justify-content: space-between; gap: var(--ds-space-4); flex-wrap: wrap; }
+.ds-pagination-group { display: flex; align-items: center; gap: var(--ds-space-2); flex-wrap: wrap; }
+.ds-page-step { display: inline-flex; align-items: center; gap: var(--ds-space-2); height: 36px; padding: 0 var(--ds-space-4); border-radius: var(--ds-radius-pill); border: 1px solid var(--ds-border-default); background: transparent; color: var(--ds-text-body); font: 600 14px/1 var(--ds-font-body); letter-spacing: var(--ds-tracking-button); text-transform: uppercase; cursor: pointer; transition: background-color 140ms var(--ds-ease); }
+.ds-page-step:hover:not(:disabled) { background: var(--ds-action-ghost-hover); }
+.ds-page-step:disabled { border-color: var(--ds-border-hairline); color: var(--ds-text-faint); opacity: 0.55; cursor: default; }
+.ds-page-btn { min-width: 36px; height: 36px; padding: 0 10px; border-radius: var(--ds-radius-pill); border: 1px solid transparent; background: transparent; color: var(--ds-text-body); font: 400 var(--ds-text-body-s)/1 var(--ds-font-body); font-variant-numeric: tabular-nums; cursor: pointer; transition: background-color 140ms var(--ds-ease); }
+.ds-page-btn:hover { background: var(--ds-action-ghost-hover); }
+.ds-page-btn-active { border-color: var(--ds-action-primary); background: var(--ds-action-primary); color: var(--ds-text-on-primary); font-weight: 600; }
+.ds-page-btn-active:hover { background: var(--ds-action-primary); }
+.ds-page-gap { padding: 0 var(--ds-space-1); color: var(--ds-text-faint); }
+
+/* ---- Data table ---- */
+.ds-table-wrap { background: var(--ds-surface-card); border: 1px solid var(--ds-border-hairline); border-radius: var(--ds-radius-lg); overflow: hidden; }
+.ds-table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.ds-table { width: 100%; min-width: 480px; border-collapse: collapse; font-family: var(--ds-font-body); font-size: var(--ds-text-body-m); color: var(--ds-text-body); }
+.ds-table caption { caption-side: top; text-align: left; padding: var(--ds-space-4) var(--ds-space-4) var(--ds-space-3); font: 600 var(--ds-text-eyebrow)/1.4 var(--ds-font-body); letter-spacing: var(--ds-tracking-eyebrow); text-transform: uppercase; color: var(--ds-text-faint); }
+.ds-table thead tr { background: var(--ds-surface-sunken); }
+.ds-table th { text-align: left; padding: var(--ds-space-3) var(--ds-space-4); border-bottom: 1px solid var(--ds-border-hairline); font: 600 var(--ds-text-eyebrow)/1.4 var(--ds-font-body); letter-spacing: var(--ds-tracking-eyebrow); text-transform: uppercase; color: var(--ds-text-muted); white-space: nowrap; }
+.ds-table td { padding: var(--ds-space-3) var(--ds-space-4); border-bottom: 1px solid var(--ds-border-hairline); }
+.ds-table tbody tr:last-child td { border-bottom: none; }
+/* A table built from several <tbody> groups (a row plus detail lines, or rows under a day heading) keeps the line between groups. */
+.ds-table tbody:not(:last-of-type) tr:last-child td { border-bottom: 1px solid var(--ds-border-hairline); }
+.ds-table tbody tr:hover td { background: var(--ds-action-ghost-hover); }
+.ds-table tbody tr.ds-row-clickable { cursor: pointer; }
+.ds-table tbody tr.ds-row-selected td, .ds-table tbody tr.ds-row-selected:hover td { background: var(--ds-surface-primary-soft); }
+.ds-table tbody tr.ds-row-selected td:first-child { box-shadow: inset 4px 0 0 var(--ds-border-primary); }
+.ds-table td[data-emphasis] { color: var(--ds-text-heading); font-weight: 500; }
+.ds-table td[data-align="right"], .ds-table th[data-align="right"] { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.ds-table-empty { text-align: center; padding: var(--ds-space-7) var(--ds-space-4); color: var(--ds-text-faint); }
+
+/* ---- Breadcrumbs ---- */
+.ds-breadcrumbs { display: flex; align-items: center; gap: var(--ds-space-3); padding: var(--ds-space-3) 0; border-top: 1px solid var(--ds-border-hairline); border-bottom: 1px solid var(--ds-border-hairline); font-size: var(--ds-text-body-s); color: var(--ds-text-muted); }
+.ds-breadcrumbs-back { display: inline-flex; align-items: center; gap: 6px; flex-shrink: 0; padding-right: var(--ds-space-3); border-right: 1px solid var(--ds-border-hairline); color: var(--ds-text-primary); font-weight: 600; text-decoration: none; }
+.ds-breadcrumbs-back:hover, .ds-breadcrumbs-back:focus-visible { color: var(--ds-action-primary-hover); }
+.ds-breadcrumbs-list { display: flex; align-items: center; flex-wrap: nowrap; gap: var(--ds-space-2); list-style: none; margin: 0; padding: 0; min-width: 0; }
+.ds-breadcrumbs-item { display: inline-flex; align-items: center; gap: var(--ds-space-2); min-width: 0; }
+.ds-breadcrumbs-link { display: inline-flex; align-items: center; color: var(--ds-text-muted); text-decoration: none; transition: color .15s ease; }
+.ds-breadcrumbs-link:hover, .ds-breadcrumbs-link:focus-visible { color: var(--ds-text-primary); }
+.ds-breadcrumbs-sep { color: var(--ds-text-faint); flex-shrink: 0; }
+.ds-breadcrumbs-current { font-family: var(--ds-font-display); font-size: var(--ds-text-body-m); color: var(--ds-text-heading); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
+/* Phones: keep just the back link and the current page; the middle of the trail is redundant there. */
+@media (max-width: 640px) { .ds-breadcrumbs-item--mid { display: none; } }
+
+/* ---- Event detail header panel (gradient behind the name area) ---- */
+.ds-scope .event-head-panel { border: 1px solid var(--ds-border-hairline); border-radius: var(--ds-radius-lg, 14px); background: radial-gradient(120% 140% at 0% 0%, var(--ds-saffron-100) 0%, transparent 55%), linear-gradient(120deg, var(--ds-terracotta-50) 0%, transparent 70%), var(--ds-surface-card); }
+/* Dark theme: the light-theme steps above are constants (saffron-100 / terracotta-50), so they must not apply here. Themed soft surface tokens over the dark card instead (same split as .ds-portrait-card). */
+html.dark .ds-scope .event-head-panel, .ds-scope.ds-force-dark .event-head-panel { background: radial-gradient(120% 140% at 0% 0%, var(--ds-surface-accent-soft) 0%, transparent 60%), linear-gradient(120deg, var(--ds-surface-primary-soft) 0%, transparent 70%), var(--ds-surface-card); }
+
+/* ---- Description type (site-wide, Admin -> Content -> Typography) ----
+   Three treatments from the Design System "Description Type" exploration. <html data-desc-style>
+   (set from SiteSettings.description_style in router/index.ts) swaps the --ds-desc-* variables;
+   .ds-desc = body size, .ds-desc-s = small (cards, captions). Add these classes to any description. */
+.ds-scope { --ds-desc-font: var(--ds-font-body); --ds-desc-weight: 400; --ds-desc-size: var(--ds-text-body-m); --ds-desc-size-s: var(--ds-text-body-s); --ds-desc-leading: 1.62; --ds-desc-color: var(--ds-text-body); }
+html[data-desc-style="cormorant"] .ds-scope { --ds-desc-font: var(--ds-font-editorial); --ds-desc-weight: 500; --ds-desc-size: 19px; --ds-desc-size-s: 17px; --ds-desc-leading: 1.5; --ds-desc-color: var(--ds-text-heading); }
+html[data-desc-style="source"] .ds-scope { --ds-desc-font: "Source Serif 4", Georgia, serif; --ds-desc-weight: 400; --ds-desc-size: 17px; --ds-desc-size-s: 15px; --ds-desc-leading: 1.6; --ds-desc-color: var(--ds-text-body); }
+/* Per-item override (e.g. one event): put data-desc-style on the element that holds the description, or on a .ds-scope root.
+   Declared after the site-wide rules, and the .ds-scope-root form carries an extra `html` so it outranks them. */
+html .ds-scope[data-desc-style="karla"], .ds-scope [data-desc-style="karla"] { --ds-desc-font: var(--ds-font-body); --ds-desc-weight: 400; --ds-desc-size: var(--ds-text-body-m); --ds-desc-size-s: var(--ds-text-body-s); --ds-desc-leading: 1.62; --ds-desc-color: var(--ds-text-body); }
+html .ds-scope[data-desc-style="cormorant"], .ds-scope [data-desc-style="cormorant"] { --ds-desc-font: var(--ds-font-editorial); --ds-desc-weight: 500; --ds-desc-size: 19px; --ds-desc-size-s: 17px; --ds-desc-leading: 1.5; --ds-desc-color: var(--ds-text-heading); }
+html .ds-scope[data-desc-style="source"], .ds-scope [data-desc-style="source"] { --ds-desc-font: "Source Serif 4", Georgia, serif; --ds-desc-weight: 400; --ds-desc-size: 17px; --ds-desc-size-s: 15px; --ds-desc-leading: 1.6; --ds-desc-color: var(--ds-text-body); }
+.ds-scope .ds-desc { font-family: var(--ds-desc-font); font-weight: var(--ds-desc-weight); font-size: var(--ds-desc-size); line-height: var(--ds-desc-leading); color: var(--ds-desc-color); font-style: normal; }
+.ds-scope .ds-desc-s { font-family: var(--ds-desc-font); font-weight: var(--ds-desc-weight); font-size: var(--ds-desc-size-s); line-height: var(--ds-desc-leading); color: var(--ds-desc-color); font-style: normal; }
+
+/* ---- Imagery ---- */
+.ds-arch { margin: 0; }
+.ds-arch-inner { position: relative; width: 100%; height: 100%; overflow: hidden; border-radius: var(--ds-radius-arch); border: 1px solid var(--ds-border-hairline); box-shadow: var(--ds-shadow-sm); display: block; }
+.ds-rect { margin: 0; }
+.ds-rect-inner { position: relative; display: block; width: 100%; height: 100%; overflow: hidden; border-radius: var(--ds-radius-lg); border: 1px solid var(--ds-border-hairline); box-shadow: var(--ds-shadow-sm); }
+button.ds-rect { display: block; width: 100%; padding: 0; border: none; background: none; font: inherit; text-align: inherit; cursor: pointer; }
+
+/* ---- Portrait card ---- */
+/* Ported from the design system's PortraitCard component, "committee" variant — a compact
+   card: name/role + icon-prefixed contact lines on the left, a small photo thumbnail, and an
+   optional quote in a tinted "quote ground" box underneath. Replaces CommitteeView.vue's old
+   plain .ds-card + big arch-photo treatment. Deviates from the source component in one place,
+   per explicit product feedback: the thumbnail shows the full photo plainly (a normal bordered
+   square, object-fit: cover) rather than the component's own smudged/blob-masked fade — the
+   fade was cropping/fading too much of the photo away. */
+/* Fixed height (not 100%) — 100% only guaranteed same-row uniformity via grid stretch, not
+   uniformity across every card regardless of content. 360px comfortably fits the richest
+   realistic case (all 4 contact lines + a longish quote, measured ~346px natural height) with
+   a small margin; every card renders at exactly this height, lighter ones simply end with
+   blank space at the bottom. */
+.ds-portrait-card { display: flex; flex-direction: column; gap: var(--ds-space-4); overflow: hidden; background: var(--ds-surface-card); background-image: var(--ds-grain), linear-gradient(150deg, var(--ds-surface-card) 0%, var(--ds-saffron-100) 50%, var(--ds-terracotta-100) 100%); border: 1px solid var(--ds-border-hairline); border-radius: var(--ds-radius-lg); box-shadow: var(--ds-shadow-sm); padding: var(--ds-space-4); text-align: left; }
+/* Light theme uses stronger saffron/terracotta steps (the soft surface tokens were too faint there); dark keeps the original soft-token gradient the user likes. */
+html.dark .ds-scope .ds-portrait-card, .ds-scope.ds-force-dark .ds-portrait-card { background-image: var(--ds-grain), linear-gradient(150deg, var(--ds-surface-card) 0%, var(--ds-surface-accent-soft) 58%, var(--ds-surface-primary-soft) 100%); }
+/* Top row: details left, fixed-ratio photo right. The quote sits below it, spanning the full card width. */
+.ds-portrait-top { display: flex; gap: var(--ds-space-4); align-items: stretch; }
+/* The left column (name/role/contact + quote, stacked) drives the row's height — the thumb
+   (a sibling, not a child of this) stretches to match it via .ds-portrait-card's own
+   align-items: stretch, so the portrait always spans the full card height, name block plus
+   quote combined, rather than just the name block as before. */
+.ds-portrait-left { display: flex; flex-direction: column; gap: var(--ds-space-4); min-width: 0; flex: 1 1 auto; }
+.ds-portrait-name-block { min-width: 0; flex: 0 0 auto; }
+.ds-portrait-role { font: 600 10px/1.4 var(--ds-font-body); letter-spacing: var(--ds-tracking-eyebrow); text-transform: uppercase; color: var(--ds-text-primary); margin: 0 0 var(--ds-space-1); }
+/* Name in Marcellus (--ds-font-display, same face as the wordmark); Bengali glyphs, which Marcellus
+   lacks, fall through to Noto Serif Bengali. The quote uses Sacramento instead (see below). */
+.ds-portrait-name { font-family: var(--ds-font-display), var(--ds-font-bengali); font-weight: 400; font-size: var(--ds-text-title); line-height: 1.25; color: var(--ds-text-heading); margin: 0; }
+.ds-portrait-subname { margin: 2px 0 0; }
+.ds-portrait-lines { display: grid; gap: var(--ds-space-2); margin-top: var(--ds-space-3); }
+.ds-portrait-line { display: flex; align-items: baseline; gap: var(--ds-space-2); min-width: 0; }
+.ds-portrait-line-icon { flex: 0 0 auto; width: 13px; text-align: center; font-size: 12px; line-height: inherit; color: var(--ds-text-primary); }
+.ds-portrait-line-value { font-size: var(--ds-text-body-s); line-height: 1.3; overflow-wrap: break-word; color: var(--ds-text-body); }
+.ds-portrait-line-link { font-size: var(--ds-text-body-s); line-height: 1.3; overflow-wrap: break-word; color: var(--ds-text-primary); text-decoration: none; }
+.ds-portrait-line-link:hover { text-decoration: underline; }
+/* Fixed 3:4 frame pinned to the top — a long quote grows the card, never the photo (it used to stretch to the full card height). */
+.ds-portrait-thumb { position: relative; flex: 0 0 auto; width: 200px; aspect-ratio: 3 / 4; align-self: flex-start; overflow: hidden; border-radius: var(--ds-radius-md); background: var(--ds-surface-sunken); background-image: var(--ds-grain); border: 1px solid var(--ds-border-hairline); box-shadow: var(--ds-shadow-sm); }
+.ds-portrait-thumb img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+.ds-portrait-quote { position: relative; margin: 0; flex: 1 1 auto; display: flex; flex-direction: column; justify-content: flex-start; overflow: hidden; padding: var(--ds-space-3) 0 var(--ds-space-3) var(--ds-space-7); }
+.ds-portrait-quote-mark { position: absolute; left: 0; top: -16px; font-family: var(--ds-font-display); font-size: 102px; line-height: 1; color: var(--ds-quote-mark-color); pointer-events: none; user-select: none; }
+/* Cards size to their content (no fixed height, no quote scroll). The quote highlight
+   flex-grows to the card's bottom edge so there's never a gap around it; when a row-mate is
+   taller, its text stays vertically centered inside the taller highlight. */
+.ds-portrait-quote-text { position: relative; margin: 0; font-family: var(--ds-font-editorial), var(--ds-font-bengali); font-style: italic; font-size: var(--ds-text-body-l); line-height: 1.5; color: var(--ds-text-heading); text-indent: 2.5em; }
+/* Event banner (BannerImage.vue) — a banner upload can be square, portrait, or a wide
+   landscape; object-fit: cover would crop real content off whichever dimension doesn't match
+   the frame. Instead: a fixed, responsive-per-breakpoint aspect-ratio frame holds two
+   layers — the real image on top at object-fit: contain (.ds-banner-fg), so 100% of the
+   original photo is always visible with no cropping and no stretching, and an intentionally
+   *unstyled* backdrop layer (.ds-banner-bg) behind it for any letterbox space a non-matching
+   photo leaves — no color/gradient of its own, on purpose (see .ds-banner-bg below): neither
+   .ds-banner nor .ds-banner-frame paints a background of its own either, so the page section's
+   own .ds-band-wash gradient shows straight through underneath, with nothing to visibly seam
+   against since it's the same continuous rendered background, not a second copy of it. */
+.ds-banner { margin: 0; border-radius: var(--ds-radius-lg); overflow: hidden; }
+/* z-index: 0 (not just position: relative) is required here so this establishes its own
+   stacking context — otherwise .ds-banner-fg's z-index: 1 below leaks out and paints above
+   the slider's arrow/dot buttons (siblings of this component, with no z-index of their own),
+   silently blocking clicks on them despite them still being visible. */
+.ds-banner-frame { position: relative; z-index: 0; width: 100%; height: 100%; aspect-ratio: 4 / 3; overflow: hidden; }
+@media (min-width: 640px) { .ds-banner-frame { aspect-ratio: 16 / 9; } }
+@media (min-width: 1024px) { .ds-banner-frame { aspect-ratio: 21 / 9; } }
+.ds-banner-inner { display: block; width: 100%; height: 100%; }
+/* No background/gradient of its own, on purpose — two earlier attempts here both gave this
+   layer its own fill (first a blurred photo copy, then --ds-wash-warm's radial gradient, then
+   a flat --ds-surface-sunken) and each one visibly seamed against the page's own
+   .ds-band-wash background behind it, worst in dark theme. A gradient is anchored to a %
+   position *within whichever element renders it*, so the full-width page section and this
+   much smaller frame never resolved it to the same absolute spot; a flat color mismatched too,
+   just less obviously. Leaving this fully transparent means there is nothing of its own to
+   mismatch — .ds-band-wash's gradient simply continues underneath, unbroken, in either theme. */
+.ds-banner-bg { position: absolute; inset: 0; }
+.ds-banner-fg { position: relative; z-index: 1; object-fit: contain; }
+/* Homepage hero media — ported from the design system's HeroStage component, "stage" variant
+   (its default): one large feathered-edge photograph (no tilt, no card frame — a radial-gradient
+   mask fades the photo's own edges into the section background) with a date ribbon overlapping
+   its lower edge, plus a 3-up strip of square thumbnails underneath. Replaces the older
+   "scattered tilted Polaroids + caption" treatment, which predated this design system. */
+.ds-hero-stage-shot { position: relative; overflow: hidden; border-radius: var(--ds-radius-lg); background: var(--ds-paper-300); mask-image: radial-gradient(126% 118% at 50% 48%, #000 58%, rgba(0, 0, 0, 0.72) 80%, rgba(0, 0, 0, 0.2) 93%, transparent 100%); -webkit-mask-image: radial-gradient(126% 118% at 50% 48%, #000 58%, rgba(0, 0, 0, 0.72) 80%, rgba(0, 0, 0, 0.2) 93%, transparent 100%); }
+.ds-hero-stage-shot img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.ds-hero-stage-strip { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--ds-space-4); margin-top: var(--ds-space-4); }
+.ds-hero-stage-ribbon { position: relative; display: flex; text-decoration: none; color: inherit; margin: calc(var(--ds-space-5) * -1) var(--ds-space-4) 0; align-items: center; gap: var(--ds-space-4); flex-wrap: wrap; padding: var(--ds-space-4) var(--ds-space-5); border-radius: var(--ds-radius-md); background: var(--ds-surface-card); border: 1px solid var(--ds-border-hairline); box-shadow: var(--ds-shadow-md); }
+.ds-hero-stage-ribbon-date { flex: 0 0 auto; text-align: center; padding-right: var(--ds-space-4); border-right: 1px solid var(--ds-border-hairline); }
+.ds-hero-stage-ribbon-day { font-family: var(--ds-font-display); font-size: 26px; line-height: 1; color: var(--ds-text-primary); }
+.ds-hero-stage-ribbon-info { min-width: 0; flex: 1 1 60%; }
+.ds-hero-stage-ribbon-title { font-family: var(--ds-font-display); font-size: var(--ds-text-subtitle); line-height: 1.2; color: var(--ds-text-heading); }
+.ds-hero-stage-ribbon-meta { font-size: var(--ds-text-body-s); color: var(--ds-text-muted); }
+.ds-hero-stage-ribbon-link { margin-left: auto; font: 600 11px/1 var(--ds-font-body); letter-spacing: var(--ds-tracking-eyebrow); text-transform: uppercase; color: var(--ds-text-primary); white-space: nowrap; }
+.ds-placeholder { background: var(--ds-wash-warm); background-image: var(--ds-grain), var(--ds-wash-warm); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--ds-space-2); color: var(--ds-text-faint); text-align: center; padding: var(--ds-space-4); }
+.ds-placeholder-glyph { font-size: 18px; letter-spacing: 0.3em; }
+.ds-figcaption { font-family: var(--ds-font-editorial); font-style: italic; font-size: var(--ds-text-body-s); color: var(--ds-text-muted); margin-top: var(--ds-space-2); }
+
+/* ---- Motif divider ---- */
+.ds-motif { display: flex; align-items: center; gap: var(--ds-space-3); color: var(--ds-terracotta-400); margin: var(--ds-space-6) auto; max-width: 420px; }
+.ds-motif span:not(.ds-motif-glyph) { flex: 1; height: 1px; background: var(--ds-border-hairline); }
+.ds-motif-glyph { font-size: 12px; letter-spacing: 0.4em; }
+.ds-motif-onDark span:not(.ds-motif-glyph) { background: var(--ds-border-on-dark); }
+
+/* ---- Definition list (timeline / facts / schedule rows) ---- */
+.ds-deflist { display: grid; grid-template-columns: 140px minmax(0, 1fr); gap: var(--ds-space-4); }
+@media (max-width: 640px) { .ds-deflist { grid-template-columns: 1fr; gap: var(--ds-space-1); } }
+.ds-deflist-row { padding: var(--ds-space-5) 0; border-bottom: 1px solid var(--ds-border-hairline); }
+.ds-deflist-row:first-child { border-top: 1px solid var(--ds-border-hairline); }
+
+/* ---- Event card ---- */
+.ds-event-card { display: block; text-decoration: none; color: inherit; background: var(--ds-surface-card); border: 1px solid var(--ds-border-hairline); border-radius: var(--ds-radius-lg); overflow: hidden; box-shadow: var(--ds-shadow-sm); transition: box-shadow 220ms var(--ds-ease), transform 220ms var(--ds-ease); }
+.ds-event-card:hover { box-shadow: var(--ds-shadow-md); transform: translateY(-3px); }
+/* A draft event (visible only to admins previewing it): dashed edge and a diagonal DRAFT watermark across the whole card,
+   photo included — white with a soft shadow so it reads on the banner and on the paper body alike. */
+.ds-event-card-draft { position: relative; border-style: dashed; border-color: var(--ds-border-primary); }
+.ds-event-card-draft::after { content: 'DRAFT'; position: absolute; top: 50%; left: 50%; z-index: 2; font: 800 64px / 1 var(--ds-font-body); letter-spacing: 0.16em; white-space: nowrap; color: rgba(255, 255, 255, 0.95); -webkit-text-stroke: 2px rgba(58, 42, 30, 0.55); paint-order: stroke fill; text-shadow: 0 2px 14px rgba(0, 0, 0, 0.7); opacity: 0.9; transform: translate(-50%, -50%) rotate(-12deg); pointer-events: none; user-select: none; }
+@media (max-width: 480px) { .ds-event-card-draft::after { font-size: 48px; } }
+.ds-event-media { position: relative; aspect-ratio: 16 / 10; display: flex; flex-direction: row; align-items: flex-start; justify-content: space-between; padding: var(--ds-space-4); }
+.ds-event-body { padding: var(--ds-space-5); display: flex; flex-direction: column; gap: var(--ds-space-2); }
+.ds-event-title { font-family: var(--ds-font-display); font-size: var(--ds-text-title); line-height: 1.22; color: var(--ds-text-heading); margin: 0; }
+.ds-event-cta { margin-top: var(--ds-space-3); font: 600 14px/1 var(--ds-font-body); letter-spacing: var(--ds-tracking-button); text-transform: uppercase; color: var(--ds-text-primary); align-self: flex-start; }
+
+/* ---- Empty state ---- */
+.ds-empty { padding: var(--ds-space-6); text-align: center; color: var(--ds-text-muted); border: 1px dashed var(--ds-border-hairline); border-radius: var(--ds-radius-lg); }
+
+/* ---- Pull quote ---- */
+.ds-pullquote { margin: 0; padding: var(--ds-space-6) 0; border-top: 1px solid var(--ds-border-hairline); border-bottom: 1px solid var(--ds-border-hairline); }
+.ds-pullquote p { font-family: var(--ds-font-editorial); font-style: italic; font-size: var(--ds-text-display-s); line-height: 1.32; color: var(--ds-text-heading); margin: 0; max-width: 34ch; }
+.ds-pullquote footer { margin-top: var(--ds-space-4); display: flex; align-items: center; gap: var(--ds-space-3); font: 600 var(--ds-text-eyebrow)/1.4 var(--ds-font-body); letter-spacing: var(--ds-tracking-eyebrow); text-transform: uppercase; color: var(--ds-text-primary); }
+.ds-pullquote-onDark { border-color: var(--ds-border-on-dark); }
+.ds-pullquote-onDark p { color: var(--ds-paper-100); }
+.ds-pullquote-onDark footer { color: var(--ds-saffron-300); }
+.ds-quote-rule { width: 24px; height: 1px; background: currentColor; display: inline-block; }
+
+/* ---- Testimonial carousel nav ---- */
+.ds-testimonial-nav { display: flex; align-items: center; gap: var(--ds-space-3); margin-top: var(--ds-space-5); }
+.ds-icon-btn-onDark { background: transparent; border-color: var(--ds-border-on-dark); color: var(--ds-paper-100); box-shadow: none; }
+.ds-icon-btn-onDark:hover { background: rgba(255, 255, 255, 0.1); border-color: var(--ds-paper-100); }
+.ds-testimonial-dots { display: flex; align-items: center; gap: 8px; }
+.ds-testimonial-dot { width: 8px; height: 8px; padding: 0; border-radius: 999px; border: none; background: var(--ds-border-default); cursor: pointer; transition: background-color 140ms var(--ds-ease), transform 140ms var(--ds-ease); }
+.ds-testimonial-dot-onDark { background: var(--ds-border-on-dark); }
+.ds-testimonial-dot:hover { background: var(--ds-paper-100); }
+.ds-testimonial-dot-active { background: var(--ds-saffron-300); transform: scale(1.25); }
+/* Floating controls over an unpredictable photo/matte backdrop (event banner) — an opaque
+   card-colored button was tried first but read as too heavy sitting on top of a photo; a
+   plain transparent .ds-icon-btn-onDark (below) was tried before that and disappeared
+   against a light backdrop. This splits the difference: a translucent dark scrim that's
+   fixed (not a theme token, so it doesn't flip light/dark with the site's own theme) gives a
+   light icon guaranteed contrast against literally anything behind it, while staying
+   see-through rather than a solid card. */
+.ds-icon-btn-scrim { background: rgba(20, 16, 12, 0.3); border-color: transparent; color: var(--ds-paper-100); box-shadow: none; backdrop-filter: blur(3px); }
+.ds-icon-btn-scrim:hover { background: rgba(20, 16, 12, 0.45); border-color: transparent; }
+.ds-dot-bar { display: flex; align-items: center; gap: var(--ds-space-2); background: rgba(20, 16, 12, 0.3); border-radius: var(--ds-radius-pill); padding: 6px 10px; backdrop-filter: blur(3px); }
+.ds-dot-bar .ds-testimonial-dot { background: rgba(255, 255, 255, 0.45); }
+.ds-dot-bar .ds-testimonial-dot:hover { background: var(--ds-paper-100); }
+
+/* ---- Founder / Get-involved 3-column band (Heritage page) ---- */
+/* .ds-row--thirds needs a real, explicit height here — CSS Grid's auto row-sizing measures
+   every column's own content (including a long quote) to size the row, so a column that only
+   sets height:100% against an auto-sized row has nothing concrete to stretch against and the
+   row still grows with the quote. Giving the row a fixed height makes align-items:stretch
+   resolve to a real pixel value for all three columns, and .ds-quote-viewport (flex:1 inside
+   that now-fixed space) is the only piece that scrolls — so switching founders never changes
+   the section's height or moves the attribution/nav controls.
+   EVERY direct grid-item column (.ds-founder-col/.ds-quote-col/.ds-involve-col) also needs its
+   own min-height:0 — a grid/flex item's default min-height is `auto`, which means "never
+   shrink below your own content's natural size" and silently wins over align-items:stretch
+   whenever that content is taller than the row. Without it here, each column overflowed the
+   fixed row by a different amount depending on its own content (arch image aspect ratio,
+   quote length), which is exactly why the arch and the quote box weren't actually the same
+   size for every founder despite the row itself having a fixed height. */
+.ds-row--thirds { height: 23rem; }
+@media (max-width: 900px) { .ds-row--thirds { height: auto; } }
+.ds-founder-col { display: flex; flex-direction: column; align-items: center; text-align: center; height: 100%; min-height: 0; gap: var(--ds-space-3); }
+/* Reuses the design system's own arch-portrait treatment (see .ds-arch/.ds-arch-inner under
+   "Imagery" above, the same shape used for the hero/event photos on this and other pages)
+   instead of the small circular BaseAvatar, and flexes to the same height as the quote
+   column instead of a fixed avatar size. */
+.ds-founder-portrait { flex: 1 1 auto; min-height: 0; width: 100%; max-width: 250px; margin: 0 auto; }
+.ds-quote-col { display: flex; flex-direction: column; height: 100%; min-height: 0; }
+.ds-quote-col .ds-pullquote { display: flex; flex-direction: column; flex: 1 1 auto; min-height: 0; }
+.ds-quote-col .ds-pullquote p { font-size: var(--ds-text-title); }
+.ds-quote-viewport { flex: 1 1 auto; min-height: 0; overflow-y: auto; }
+@media (max-width: 900px) { .ds-quote-viewport { max-height: 14rem; } }
+.ds-involve-col { display: flex; flex-direction: column; align-items: flex-start; height: 100%; min-height: 0; }
+.ds-involve-col .ds-btn { margin-top: auto; }
+
+/* ---- Avatar crop modal ---- */
+.ds-crop-viewport { position: relative; overflow: hidden; border-radius: var(--ds-radius-pill); border: 1px solid var(--ds-border-default); background: var(--ds-surface-sunken); cursor: grab; touch-action: none; }
+.ds-crop-viewport:active { cursor: grabbing; }
+.ds-crop-image { position: absolute; top: 0; left: 0; max-width: none; user-select: none; }
+.ds-range { width: 100%; accent-color: var(--ds-action-accent); }
+
+/* ---- Tagore verse ---- */
+.ds-tagore { display: flex; flex-direction: column; align-items: center; gap: var(--ds-space-3); text-align: center; max-width: 720px; margin: 0 auto; }
+.ds-tagore--left { align-items: flex-start; text-align: left; margin: 0; max-width: none; }
+.ds-tagore-rule { width: 1px; height: var(--ds-space-6); background: var(--ds-border-hairline); }
+.ds-tagore-bn { font-size: var(--ds-text-subtitle); line-height: 1.85; margin: 0; }
+.ds-tagore-en { font-family: var(--ds-font-editorial); font-style: italic; font-size: var(--ds-text-body-l); line-height: 1.5; color: var(--ds-text-muted); margin: 0; }
+.ds-tagore-source { font: 600 var(--ds-text-eyebrow)/1.4 var(--ds-font-body); letter-spacing: var(--ds-tracking-eyebrow); text-transform: uppercase; color: var(--ds-text-faint); margin-top: var(--ds-space-1); }
+.ds-tagore-onDark .ds-tagore-rule { background: var(--ds-border-on-dark); }
+.ds-tagore-onDark .ds-tagore-en { color: rgba(249, 242, 232, 0.86); }
+.ds-tagore-onDark .ds-tagore-source { color: var(--ds-saffron-300); }
+
+/* ---- Gallery grid ---- */
+/* The column max is a fixed 320px, not 1fr — so a track only ever grows to 320px and any
+   space left over after that (a sparse gallery, a lone last-row card, or any in-between
+   container width where full 320px columns don't divide evenly) stays real leftover space in
+   the grid container, which justify-content: center then centers the whole row of tracks
+   within, instead of every item stretching to fill a column edge-to-edge and sitting flush
+   left (reported live: an "odd" width like 516px left a lone card hugging the left edge with
+   a dead gap on the right — not just a narrow-phone problem, any width where the last row has
+   fewer items than fit a full row triggers the same thing). No media query needed — this
+   self-corrects at every width and every item count. */
+.ds-gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 320px)); justify-content: center; gap: var(--ds-space-5); }
+.ds-gallery-item { display: block; text-decoration: none; color: inherit; }
+
+/* ---- Navbar ---- */
+.ds-navbar { position: sticky; top: 0; z-index: 30; min-height: var(--ds-nav-height); background: var(--ds-glass-paper); backdrop-filter: var(--ds-blur-glass); border-bottom: 1px solid var(--ds-border-hairline); }
+.ds-navbar-inner { min-height: var(--ds-nav-height); display: flex; align-items: center; justify-content: space-between; gap: var(--ds-space-6); padding: var(--ds-space-2) var(--ds-gutter); flex-wrap: wrap; }
+.ds-wordmark-link { text-decoration: none; display: flex; align-items: center; gap: var(--ds-space-2); line-height: 1; }
+.ds-wordmark-stack { display: flex; flex-direction: column; line-height: 1; }
+.ds-wordmark { font-family: var(--ds-font-display); font-size: 22px; letter-spacing: 0.04em; color: var(--ds-text-heading); }
+.ds-wordmark-onDark { color: var(--ds-paper-50); }
+.ds-wordmark-dot { color: var(--ds-terracotta-400); }
+.ds-wordmark-dot-dark { color: var(--ds-saffron-300); }
+.ds-wordmark-bn { font-family: var(--ds-font-bengali); font-size: 11px; margin-top: 4px; color: var(--ds-text-muted); }
+.ds-wordmark-bn-onDark { color: var(--ds-nil-100); }
+.ds-navbar-links { display: flex; align-items: center; gap: var(--ds-space-6); }
+.ds-navlink { font: 600 14px/1 var(--ds-font-body); letter-spacing: var(--ds-tracking-button); text-transform: uppercase; text-decoration: none; padding-bottom: 3px; color: var(--ds-text-body); border-bottom: 1px solid transparent; }
+.ds-navlink:hover { color: var(--ds-text-primary); }
+.ds-navlink.router-link-exact-active { color: var(--ds-text-primary); border-bottom-color: var(--ds-terracotta-500); }
+.ds-navbar-actions { display: flex; align-items: center; gap: var(--ds-space-3); }
+.ds-navbar-trailing { display: flex; align-items: center; gap: var(--ds-space-3); }
+.ds-navbar-burger { display: none; align-items: center; justify-content: center; width: 40px; height: 40px; border: none; background: none; color: var(--ds-text-heading); cursor: pointer; }
+.ds-navbar-mobile { display: flex; flex-direction: column; gap: var(--ds-space-1); border-top: 1px solid var(--ds-border-hairline); padding: var(--ds-space-4) 0; width: 100%; text-align: right; }
+.ds-navbar-mobile .ds-navlink { padding: var(--ds-space-2) 0; align-self: flex-end; }
+/* Same "log out is destructive" red used by AccountMenu's own danger row
+   (.ds-account-menu-row-danger) — icon sits at the row's outer (right) edge, matching the
+   name+avatar row above it. */
+.ds-mobile-logout { display: inline-flex; align-items: center; justify-content: flex-end; gap: var(--ds-space-2); width: 100%; background: none; border: none; color: var(--ds-status-danger); }
+.ds-mobile-logout .ds-account-menu-row-icon { color: var(--ds-status-danger); }
+/* Matches the design system's own Navbar breakpoint (1100px) — below it, the main bar shows
+   only the wordmark and burger; nav links and the trailing CTA/account control both hide,
+   reappearing inside the expanded .ds-navbar-mobile panel instead. */
+@media (max-width: 1100px) {
+  .ds-navbar-links { display: none; }
+  .ds-navbar-trailing { display: none; }
+  .ds-navbar-burger { display: inline-flex; }
+}
+
+/* ---- Utility bar (thin inverse strip above the main navbar, on every screen) ---- */
+.ds-utility-bar { background: var(--ds-surface-inverse); color: var(--ds-text-on-dark); }
+.ds-utility-bar-inner { display: flex; align-items: center; justify-content: space-between; gap: var(--ds-space-4); padding: 7px var(--ds-gutter); flex-wrap: wrap; }
+.ds-utility-locale { font: 600 10px/1.4 var(--ds-font-body); letter-spacing: var(--ds-tracking-eyebrow); text-transform: uppercase; color: var(--ds-text-on-dark); opacity: 0.6; }
+.ds-utility-links { display: flex; align-items: center; gap: var(--ds-space-4); }
+.ds-utility-link { background: none; border: none; padding: 0; cursor: pointer; font: 600 10px/1.4 var(--ds-font-body); letter-spacing: var(--ds-tracking-eyebrow); text-transform: uppercase; text-decoration: none; color: var(--ds-text-on-dark); opacity: 0.78; }
+.ds-utility-link:hover { opacity: 1; }
+.ds-utility-link-active { color: var(--ds-action-accent); opacity: 1; }
+
+/* ---- Theme toggle (pill button; used inside the utility bar, always on a dark ground) ---- */
+.ds-theme-toggle { display: inline-flex; align-items: center; gap: 7px; padding: 4px 11px 4px 9px; cursor: pointer; background: transparent; border-radius: var(--ds-radius-pill); border: 1px solid var(--ds-border-on-dark); color: var(--ds-text-on-dark); font: 600 10px/1.4 var(--ds-font-body); letter-spacing: var(--ds-tracking-eyebrow); text-transform: uppercase; }
+.ds-theme-toggle:hover { border-color: var(--ds-text-on-dark); }
+.ds-theme-toggle svg { width: 13px; height: 13px; flex-shrink: 0; }
+
+/* ---- Avatar label (BaseAvatarLabel.vue — avatar + name, email on the row below) ---- */
+.ds-avatar-label { display: flex; align-items: flex-start; gap: var(--ds-space-3); min-width: 0; }
+.ds-avatar-label-text { display: flex; flex-direction: column; min-width: 0; }
+.ds-avatar-label-name { font: 600 var(--ds-text-body-m)/1.3 var(--ds-font-body); color: var(--ds-text-heading); overflow-wrap: break-word; }
+.ds-avatar-label-email { font-size: var(--ds-text-caption); color: var(--ds-text-faint); overflow-wrap: break-word; }
+
+/* ---- Account menu (signed-in header control) ---- */
+.ds-account-menu { position: relative; display: inline-block; flex: 0 0 auto; max-width: 100%; }
+.ds-account-menu-trigger { display: inline-flex; align-items: center; gap: var(--ds-space-3); cursor: pointer; padding: 4px 10px 4px 4px; border-radius: var(--ds-radius-pill); background: transparent; border: 1px solid transparent; max-width: 220px; transition: background-color 140ms var(--ds-ease), border-color 140ms var(--ds-ease); }
+.ds-account-menu-trigger-open { background: var(--ds-action-ghost-hover); border-color: var(--ds-border-default); }
+.ds-account-menu-text { display: grid; text-align: left; min-width: 0; }
+.ds-account-menu-name { font: 600 14px/1.3 var(--ds-font-body); color: var(--ds-text-heading); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ds-account-menu-meta { font: 600 9px/1.4 var(--ds-font-body); letter-spacing: var(--ds-tracking-eyebrow); text-transform: uppercase; color: var(--ds-text-faint); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ds-account-menu-caret { width: 12px; height: 12px; flex-shrink: 0; color: var(--ds-text-faint); transition: transform 140ms var(--ds-ease); }
+.ds-account-menu-caret-open { transform: rotate(180deg); }
+.ds-account-menu-panel { position: absolute; top: calc(100% + var(--ds-space-3)); right: 0; z-index: 40; min-width: 248px; background: var(--ds-surface-card); border: 1px solid var(--ds-border-hairline); border-radius: var(--ds-radius-md); box-shadow: var(--ds-shadow-lg); overflow: hidden; }
+.ds-account-menu-header { padding: var(--ds-space-4) var(--ds-space-4) var(--ds-space-3); border-bottom: 1px solid var(--ds-border-hairline); background: var(--ds-surface-sunken); }
+.ds-account-menu-header-name { margin: 0; font-family: var(--ds-font-display); font-size: var(--ds-text-subtitle); color: var(--ds-text-heading); }
+.ds-account-menu-header-email { margin: 2px 0 0; font-size: 13px; color: var(--ds-text-muted); word-break: break-all; }
+.ds-account-menu-header-meta { margin: 6px 0 0; font: 600 9px/1.4 var(--ds-font-body); letter-spacing: var(--ds-tracking-eyebrow); text-transform: uppercase; color: var(--ds-text-primary); }
+.ds-account-menu-items { padding: var(--ds-space-2); }
+.ds-account-menu-divider { display: block; height: 1px; background: var(--ds-border-hairline); margin: var(--ds-space-2); }
+.ds-account-menu-row { display: flex; align-items: center; gap: var(--ds-space-3); width: 100%; text-align: left; padding: 9px 10px; border-radius: var(--ds-radius-sm); border: 0; cursor: pointer; background: transparent; color: var(--ds-text-body); font: 400 15px/1.4 var(--ds-font-body); text-decoration: none; transition: background-color 140ms var(--ds-ease); }
+.ds-account-menu-row:hover { background: var(--ds-action-ghost-hover); }
+.ds-account-menu-row-danger { color: var(--ds-status-danger); }
+.ds-account-menu-row-icon { width: 15px; height: 15px; flex: 0 0 auto; color: var(--ds-text-faint); }
+.ds-account-menu-row-danger .ds-account-menu-row-icon { color: var(--ds-status-danger); }
+.ds-account-menu-row-label { flex: 1; min-width: 0; }
+.ds-account-menu-row-count { font: 600 9px/1.4 var(--ds-font-body); letter-spacing: var(--ds-tracking-eyebrow); color: var(--ds-text-faint); }
+
+/* ---- Footer ---- */
+.ds-footer { background: var(--ds-surface-inverse); color: var(--ds-text-on-dark); padding: var(--ds-space-8) 0 var(--ds-space-6); }
+.ds-footer-grid { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: var(--ds-space-6); align-items: start; }
+@media (max-width: 640px) { .ds-footer-grid { grid-template-columns: minmax(0, 1fr); } }
+.ds-footer-brand { display: flex; flex-direction: column; gap: var(--ds-space-4); }
+.ds-footer-blurb { font-size: var(--ds-text-body-s); color: var(--ds-nil-100); margin: 0; max-width: 34ch; }
+.ds-footer-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: var(--ds-space-2); }
+.ds-footer-list a { color: var(--ds-paper-200); text-decoration: none; font-size: var(--ds-text-body-s); }
+.ds-footer-list a:hover { color: var(--ds-paper-50); text-decoration: underline; }
+.ds-footer-bottom { display: flex; justify-content: space-between; gap: var(--ds-space-4); font-size: 13px; color: var(--ds-nil-100); margin-top: var(--ds-space-4); flex-wrap: wrap; }
+.ds-footer-bottom a { color: var(--ds-paper-200); text-decoration: none; }
+.ds-footer-bottom a:hover { color: var(--ds-paper-50); text-decoration: underline; }
+
+@media (max-width: 640px) {
+  .ds-scope { --ds-gutter: 12px; --ds-section-y: var(--ds-space-7); }
+}
+
+/* ---- Alerts ---- */
+.ds-alert { display: flex; align-items: flex-start; gap: var(--ds-space-3); border-radius: var(--ds-radius-md); padding: var(--ds-space-4); font-family: var(--ds-font-body); font-size: var(--ds-text-body-s); line-height: 1.62; }
+.ds-alert-title { display: block; margin-bottom: var(--ds-space-1); font-weight: 600; font-size: var(--ds-text-body-m); }
+.ds-alert-info { background: var(--ds-status-info-soft); color: var(--ds-status-info-ink); border-left: 3px solid var(--ds-status-info); }
+.ds-alert-success { background: var(--ds-status-success-soft); color: var(--ds-status-success-ink); border-left: 3px solid var(--ds-status-success); }
+.ds-alert-warning { background: var(--ds-status-warning-soft); color: var(--ds-status-warning-ink); border-left: 3px solid var(--ds-status-warning); }
+.ds-alert-danger { background: var(--ds-status-danger-soft); color: var(--ds-status-danger-ink); border-left: 3px solid var(--ds-status-danger); }
+.ds-alert-neutral { background: var(--ds-surface-sunken); color: var(--ds-text-body); border-left: 3px solid var(--ds-border-strong); }
+
+/* ---- Form fields ---- */
+.ds-field { display: block; }
+/* Same font treatment as .ds-eyebrow, but --ds-text-primary (not --ds-text-muted) — a field
+   label sitting right above its own value in the same muted ink tone (e.g. the read-only
+   expense view/edit modals) was too easy to mistake for the value itself; the accent color
+   gives it a clearly distinct role at a glance, in both themes. */
+.ds-field-label { display: block; margin-bottom: var(--ds-space-3); font: 600 var(--ds-text-eyebrow)/1.4 var(--ds-font-body); letter-spacing: var(--ds-tracking-eyebrow); text-transform: uppercase; color: var(--ds-text-primary); }
+.ds-field-control { display: flex; align-items: center; gap: var(--ds-space-2); background: var(--ds-surface-card); border: 1px solid var(--ds-border-default); border-radius: var(--ds-radius-md); padding: 0 var(--ds-space-4); box-shadow: var(--ds-shadow-xs); transition: border-color 140ms var(--ds-ease), box-shadow 140ms var(--ds-ease); }
+.ds-field-control:focus-within { border-color: var(--ds-border-primary); box-shadow: 0 0 0 3px var(--ds-focus-ring-soft); }
+.ds-field-control-error { border-color: var(--ds-status-danger); }
+/* Same box shape as .ds-field-control, but sunken (not the card surface) and non-interactive —
+   for a read-only field value (e.g. the expense "view" modal) rather than an actual input. */
+.ds-field-readonly { display: flex; align-items: center; min-height: 44px; background: var(--ds-surface-sunken); border: 1px solid var(--ds-border-hairline); border-radius: var(--ds-radius-md); padding: 10px var(--ds-space-4); font: 400 var(--ds-text-body-m)/1.5 var(--ds-font-body); color: var(--ds-text-body); }
+.ds-field-prefix { color: var(--ds-text-faint); display: flex; flex-shrink: 0; }
+.ds-field-input { flex: 1; min-width: 0; border: none; outline: none; background: transparent; font: 400 var(--ds-text-body-m)/1.62 var(--ds-font-body); color: var(--ds-text-heading); padding: 13px 0; }
+.ds-field-hint { display: block; margin-top: var(--ds-space-2); font-size: var(--ds-text-caption); color: var(--ds-text-muted); }
+.ds-field-error-text { display: block; margin-top: var(--ds-space-2); font-size: var(--ds-text-caption); color: var(--ds-status-danger); }
+.ds-textarea-control { display: block; background: var(--ds-surface-card); border: 1px solid var(--ds-border-default); border-radius: var(--ds-radius-md); padding: 10px 14px; box-shadow: var(--ds-shadow-xs); transition: border-color 140ms var(--ds-ease), box-shadow 140ms var(--ds-ease); }
+.ds-textarea-control:focus-within { border-color: var(--ds-border-primary); box-shadow: 0 0 0 3px var(--ds-focus-ring-soft); }
+.ds-textarea { display: block; width: 100%; border: none; outline: none; background: transparent; resize: vertical; font: 400 var(--ds-text-body-m)/1.62 var(--ds-font-body); color: var(--ds-text-heading); padding: 0; }
+.ds-textarea-count { display: flex; justify-content: flex-end; margin-top: var(--ds-space-2); font-size: var(--ds-text-caption); color: var(--ds-text-faint); font-variant-numeric: tabular-nums; }
+
+/* ---- Accordion ---- */
+.ds-accordion { border-top: 1px solid var(--ds-border-hairline); }
+.ds-accordion-item { border-bottom: 1px solid var(--ds-border-hairline); }
+.ds-accordion-trigger { display: flex; align-items: baseline; gap: var(--ds-space-4); width: 100%; padding: var(--ds-space-4) 0; border: none; background: none; cursor: pointer; text-align: left; font-family: var(--ds-font-display); font-size: var(--ds-text-subtitle); line-height: 1.35; color: var(--ds-text-heading); transition: color 140ms var(--ds-ease); }
+.ds-accordion-trigger-open { color: var(--ds-text-primary); }
+.ds-accordion-trigger span:first-child { flex: 1; }
+.ds-accordion-icon { flex: 0 0 auto; font-size: var(--ds-text-subtitle); line-height: 1; color: var(--ds-text-faint); transition: transform 220ms var(--ds-ease); }
+.ds-accordion-icon-open { transform: rotate(45deg); }
+.ds-accordion-panel { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 220ms var(--ds-ease); }
+.ds-accordion-panel-open { grid-template-rows: 1fr; }
+.ds-accordion-panel-inner { overflow: hidden; }
+.ds-accordion-content { padding-bottom: var(--ds-space-5); max-width: 62ch; font-size: var(--ds-text-body-m); color: var(--ds-text-body); }
+
+/* ---- Select ---- */
+.ds-select-wrap { position: relative; display: block; }
+.ds-select { width: 100%; appearance: none; font: 400 var(--ds-text-body-m)/1.62 var(--ds-font-body); color: var(--ds-text-heading); background: var(--ds-surface-card); border: 1px solid var(--ds-border-default); border-radius: var(--ds-radius-md); padding: 11px 40px 11px 14px; outline: none; box-shadow: var(--ds-shadow-xs); transition: border-color 140ms var(--ds-ease), box-shadow 140ms var(--ds-ease); cursor: pointer; }
+.ds-select:focus { border-color: var(--ds-border-primary); box-shadow: 0 0 0 3px var(--ds-focus-ring-soft); }
+.ds-select-caret { position: absolute; right: 14px; top: 50%; transform: translateY(-50%); color: var(--ds-text-muted); font-size: 11px; pointer-events: none; }
+
+/* ---- Checkbox / switch ---- */
+.ds-checkbox { display: flex; gap: var(--ds-space-3); align-items: flex-start; cursor: pointer; }
+.ds-checkbox input { position: absolute; opacity: 0; width: 0; height: 0; }
+.ds-checkbox-box { width: 20px; height: 20px; flex: 0 0 20px; margin-top: 2px; border-radius: var(--ds-radius-xs); display: flex; align-items: center; justify-content: center; background: var(--ds-surface-card); border: 1px solid var(--ds-border-strong); color: transparent; font-size: 12px; line-height: 1; transition: background-color 140ms var(--ds-ease), border-color 140ms var(--ds-ease), color 140ms var(--ds-ease); }
+.ds-checkbox input:checked ~ .ds-checkbox-box { background: var(--ds-action-primary); border-color: var(--ds-action-primary); color: var(--ds-text-on-primary); }
+.ds-checkbox-label { display: block; font-size: var(--ds-text-body-m); color: var(--ds-text-heading); }
+.ds-checkbox-desc { display: block; font-size: var(--ds-text-body-s); color: var(--ds-text-muted); }
+.ds-switch { display: inline-flex; gap: var(--ds-space-3); align-items: center; cursor: pointer; }
+.ds-switch input { position: absolute; opacity: 0; width: 0; height: 0; }
+.ds-switch-track { width: 44px; height: 26px; flex: 0 0 44px; border-radius: var(--ds-radius-pill); padding: 3px; background: var(--ds-control-track); transition: background-color 220ms var(--ds-ease); }
+.ds-switch input:checked ~ .ds-switch-track { background: var(--ds-control-on); }
+.ds-switch-thumb { display: block; width: 20px; height: 20px; border-radius: var(--ds-radius-pill); background: var(--ds-paper-50); box-shadow: var(--ds-shadow-xs); transform: translateX(0); transition: transform 220ms var(--ds-ease); }
+.ds-switch input:checked ~ .ds-switch-track .ds-switch-thumb { transform: translateX(18px); }
+.ds-switch-label { font-size: var(--ds-text-body-m); color: var(--ds-text-heading); }
+
+/* ---- Progress ---- */
+.ds-progress-head { display: flex; justify-content: space-between; align-items: baseline; gap: var(--ds-space-3); margin-bottom: var(--ds-space-2); }
+.ds-progress-track { height: 8px; border-radius: var(--ds-radius-pill); background: var(--ds-surface-skeleton); overflow: hidden; }
+.ds-progress-bar { height: 100%; border-radius: var(--ds-radius-pill); transition: width 420ms var(--ds-ease); }
+.ds-progress-bar-primary { background: var(--ds-action-primary); }
+.ds-progress-bar-accent { background: var(--ds-saffron-300); }
+.ds-progress-bar-success { background: var(--ds-status-success); }
+
+/* ---- Auth shell ---- */
+/* A fixed min-height (not 100vh) on purpose — see style.css's #app comment: vh and the
+   percentage-height chain that drives #app's real scroll box aren't guaranteed to agree on
+   iPad Safari, and this is inside that scroll chain (rendered inside PublicLayout's <main>). */
+.ds-auth-shell { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); min-height: 640px; }
+@media (max-width: 900px) { .ds-auth-shell { grid-template-columns: 1fr; min-height: 0; } }
+.ds-auth-aside { background: var(--ds-surface-inverse); color: var(--ds-text-on-dark); background-image: var(--ds-grain); padding: var(--ds-space-9) var(--ds-space-8); display: flex; flex-direction: column; justify-content: space-between; gap: var(--ds-space-8); }
+@media (max-width: 900px) { .ds-auth-aside { padding: var(--ds-space-7) var(--ds-space-5); } }
+.ds-auth-panel { background: var(--ds-surface-page); background-image: var(--ds-grain); display: flex; align-items: center; justify-content: center; padding: var(--ds-space-8) var(--ds-gutter); }
+.ds-auth-card { width: 100%; max-width: 460px; }
+.ds-google-btn { display: flex; align-items: center; justify-content: center; gap: var(--ds-space-3); width: 100%; min-height: 48px; padding: 0 var(--ds-space-5); cursor: pointer; background: var(--ds-surface-card); border: 1px solid var(--ds-border-strong); border-radius: var(--ds-radius-pill); color: var(--ds-text-heading); font: 600 13px/1 var(--ds-font-body); letter-spacing: var(--ds-tracking-button); text-transform: uppercase; transition: background-color 140ms var(--ds-ease); }
+.ds-google-btn:hover { background: var(--ds-action-ghost-hover); }
+.ds-or-rule { display: flex; align-items: center; gap: var(--ds-space-4); }
+.ds-or-rule span:not(.ds-or-rule-label) { flex: 1; height: 1px; background: var(--ds-border-hairline); }
+.ds-or-rule-label { font: 600 9px/1 var(--ds-font-body); letter-spacing: var(--ds-tracking-eyebrow); text-transform: uppercase; color: var(--ds-text-muted); }
+.ds-auth-tabs { display: flex; gap: var(--ds-space-6); border-bottom: 1px solid var(--ds-border-hairline); margin-bottom: var(--ds-space-6); text-decoration: none; }
+.ds-auth-tab { padding: 0 0 var(--ds-space-3) 0; font: 600 14px/1 var(--ds-font-body); letter-spacing: var(--ds-tracking-button); text-transform: uppercase; color: var(--ds-text-muted); border-bottom: 2px solid transparent; margin-bottom: -1px; text-decoration: none; }
+.ds-auth-tab-active { color: var(--ds-text-primary); border-bottom-color: var(--ds-terracotta-500); }
+
+/* ---- Dark mode ("deep palm") ----
+   Re-points the same --ds-* custom properties under the app's existing html.dark toggle —
+   ported 1:1 from the design system's tokens/dark.css. */
+/* .ds-force-dark applies the dark palette regardless of the site-wide light/dark toggle — used
+   for the check-in scanner, which the design deliberately keeps "always dark theme" (a duty
+   phone used in a dim hall) independent of whatever theme the rest of the site is in. */
+html.dark .ds-scope, .ds-scope.ds-force-dark {
+  color-scheme: dark;
+
+  --ds-surface-page: #0E1A13;
+  --ds-surface-card: #17271C;
+  --ds-surface-sunken: #0A140E;
+  --ds-surface-inverse: #060F09;
+  --ds-surface-hero: radial-gradient(120% 90% at 80% 0%, var(--ds-palm-500) 0%, var(--ds-palm-800) 58%);
+  --ds-surface-primary-soft: #33190F;
+  --ds-surface-accent-soft: #33260C;
+  --ds-surface-quote: #162A22;
+  --ds-quote-mark-color: var(--ds-terracotta-200);
+
+  --ds-text-heading: #F3EEE1;
+  --ds-text-body: #D6D4C3;
+  --ds-text-muted: #A5AA96;
+  --ds-text-faint: #838B78;
+  --ds-text-on-dark: #F9F2E8;
+  --ds-text-on-primary: var(--ds-paper-50);
+  --ds-text-primary: var(--ds-saffron-300);
+
+  --ds-border-hairline: #24382A;
+  --ds-border-default: #2E4636;
+  --ds-ink-300: #4A6555;
+  --ds-border-primary: var(--ds-saffron-400);
+  --ds-border-on-dark: rgba(249, 242, 232, 0.18);
+
+  --ds-action-primary: var(--ds-terracotta-400);
+  --ds-action-primary-hover: var(--ds-terracotta-300);
+  --ds-action-ghost-hover: #1D2F22;
+
+  --ds-focus-ring: var(--ds-saffron-200);
+  --ds-focus-ring-soft: rgba(243, 203, 134, 0.26);
+  --ds-surface-skeleton: #223729;
+  --ds-control-track: #3A4F42;
+  --ds-control-on: #5E8C71;
+
+  --ds-status-success: #8FBF9E;
+  --ds-status-success-soft: #1A3126;
+  --ds-status-info: #A3BDD4;
+  --ds-status-info-soft: #16293A;
+  --ds-status-warning: var(--ds-saffron-200);
+  --ds-status-warning-soft: #37280F;
+  --ds-status-danger: #E49A7C;
+  --ds-status-danger-soft: #3A1A11;
+
+  --ds-status-success-ink: #ADD7BA;
+  --ds-status-warning-ink: var(--ds-saffron-200);
+  --ds-status-danger-ink: #EFB49B;
+  --ds-status-info-ink: #C2D5E5;
+  --ds-status-accent-ink: var(--ds-saffron-200);
+
+  --ds-shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.34);
+  --ds-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.4);
+  --ds-shadow-md: 0 10px 24px -8px rgba(0, 0, 0, 0.56);
+  --ds-shadow-lg: 0 26px 54px -20px rgba(0, 0, 0, 0.7);
+
+  --ds-scrim: rgba(4, 11, 7, 0.68);
+  --ds-glass-paper: rgba(14, 26, 19, 0.84);
+  --ds-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' fill='%23ffffff' filter='url(%23g)' opacity='0.04'/%3E%3C/svg%3E");
+  --ds-wash-warm: radial-gradient(120% 90% at 80% 0%, #1F3421 0%, #0E1A13 58%);
+}
+
+html.dark .ds-scope ::selection { background: var(--ds-saffron-400); color: var(--ds-ink-900); }
+html.dark .ds-scope img:not([data-no-dim]) { filter: brightness(0.9) saturate(0.94); }
+
+/* ---- Spinner ---- */
+/* Ported from the design system's own Spinner.jsx (ring/alpona/lotus/chakra/dots variants) —
+   see BaseSpinner.vue, which generates the alpona/lotus/chakra petal markup (an SVG ring of
+   rotated shapes needs per-petal transform/delay values a static CSS rule can't express) and
+   applies these shared keyframes/size tokens. .ds-spinner itself stays as the plain CSS-only
+   ring variant for any call site that doesn't need the component. */
+@keyframes ds-spin { to { transform: rotate(360deg); } }
+@keyframes ds-spin-steps { to { transform: rotate(360deg); } }
+@keyframes ds-sp-fade { 0% { opacity: 1; } 70%, 100% { opacity: 0.1; } }
+@keyframes ds-sp-bloom { 0%, 100% { transform: scale(0.62); opacity: 0.22; } 45% { transform: scale(1); opacity: 1; } }
+@keyframes ds-sp-beat { 0%, 100% { transform: translateY(0) scaleY(1); } 35% { transform: translateY(-38%) scaleY(1.16); } }
+.ds-spinner { display: inline-block; border-radius: 50%; border: 3px solid var(--ds-border-on-dark); border-top-color: var(--ds-text-on-dark); animation: ds-spin 800ms linear infinite; }
+.ds-spinner-sm { width: 16px; height: 16px; }
+.ds-spinner-md { width: 24px; height: 24px; }
+.ds-spinner-lg { width: 40px; height: 40px; }
+.ds-spinner-xl { width: 56px; height: 56px; }
+
+/* ---- Check-in scanner (always-dark duty-phone UI, see .ds-force-dark above) ---- */
+@keyframes ds-scan-line { 0% { top: 18px; } 50% { top: calc(100% - 20px); } 100% { top: 18px; } }
+.ds-checkin-appbar { display: flex; flex-direction: column; gap: var(--ds-space-3); padding-bottom: var(--ds-space-4); border-bottom: 1px solid var(--ds-border-hairline); }
+.ds-checkin-title { font-family: var(--ds-font-display); font-size: 19px; margin: 1px 0 0; color: var(--ds-text-heading); }
+.ds-checkin-sync { display: inline-flex; align-items: center; gap: 5px; font: 600 9px/1.4 var(--ds-font-body); letter-spacing: var(--ds-tracking-eyebrow); text-transform: uppercase; flex-shrink: 0; }
+.ds-checkin-sync svg { width: 12px; height: 12px; }
+.ds-checkin-sync-online { color: var(--ds-status-success); }
+.ds-checkin-sync-offline { color: var(--ds-status-warning); }
+
+.ds-scan-frame { position: relative; aspect-ratio: 1 / 1; border-radius: var(--ds-radius-md); overflow: hidden; background: #04100A; display: grid; place-items: center; }
+.ds-scan-frame-grain { position: absolute; inset: 0; background-image: var(--ds-grain); opacity: 0.8; }
+.ds-scan-frame-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.ds-scan-corner { position: absolute; width: 38px; height: 38px; border-color: var(--ds-action-accent); border-style: solid; }
+.ds-scan-corner-tl { top: 18px; left: 18px; border-width: 3px 0 0 3px; border-radius: 10px 0 0 0; }
+.ds-scan-corner-tr { top: 18px; right: 18px; border-width: 3px 3px 0 0; border-radius: 0 10px 0 0; }
+.ds-scan-corner-bl { bottom: 18px; left: 18px; border-width: 0 0 3px 3px; border-radius: 0 0 0 10px; }
+.ds-scan-corner-br { bottom: 18px; right: 18px; border-width: 0 3px 3px 0; border-radius: 0 0 10px 0; }
+.ds-scan-line { position: absolute; left: 18px; right: 18px; height: 2px; background: var(--ds-action-accent); box-shadow: 0 0 14px var(--ds-action-accent); animation: ds-scan-line 2.4s var(--ds-ease) infinite; z-index: 1; }
+.ds-scan-overlay { position: relative; z-index: 1; text-align: center; display: grid; gap: 10px; justify-items: center; padding: var(--ds-space-4); }
+.ds-scan-overlay-icon { width: 34px; height: 34px; color: rgba(249, 242, 232, 0.5); }
+.ds-scan-overlay-hint { font: 600 9px/1.4 var(--ds-font-body); letter-spacing: var(--ds-tracking-eyebrow); text-transform: uppercase; color: rgba(249, 242, 232, 0.62); margin: 0; }
+
+.ds-checkin-flash { position: absolute; inset: 0; z-index: 2; display: grid; place-items: center; text-align: center; gap: 10px; padding: var(--ds-space-4); background: rgba(4, 16, 10, 0.92); }
+.ds-checkin-flash-icon { width: 48px; height: 48px; border-radius: var(--ds-radius-pill); background: var(--ds-status-success); color: var(--ds-ink-900); display: grid; place-items: center; }
+.ds-checkin-flash-icon svg { width: 26px; height: 26px; }
+.ds-checkin-flash-title { font-family: var(--ds-font-display); font-size: 21px; margin: 0; color: var(--ds-text-heading); }
+.ds-checkin-flash-line { margin: 0; font-size: 13px; color: var(--ds-text-body); }
+
+.ds-checkin-result-overlay { position: fixed; inset: 0; z-index: 50; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--ds-space-5); padding: var(--ds-space-6); text-align: center; cursor: pointer; background: var(--ds-surface-page); }
+.ds-checkin-result-banner { width: 100%; max-width: 360px; border-radius: var(--ds-radius-md); padding: 14px; display: flex; gap: 12px; align-items: flex-start; text-align: left; }
+.ds-checkin-result-icon { width: 34px; height: 34px; flex-shrink: 0; border-radius: var(--ds-radius-pill); display: grid; place-items: center; }
+.ds-checkin-result-icon svg { width: 19px; height: 19px; color: var(--ds-ink-900); }
+.ds-checkin-result-title { font-family: var(--ds-font-display); font-size: 21px; margin: 0; color: var(--ds-text-heading); }
+.ds-checkin-result-line { margin: 3px 0 0; font-size: 13px; color: var(--ds-text-body); }
+.ds-checkin-result-tone-success { background: var(--ds-status-success-soft); border: 1px solid var(--ds-status-success); }
+.ds-checkin-result-tone-success .ds-checkin-result-icon { background: var(--ds-status-success); }
+.ds-checkin-result-tone-warning { background: var(--ds-status-warning-soft); border: 1px solid var(--ds-status-warning); }
+.ds-checkin-result-tone-warning .ds-checkin-result-icon { background: var(--ds-status-warning); }
+.ds-checkin-result-tone-danger { background: var(--ds-status-danger-soft); border: 1px solid var(--ds-status-danger); }
+.ds-checkin-result-tone-danger .ds-checkin-result-icon { background: var(--ds-status-danger); }
+.ds-checkin-result-tone-neutral { background: var(--ds-surface-sunken); border: 1px solid var(--ds-border-hairline); }
+.ds-checkin-result-tone-neutral .ds-checkin-result-icon { background: var(--ds-border-strong); }
+
+.ds-checkin-ticket-card { width: 100%; max-width: 360px; background: var(--ds-surface-card); border: 1px solid var(--ds-border-hairline); border-radius: var(--ds-radius-md); padding: 16px; display: grid; gap: 12px; text-align: left; }
+.ds-checkin-ticket-head { display: flex; align-items: center; gap: 12px; }
+.ds-checkin-ticket-name { font-family: var(--ds-font-display); font-size: 21px; margin: 0; color: var(--ds-text-heading); }
+.ds-checkin-ticket-meta { font: 600 11px/1.4 var(--ds-font-body); letter-spacing: var(--ds-tracking-eyebrow); text-transform: uppercase; color: var(--ds-text-faint); margin: 2px 0 0; }
+.ds-checkin-ticket-foot { border-top: 1px solid var(--ds-border-hairline); padding-top: 11px; font-size: 14px; color: var(--ds-text-muted); }
+.ds-checkin-hint { margin-top: var(--ds-space-3); font-size: 13px; color: var(--ds-text-faint); text-align: center; }
+
+/* ---- Ticket row (MemberDashboardView.vue's "Next tickets"/"Next volunteering" previews) ---- */
+.ds-ticket-row { display: flex; align-items: center; gap: var(--ds-space-4); padding: var(--ds-space-4) var(--ds-space-5); background: var(--ds-surface-card); border: 1px solid var(--ds-border-hairline); border-radius: var(--ds-radius-lg); box-shadow: var(--ds-shadow-sm); }
+.ds-ticket-row-date { flex-shrink: 0; width: 52px; text-align: center; }
+.ds-ticket-row-dow, .ds-ticket-row-month { display: block; font: 700 10px/1.5 var(--ds-font-body); letter-spacing: var(--ds-tracking-eyebrow); text-transform: uppercase; color: var(--ds-text-faint); }
+.ds-ticket-row-day { display: block; font-family: var(--ds-font-display); font-size: 30px; line-height: 1.1; color: var(--ds-text-primary); }
+.ds-ticket-row-body { flex: 1; min-width: 0; }
+.ds-ticket-row-actions { flex-shrink: 0; display: flex; align-items: center; gap: var(--ds-space-3); }
+@media (max-width: 520px) {
+  .ds-ticket-row { flex-wrap: wrap; }
+  .ds-ticket-row-actions { width: 100%; justify-content: space-between; }
+}
+
+/* ---- Modal (BaseModal.vue) — matches the design's real Dialog.jsx ---- */
+.ds-modal-overlay { position: fixed; inset: 0; z-index: 60; background: var(--ds-scrim); backdrop-filter: var(--ds-blur-glass); display: flex; align-items: center; justify-content: center; padding: var(--ds-space-5); }
+.ds-modal { position: relative; width: 100%; max-width: 480px; max-height: 90vh; overflow-y: auto; background: var(--ds-surface-card); border: 1px solid var(--ds-border-hairline); border-radius: var(--ds-radius-lg); box-shadow: var(--ds-shadow-lg); padding: var(--ds-space-6); }
+.ds-modal-lg { max-width: 720px; }
+/* Photo viewers: use most of the screen instead of the 720px form-modal cap. */
+.ds-modal-xl { max-width: min(1200px, 94vw); }
+/* The title-less close button (see BaseModal.vue) floats over the slot content instead of
+   sitting in a header band — same card-background icon button as the titled case, so it
+   stays legible over an arbitrary image/PDF regardless of theme. */
+.ds-modal-close-floating { position: absolute; top: var(--ds-space-4); right: var(--ds-space-4); z-index: 1; }
+/* A title-less modal is a viewer (event banner lightbox, gallery lightbox, receipt) — the
+   photo/document itself is the content, so .ds-modal's full 32px padding just reads as a
+   thick frame around it, especially on a narrow phone viewport where it eats a much larger
+   share of the available width. Tighter on all sizes, tighter still on phones. */
+.ds-modal-untitled { padding: var(--ds-space-4); }
+@media (max-width: 480px) {
+  .ds-modal-untitled { padding: var(--ds-space-2); }
+}
+/* Shrink-wraps the modal box itself around its content, instead of always filling the
+   available width up to max-width — used by a single-photo viewer (the event banner lightbox)
+   whose aspect ratio isn't known ahead of time. Plain CSS shrink-to-fit already computes this
+   correctly on its own: an <img> with only a max-height set derives its own rendered width from
+   its natural aspect ratio, and a `width: fit-content` ancestor picks that width up natively —
+   no JS measurement of the image's natural dimensions is needed. Without this, .ds-modal's own
+   width:100%/max-width stayed fixed regardless of the photo's shape, so a portrait photo sat in
+   a much wider white box with the close button and controls anchored to that wide box's corners
+   instead of the photo's own edges. */
+.ds-modal-hug { width: fit-content; }
+/* A sunken header band (same tokens/precedent as .ds-account-menu-header) so a modal's title
+   reads as its own distinct region rather than blending into the body — --ds-surface-sunken
+   and --ds-border-hairline already re-point themselves correctly under html.dark, so this
+   needs no separate dark-mode override. Bleeds to the card's own edges/top corners via
+   negative margins, since .ds-modal itself applies padding on every side. */
+.ds-modal-head { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--ds-space-4); margin: calc(var(--ds-space-6) * -1) calc(var(--ds-space-6) * -1) var(--ds-space-5) calc(var(--ds-space-6) * -1); padding: var(--ds-space-5) var(--ds-space-6) var(--ds-space-4); background: var(--ds-surface-sunken); border-bottom: 1px solid var(--ds-border-hairline); border-radius: var(--ds-radius-lg) var(--ds-radius-lg) 0 0; }
+.ds-modal-title { font-family: var(--ds-font-display); font-size: var(--ds-text-title); line-height: 1.22; color: var(--ds-text-heading); margin: 0; }
+.ds-modal-body { font: 400 var(--ds-text-body-m)/1.62 var(--ds-font-body); color: var(--ds-text-body); }

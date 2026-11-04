@@ -1,0 +1,47 @@
+/* The colour roles of the whole product (W23-R50), from the foundation files `Brass Foundations.html`, `Brass Components.html` and `Brass Light Background Moods.html`.
+   Change a role here and every page follows (like shape.css does for corners). The roles:
+   - ground        --color-bg, with cards on --color-surface and wells on --color-surface-sunken
+   - text          --color-text, --color-text-muted
+   - PRIMARY       a filled thing the user chose or presses: dark chocolate with cream text in the light theme, brass with dark text in the dark theme (W11-R63)
+                   = primary buttons, the chosen option of a switch, a checked box or switch, the current page of a pager, the chosen day of a calendar
+   - HIGHLIGHT     --color-brass (with --color-brass-text for small text and --color-brass-subtle for a soft fill): links on hover, eyebrows, focus rings, the marker of the
+                   current item in a navigation, the rule under a heading, the border of a card that is hovered or marked
+   - status        --color-success, --color-warning, --color-danger, --color-info, each with its -subtle for the soft fill
+   - ADMIN         --color-admin (with --color-on-admin for text on it): the colour of the staff application only (W26-R22, muted plum, the user's choice): the band on top
+                   of its header, the tint of that header and the Admin pill. The customer app never uses it, so a glance at the corner says where you are.
+   Near-black (--color-accent) is the colour of text and lines; it is never the fill of something chosen. */
+[data-brand="brass"] {
+  --color-primary: #2b1a12;
+  --color-primary-hover: #3d271b;
+  --color-on-primary: #efe3d0;
+}
+[data-brand="brass"][data-theme="dark"] {
+  --color-primary: #c9a55a;
+  --color-primary-hover: #d8b872;
+  --color-on-primary: #14120f;
+}
+
+/* The staff application's own colour (W26-R22): muted plum; the text on it passes AA in both themes (8.3 to 1 light, 7.8 to 1 dark). */
+[data-brand="brass"] { --color-admin: #6b3f69; --color-on-admin: #ffffff; }
+[data-brand="brass"][data-theme="dark"] { --color-admin: #c79bc4; --color-on-admin: #1e0f1d; }
+
+/* The chosen option of a switch, the current page, the chosen day. */
+[data-brand="brass"] .rs-seg button[aria-pressed=true],
+[data-brand="brass"] .bt-seg button[aria-pressed=true],
+[data-brand="brass"] .bp-tog button[aria-pressed=true],
+[data-brand="brass"] .bp-lang button[aria-pressed=true],
+[data-brand="brass"] .rs-pager__b[aria-current=page],
+[data-brand="brass"] .rs-cal__d[aria-pressed=true] { background: var(--color-primary); color: var(--color-on-primary); border-color: var(--color-primary); box-shadow: none; font-weight: 600; }
+
+/* A checked box or switch. */
+[data-brand="brass"] .rs-check input:checked,
+[data-brand="brass"] .rs-check input:indeterminate,
+[data-brand="brass"] .rs-switch input:checked,
+[data-brand="brass"] .bx-sw[aria-checked=true] { background: var(--color-primary); border-color: var(--color-primary); }
+[data-brand="brass"] .bx-ck input { accent-color: var(--color-primary); }
+
+/* Progress and a dark snackbar. */
+[data-brand="brass"] .rs-progress > i,
+[data-brand="brass"] .rs-step[data-state=done] .rs-step__bar,
+[data-brand="brass"] .rs-step[data-state=current] .rs-step__bar { background: var(--color-primary); }
+[data-brand="brass"] .bt2--snack { background: var(--color-primary); color: var(--color-on-primary); border-color: var(--color-primary); }

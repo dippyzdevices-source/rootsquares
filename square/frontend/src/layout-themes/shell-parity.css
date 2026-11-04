@@ -1,0 +1,29 @@
+/* What every themed header carries that the default header has (W10-R6): the account area (Login or the account menu), the Contact link, the logo
+   in the masthead and the join button in its top strip. Hand-written; reads only the --lt-* values every theme defines. */
+.lt-acctmenu { display: inline-flex; align-items: center; gap: 10px; }
+.lt-acct-login, .lt-acct-contact { color: inherit; text-decoration: none; font: 600 13px var(--lt-bf); min-height: 44px; display: inline-flex; align-items: center; }
+.lt-acct-login:hover, .lt-acct-contact:hover { color: var(--lt-link); text-decoration: underline; }
+.lt-account .lt-acctmenu { gap: 8px; }
+.lt-es-mast .lt-es-join { min-height: 0; padding: 7px 18px; font-size: 13px; }
+.lt-es-mast .lt-es-bigname { display: inline-flex; align-items: center; gap: 14px; }
+
+/* Script line above the headline, and previous / next testimonial buttons (W10-R6). */
+.lt-script { display: block; font: italic 400 1.5rem var(--lt-df); color: inherit; opacity: .9; margin-bottom: 4px; }
+.lt-qnav { display: inline-flex; gap: 10px; align-items: center; }
+.lt-qnav button { width: 40px; height: 40px; border-radius: 999px; border: 1.5px solid currentColor; background: transparent; color: inherit; font-size: 20px; line-height: 1; cursor: pointer; opacity: .85; }
+.lt-qnav button:hover { opacity: 1; }
+
+/* The account menu's button takes the header's own text colour (some themes put the header on a dark panel). */
+.lt-acctmenu .ds-account-menu-trigger, .lt-acctmenu .ds-account-menu-name { color: inherit; }
+.lt-acctmenu .ds-account-menu-meta { color: inherit; opacity: .75; }
+.lt-ref-pills { margin-bottom: 20px; }
+
+/* Event rows (list variant) in every theme: type chip above the title, short description below it (W10-R7; the default programme shows both). */
+.lt-ev-main { display: flex; flex-direction: column; align-items: flex-start; min-width: 0; }
+.lt-ev-chips { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 6px; }
+.lt-ev-chip { font: 600 12px var(--lt-bf); font-style: normal; padding: 3px 12px; border-radius: var(--t-radius-btn); background: var(--lt-hl); color: var(--lt-link); }
+.lt-ev-desc { display: block; margin-top: 4px; font: 400 14px/1.5 var(--lt-bf); color: var(--lt-mute); }
+
+/* The emphasised name in the lead, as on the default home page: on its own line in the display face (W10-R7; it ran into the words around it). */
+.lt-lead-name { display: block; margin: .35em 0; font-family: var(--lt-df); font-style: italic; font-size: 1.35em; line-height: 1.2; color: var(--lt-link); }
+.lt-on-panel .lt-lead-name, .lt-e-hero4 .lt-lead-name, [class*="lt-hero-panel"] .lt-lead-name { color: inherit; }

@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>$title</title>
+<style>
+  /* Real Marcellus/Karla, embedded inline (no network request) so no mail client can start
+     rendering before the font arrives and reflow once it does — see _font_data_uri()'s
+     docstring in templates.py. A client that ignores @font-face just uses the fallback stack
+     declared on every element below. */
+  @font-face {
+    font-family: 'Karla';
+    font-style: normal;
+    font-weight: 400 700;
+    src: url($font_karla_b64) format('woff2');
+  }
+  @font-face {
+    font-family: 'Marcellus';
+    font-style: normal;
+    font-weight: 400;
+    src: url($font_marcellus_b64) format('woff2');
+  }
+</style>
+</head>
+<body style="margin:0; padding:0; background-color:$c_sunk; font-family:'Karla','Helvetica Neue',Arial,sans-serif; color:$c_body;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:$c_sunk;">
+<tr>
+<td align="center" style="padding:32px 16px;">
+<table role="presentation" width="560" cellpadding="0" cellspacing="0" border="0" style="width:560px; max-width:560px; background-color:$c_card; border:1px solid $c_line; border-radius:16px;">
+<tr>
+<td style="padding:40px 44px;">
+
+<table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin:0 0 28px;">
+<tr>
+<td style="vertical-align:middle; padding-right:8px;">
+<img src="cid:$logo_cid" width="64" height="64" alt="$site_name" style="display:block; width:64px; height:64px; border-radius:8px;" />
+</td>
+<td style="vertical-align:middle;">
+<div style="font-family:'Marcellus',Georgia,serif; font-size:22px; letter-spacing:0.04em; color:$c_ink; line-height:1.1;">
+$site_name
+</div>
+</td>
+</tr>
+</table>
+
+<h1 style="margin:0 0 20px; font-family:'Marcellus',Georgia,serif; font-weight:400; font-size:21px; color:$c_ink;">$title</h1>
+$body
+</td>
+</tr>
+</table>
+
+<table role="presentation" width="560" cellpadding="0" cellspacing="0" border="0" style="width:560px; max-width:560px;">
+<tr>
+<td align="center" style="padding:20px 16px 0;">
+<p style="margin:0; font-family:'Marcellus',Georgia,serif; font-size:13px; color:$c_mute;">$site_name</p>
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+</body>
+</html>

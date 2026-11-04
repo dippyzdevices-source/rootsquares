@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en" data-brand="brass" data-app="platform">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" /> <!-- staging (guide 42): remove this line and public/robots.txt when the site goes public -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>rootsquares</title>
+    <style>
+      /* The first second, before the app has loaded: a plain spinner on the ground colour instead of a blank screen (W25-R54, TS-35). Vue replaces it when it mounts. */
+      .rs-boot { position: fixed; inset: 0; display: grid; place-items: center; background: #f4efe3; }
+      .rs-boot i { width: 34px; height: 34px; border-radius: 50%; border: 3px solid #dccfb8; border-top-color: #9a7a2e; animation: rs-boot 0.9s linear infinite; }
+      @keyframes rs-boot { to { transform: rotate(360deg); } }
+      @media (prefers-reduced-motion: reduce) { .rs-boot i { animation: none; } }
+    </style>
+  </head>
+  <body class="rs">
+    <div id="app"><div class="rs-boot" role="status" aria-label="Loading"><i></i></div></div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

@@ -1,0 +1,41 @@
+/* What it is:   The fixed type of the admin console and the member portal (rootsquares W18-R10, R14).
+   What it does: Inside .ds-appshell (the body of AdminLayout and MemberLayout) every typographic token goes back to the bca-oslo values (Marcellus, Cormorant Garamond,
+                 Karla; uppercase buttons, badges and tabs; eyebrows), whatever theme or font pair the square has. Colours, corners and shadows still follow the theme.
+                 The theme's own header and footer around the console are not touched. Applies only when <html data-square-theme> is set (paper-brick already has these values).
+   How to use:   Imported by main.ts after theme-components.css; nothing to call. To check: open /admin or /member on a square with another theme and read
+                 getComputedStyle of a heading and a button (font-family Marcellus / Karla, buttons uppercase).
+   Read before:  src/styles/design-system.css (the original values, lines 126-143), src/styles/theme-components.css (the knobs it pins).
+   Read after:   src/themes/applyThemeOverrides.ts (the owner's font pair, which this file keeps out of the console). */
+
+html[data-square-theme] .ds-appshell {
+  --ds-font-display: "Marcellus", "Cormorant Garamond", Georgia, serif;
+  --ds-font-editorial: "Cormorant Garamond", Georgia, serif;
+  --ds-font-body: "Karla", "Helvetica Neue", Arial, sans-serif;
+  --ds-tracking-button: 0.08em;
+  --t-font-display: var(--ds-font-display);
+  --t-font-body: var(--ds-font-body);
+  --t-font-display-weight: 400;
+  --t-font-display-tracking: -0.015em;
+  --t-eyebrow-case: uppercase;
+  --t-eyebrow-tracking: 0.18em;
+  --t-btn-case: uppercase;
+  --t-btn-tracking: 0.08em;
+  --t-badge-case: uppercase;
+  --t-badge-tracking: 0.06em;
+  --t-badge-weight: 600;
+  --t-tab-family: var(--ds-font-body);
+  --t-tab-style: normal;
+  --t-tab-weight: 600;
+  --t-tab-size: 14px;
+  --t-tab-case: uppercase;
+  --t-tab-tracking: 0.08em;
+  --font-sans: var(--ds-font-body);
+  font-family: var(--ds-font-body);
+}
+
+/* paper-brick with an own font pair (W25-R55, marker set by applyThemeOverrides): the console keeps its fixed type too. */
+html[data-own-fonts] .ds-appshell {
+  --ds-font-display: "Marcellus", "Cormorant Garamond", Georgia, serif;
+  --ds-font-editorial: "Cormorant Garamond", Georgia, serif;
+  --ds-font-body: "Karla", "Helvetica Neue", Arial, sans-serif;
+}
