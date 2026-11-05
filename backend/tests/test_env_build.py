@@ -57,7 +57,7 @@ def test_staging_builds_two_services_with_shared_and_separate_secrets(repo, monk
     write_values(repo, "staging", STAGING)
     assert run(monkeypatch, "staging", "--make-secrets") == 0
     out = repo / "env" / "out" / "staging"
-    c = (out / "customer_api.env").read_text()
+    c = (out / "platform_api.env").read_text()
     a = (out / "admin_api.env").read_text()
     assert "API_SURFACE=customer" in c and "API_SURFACE=admin" in a
     assert "JWT_SECRET=" in c and "STAFF_JWT_SECRET" not in c and "STAFF_FERNET_KEY" not in c and "SUPPORT_SESSION_KEY" not in c
@@ -132,11 +132,11 @@ def line(text, name):
     return next(ln for ln in text.splitlines() if ln.startswith(name + "="))
 
 
-def test_square_server_shares_the_platform_secrets_and_has_its_own(repo, monkeypatch, capsys):
+def test_square_api_shares_the_platform_secrets_and_has_its_own(repo, monkeypatch, capsys):
     write_values(repo, "staging", STAGING)
     assert run(monkeypatch, "staging", "--make-secrets") == 0
     out = repo / "env" / "out" / "staging"
-    c, a, s = ((out / f"{n}.env").read_text() for n in ("customer_api", "admin_api", "square_server"))
+    c, a, s = ((out / f"{n}.env").read_text() for n in ("platform_api", "admin_api", "square_api"))
     for name in ("FERNET_KEY", "SITE_GATE_PASSWORD"):
         assert line(s, name) == line(c, name) == line(a, name)
     assert line(s, "SUPPORT_SESSION_KEY") == line(a, "SUPPORT_SESSION_KEY")
@@ -148,16 +148,16 @@ def test_square_server_shares_the_platform_secrets_and_has_its_own(repo, monkeyp
     assert STAGING["DATABASE_URL"] not in capsys.readouterr().out
 
 
-def test_square_server_internal_key_must_match_the_platform_key(repo, monkeypatch, capsys):
+def test_square_api_internal_key_must_match_the_platform_key(repo, monkeypatch, capsys):
     write_values(repo, "staging", {**STAGING, "SQUARE_INTERNAL_KEY": "x" * 45, "PLATFORM_INTERNAL_KEY": "y" * 45})
     assert run(monkeypatch, "staging", "--make-secrets") == 1
     assert "PLATFORM_INTERNAL_KEY must equal SQUARE_INTERNAL_KEY" in capsys.readouterr().out
 
 
-def test_local_square_server_is_development_with_the_localhost_platform_address(repo, monkeypatch):
+def test_local_square_api_is_development_with_the_localhost_platform_address(repo, monkeypatch):
     write_values(repo, "local", {"AUTH_URL": "https://a.example/x", "DATABASE_URL": "postgresql://x:y@h/db", "NEON_API_KEY": "napi_" + "e" * 40, "SITE_GATE_PASSWORD": "g" * 20})
     assert run(monkeypatch, "local") == 0
-    s = (repo / "env" / "out" / "local" / "square_server.env").read_text()
+    s = (repo / "env" / "out" / "local" / "square_api.env").read_text()
     assert "DATABASE_URL=postgresql+psycopg://unused:unused@localhost:5432/unused" in s and "APP_ENV=development" in s and "PLATFORM_SITE_URL=http://localhost:5273" in s and "SITE_GATE_PASSWORD" not in s and "PROXY_HOPS" not in s and "SECRET_KEY" not in s
 
 
@@ -305,7 +305,7 @@ def test_a_cloud_file_that_holds_the_owner_address_says_so(repo, monkeypatch, ca
     write_values(repo, "staging", STAGING)
     assert run(monkeypatch, "staging", "--make-secrets") == 0
     out = capsys.readouterr().out
-    assert "customer_api: DATABASE_URL is the OWNER address" in out and "admin_api: DATABASE_URL is the OWNER address" in out
+    assert "platform_api: DATABASE_URL is the OWNER address" in out and "admin_api: DATABASE_URL is the OWNER address" in out
     write_values(repo, "staging", {**STAGING, "CUSTOMER_DATABASE_URL": "postgresql://customer_app:x@h/db", "ADMIN_DATABASE_URL": "postgresql://admin_app:x@h/db"})
     assert run(monkeypatch, "staging", "--make-secrets") == 0
     assert "OWNER address" not in capsys.readouterr().out
