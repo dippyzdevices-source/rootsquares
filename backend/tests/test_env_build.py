@@ -148,6 +148,21 @@ def test_square_api_shares_the_platform_secrets_and_has_its_own(repo, monkeypatc
     assert STAGING["DATABASE_URL"] not in capsys.readouterr().out
 
 
+def test_the_render_versions_are_in_the_cloud_files_and_not_in_the_local_ones(repo, monkeypatch, capsys):
+    write_values(repo, "staging", STAGING)
+    assert run(monkeypatch, "staging", "--make-secrets") == 0
+    out = repo / "env" / "out" / "staging"
+    for n in ("platform_api", "admin_api", "square_api"):
+        assert "PYTHON_VERSION=3.12.8" in (out / f"{n}.env").read_text()
+    for n in ("platform_site", "admin_site", "square_site"):
+        assert "NODE_VERSION=22" in (out / f"{n}.env").read_text()
+    write_values(repo, "local", {"AUTH_URL": "https://a.example/x", "DATABASE_URL": "postgresql://x:y@h/db", "NEON_API_KEY": "napi_" + "e" * 40, "SITE_GATE_PASSWORD": "g" * 20})
+    assert run(monkeypatch, "local") == 0
+    for f in (repo / "env" / "out" / "local").glob("*.env"):
+        assert "_VERSION" not in f.read_text(), f.name
+    assert "_VERSION is in the values file" not in capsys.readouterr().out
+
+
 def test_square_api_internal_key_must_match_the_platform_key(repo, monkeypatch, capsys):
     write_values(repo, "staging", {**STAGING, "SQUARE_INTERNAL_KEY": "x" * 45, "PLATFORM_INTERNAL_KEY": "y" * 45})
     assert run(monkeypatch, "staging", "--make-secrets") == 1
@@ -222,7 +237,7 @@ def example_names(folder):
 )
 def test_the_manifest_and_the_env_example_document_the_same_settings(folder, variables):
     documented = example_names(folder)
-    built = {v.name for v in variables}
+    built = {v.name for v in variables if v.block != "0 RENDER"}  # the Render versions are Render's, not an application setting: no .env.example documents them
     assert documented - built - NOT_BUILT[folder] == set(), f"documented in {folder}/.env.example but neither built nor listed as not built: add a Var to env/manifest.py or a name to NOT_BUILT"
     assert built - documented == set(), f"in env/manifest.py but not documented in {folder}/.env.example: document it there (the example is the bible)"
     assert NOT_BUILT[folder] - documented == set(), f"listed as not built but not in {folder}/.env.example any more: remove it from NOT_BUILT"
