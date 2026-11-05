@@ -5,7 +5,6 @@ import AppAlert from './AppAlert.vue'
 import AppButton from './AppButton.vue'
 import AppField from './AppField.vue'
 import EnvBanner from './EnvBanner.vue'
-import Wordmark from './Wordmark.vue'
 import { envLabel } from '../env/envLabel'
 import { gateEnter } from '../gate/gate'
 
@@ -32,7 +31,6 @@ async function submit() {
   <EnvBanner :label="envLabel" />
   <main class="rs" style="min-height: 100vh; display: grid; place-items: center; padding: 32px 20px; background: var(--color-bg)">
     <section class="si-in" style="max-width: 400px" data-testid="gate">
-      <Wordmark :size="28" />
       <span class="rs-eyebrow">{{ t('gate.eyebrow') }}</span>
       <h1 style="font: 500 34px/1.1 var(--font-display); margin: 0">{{ t('gate.title') }}</h1>
       <p class="bs-mute" style="margin: 0">{{ t('gate.lede') }}</p>

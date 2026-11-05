@@ -11,7 +11,7 @@ const read = (p) => fs.readFileSync(path.join(ROOT, p), 'utf8')
 
 test('both applications link their own SVG favicon, and the files are the mark with and without the dot', () => {
   for (const app of ['platform', 'admin']) {
-    assert.match(read(`${app}/index.html`), /<link rel="icon" type="image\/svg\+xml" href="\/favicon\.svg"/, app)
+    assert.match(read(`${app}/src/main.ts`), /showBrandIcon\(\)/, `${app}: the application puts its own icon in once the gate is open`)
     const svg = read(`${app}/public/favicon.svg`)
     assert.match(svg, /^<svg xmlns="http:\/\/www\.w3\.org\/2000\/svg" viewBox="0 0 24 24">/, app)
     assert.match(svg, /prefers-color-scheme: dark/, `${app}: a dark browser gets its own colours`)
@@ -29,7 +29,6 @@ test('both applications link their own SVG favicon, and the files are the mark w
 })
 
 test('the admin tab title starts with Admin, and the customer app sets a title per page', () => {
-  assert.match(read('admin/index.html'), /<title>Admin · rootsquares<\/title>/)
   assert.match(read('admin/src/main.ts'), /document\.title = key \? `\$\{tag\} · \$\{t\(key\)\} · \$\{t\('app\.name'\)\}`/)
   const customer = read('platform/src/main.ts')
   assert.match(customer, /router\.afterEach/)

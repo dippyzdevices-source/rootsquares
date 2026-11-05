@@ -8,6 +8,7 @@ import adminNo from './i18n/admin.no.json'
 import { useStaffStore } from './stores/staff'
 import { gateStart } from '@rootsquares/ui/gate/gate'
 import { setEnvLabel } from '@rootsquares/ui/env/envLabel'
+import { showBrandIcon } from '@rootsquares/ui/gate/brandHead'
 // The same self-hosted fonts and styles as the customer app (ADR 083: one design system, two applications).
 import '@rootsquares/ui/styles/fonts.css'
 import '@rootsquares/ui/styles/main.css'
@@ -27,6 +28,7 @@ void (async () => {
     createApp(GateScreen, { base: apiBase, onOpen: () => window.location.reload() }).use(i18n).mount('#app')
     return
   }
+  showBrandIcon() // the page shell is neutral until the gate is open (W27-R32)
   start()
 })()
 

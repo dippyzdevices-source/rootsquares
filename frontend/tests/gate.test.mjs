@@ -70,3 +70,17 @@ test('the passcode is never stored by the browser code', () => {
     assert.doesNotMatch(read(file), /localStorage|sessionStorage|document\.cookie/, file)
   }
 })
+
+test('the public page shell and the passcode screen carry no brand (W27-R32)', () => {
+  // a static file cannot ask for a passcode, so the shell a stranger downloads says nothing: a neutral title and a blank icon
+  for (const app of ['platform', 'admin']) {
+    const html = read(`${app}/index.html`)
+    assert.match(html, /<title>Private<\/title>/, app)
+    assert.match(html, /<link rel="icon" href="data:," \/>/, app)
+    assert.doesNotMatch(html.replace(/<!--[\s\S]*?-->/g, ''), /rootsquares|favicon\.svg/i, `${app}/index.html names the brand outside a comment`)
+    assert.match(read(`${app}/src/main.ts`), /return\s*\}\s*showBrandIcon\(\)/, `${app}: the icon is set only after the gate check returned`)
+  }
+  const screen = read('ui/src/components/GateScreen.vue')
+  assert.doesNotMatch(screen, /Wordmark/, 'the passcode screen shows no wordmark')
+  assert.doesNotMatch(read('ui/src/i18n/en.json').match(/"gate": \{[^}]*\}/)[0], /rootsquares/i, 'the passcode texts do not name the brand')
+})

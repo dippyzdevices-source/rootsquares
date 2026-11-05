@@ -8,6 +8,7 @@ import platformNo from './i18n/no.json'
 import { isSquareHost, squareAppRedirect } from './services/hostMode'
 import { gateStart } from '@rootsquares/ui/gate/gate'
 import { setEnvLabel } from '@rootsquares/ui/env/envLabel'
+import { showBrandIcon } from '@rootsquares/ui/gate/brandHead'
 import { captureReferral } from './services/referral'
 import './styles/spinner-sets.css'
 // Self-hosted platform fonts (no network calls): one file in the ui package, shared with the admin application.
@@ -34,6 +35,8 @@ void (async () => {
     createApp(GateScreen, { base: apiBase, onOpen: () => window.location.reload() }).use(i18n).mount('#app')
     return
   }
+  showBrandIcon() // the page shell is neutral until the gate is open (W27-R32)
+  document.title = i18n.global.t('app.name')
   if (isSquareHost) {
     const { default: SquareSiteRoot } = await import('./features/platform/SquareSiteRoot.vue')
     createApp(SquareSiteRoot).use(i18n).mount('#app')
