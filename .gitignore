@@ -13,3 +13,8 @@ logs/
 
 # Output of the scripts/test-*.ps1 checks
 scripts/.test-logs/
+
+# Doc search: the index and the owner's local model settings
+tools/docsearch/.index/
+tools/docsearch/config.json
+tools/docsearch/__pycache__/
