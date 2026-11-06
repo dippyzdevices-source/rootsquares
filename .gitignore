@@ -18,3 +18,4 @@ scripts/.test-logs/
 tools/docsearch/.index/
 tools/docsearch/config.json
 tools/docsearch/__pycache__/
+scripts/__pycache__/
